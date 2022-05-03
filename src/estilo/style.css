@@ -1,0 +1,354 @@
+html {
+    background-color: black;
+}
+
+h1 {
+    color: yellow;
+}
+
+p {
+    color: lightgray;
+    text-shadow: 1px 1px 1px gray;
+}
+
+#menu ul {
+    font: normal 15pt Arial;
+    font-weight: bold;
+    list-style-type: none;
+    padding: 0;
+    max-width: 600px;
+    text-align: center;
+}
+
+#menu ul li {
+    display: inline;
+    position: relative;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    transition: 150ms;
+    color: var(--cor2);
+}
+
+#menu ul li a:hover {
+    opacity: 50%;
+}
+
+
+#menu ul ul {
+    font: normal 10pt Arial;
+    display: none;
+    position: absolute;
+    background-color: var(--cor4);
+    width: 1000px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 20px rgb(184, 184, 184);
+}
+
+#menu ul li:hover ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form {
+    width: 500px;
+    margin: auto;
+    padding-top: 50px;
+
+}
+
+.bx {
+    box-shadow: 0px 0px 5px #ccc;
+    background-color: white;
+    padding: 25px;
+    border-radius: 4px;
+}
+
+.bx-top {
+    text-align: center;
+}
+
+.bx-group {
+    margin-bottom: 15px;
+}
+
+.bx-group>input {
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    left: 550px;
+    top: 50px;
+    background: #FFD51E;
+    border-radius: 10px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.imgcad {
+    border-radius: 30px;
+    width: 110px;
+    box-shadow: 0px 0px 4px gray;
+}
+
+.ttl {
+    color: darkblue;
+}
+
+a:hover {
+    opacity: 75%;
+    color: black;
+}
+
+.rectangleA {
+    position: absolute;
+    width: 1440px;
+    height: 10px;
+    left: 0px;
+    top: 0px;
+    background: #FEEF10;
+}
+
+.lineHome {
+    position: absolute;
+    width: 1398px;
+    height: 0px;
+    left: 25px;
+    top: 92px;
+    border: 1px solid #000000;
+    transform: rotate(0.08deg);
+}
+
+.navbarTexts {
+    position: absolute;
+    width: 98.6px;
+    height: 11.6px;
+    left: 101.64px;
+    top: 46.4px;
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.backgroundHome {
+    position: absolute;
+    width: 1440px;
+    height: 657px;
+    left: 0px;
+    top: 133px;
+    background: url('../img/firstBackground.png');
+    border-radius: 8px;
+}
+
+.rectangleVerticalA {
+    width: 56px;
+    height: 657px;
+    left: 56px;
+    top: 790px;
+    background: rgba(255, 251, 251, 0.66);
+    transform: rotate(-180deg);
+}
+
+.lastRectangle {
+    position: absolute;
+    width: 300px;
+    height: 45.81px;
+    left: 570px;
+    top: 1517px;
+
+    background: #FFD51E;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.textHome {
+    position: absolute;
+    width: 430px;
+    height: 31px;
+    left: 505px;
+    top: 923px;
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 130%;
+    /* or 31px */
+    color: #000000;
+}
+
+.textHomeB {
+    position: absolute;
+    width: 821px;
+    height: 38px;
+    left: 310px;
+    top: 1217px;
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 160%;
+    /* or 38px */
+    color: #000000;
+}
+
+.textLastRectangle {
+    position: absolute;
+    width: 83.4px;
+    height: 45.6px;
+    left: 669px;
+    top: 1517px;
+
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    /* or 24px */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.textInsumos {
+    position: absolute;
+    width: 189px;
+    height: 128px;
+    left: 920px;
+    top: 1346px;
+
+    font-family: 'Itim';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 160%;
+    /* or 58px */
+
+
+    color: #000000;
+
+}
+
+.textFooter {
+    position: absolute;
+    width: 407.6px;
+    height: 152px;
+    left: 50px;
+    top: 2076px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 50px;
+    /* or 357% */
+
+
+    color: #FFFFFF;
+}
+
+.facebookFooter {
+    position: absolute;
+    left: 80.35%;
+    right: 16.65%;
+    top: 92.71%;
+    bottom: 5.46%;
+}
+
+.instagramFooter {
+    position: absolute;
+    left: 92.02%;
+    right: 4.99%;
+    top: 92.71%;
+    bottom: 5.46%;
+}
+
+.twitterFooter {
+    position: absolute;
+    left: 86.11%;
+    right: 10.89%;
+    top: 92.71%;
+    bottom: 5.46%;
+}
+
+.followText {
+    position: absolute;
+    width: 165px;
+    height: 50px;
+    left: 956.03px;
+    top: 2120px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 50px;
+    /* identical to box height, or 357% */
+
+
+    color: #FFFFFF;
+}
+
+.privacidadeTermos {
+    position: absolute;
+    width: 661px;
+    height: 24px;
+    left: 395.7px;
+    top: 2232px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+
+    color: #FFFFFF;
+}
+
+.iconInstagram {
+    height: 54.21794128417969px;
+    width: 55.078857421875px;
+    left: 7.46063232421875px;
+    top: 7.28759765625px;
+    border-radius: 0px;
+
+}
+
+.slide {
+    position: absolute;
+    width: 90px;
+    height: 20px;
+    left: 675px;
+    top: 804px;
+}
+
+.imgPix {
+    position: absolute;
+    width: 180px;
+    height: 64.17px;
+    left: 368px;
+    top: 1378px;
+
+    background: url('../img/pix.png');
+}
+
+.footerRectangle {
+    position: absolute;
+    width: 1440px;
+    height: 272px;
+    left: 0px;
+    top: 2019px;
+
+    background: #424B5A;
+}
+
