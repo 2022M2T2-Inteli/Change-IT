@@ -53,6 +53,24 @@ p {
     flex-wrap: wrap;
 }
 
+@media only screen and (max-device-width: 900px) {
+    #menu {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 900px) {
+    #menu {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-device-width: 700px) {
+    #menu {
+        width: 400px;
+    }
+}
+
 .form {
     width: 500px;
     margin: auto;
@@ -339,7 +357,7 @@ a:hover {
     font-weight: 300;
     color: #ffff01;
     background: #f4f7f6;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -401,8 +419,13 @@ a:hover {
 }
 
 .abordagemRectangle {
+<<<<<<< Updated upstream
     position:absolute;
     width: 350px;
+=======
+    position: absolute;
+    width: 250px;
+>>>>>>> Stashed changes
     height: 45px;
     left: 38%;
     top: 720px;
@@ -429,3 +452,7 @@ a:hover {
     border: 2px solid #000000;
     box-sizing: border-box;
 }
+<<<<<<< Updated upstream
+=======
+}
+>>>>>>> Stashed changes
