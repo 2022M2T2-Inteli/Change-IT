@@ -2,13 +2,13 @@ html {
     background-color: black;
 }
 
-h1 {
-    color: yellow;
+h1, h2, h3, p {
+    font-family:'Itim';
 }
 
 p {
-    color: lightgray;
-    text-shadow: 1px 1px 1px gray;
+    color:#000000;
+    font-size: 20px;
 }
 
 #menu ul {
@@ -369,14 +369,16 @@ a:hover {
 .oficinasRectangle {
     margin: auto;
     position: absolute;
-    width: 250px;
+    width: 350px;
     height: 45px;
+    left: 38%;
     justify-content: center;
-    top: 230px;
+    top: 300px;
     background: #FEEF10;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
     font-size: 25px;
+    font-family: 'Itim';
     border: 2px solid #000000;
     box-sizing: border-box;
     display: flex;
@@ -385,43 +387,45 @@ a:hover {
 
 .eventosRectangle {
     position: absolute;
-    width: 250px;
+    width: 350px;
     height: 45px;
-    left: 42%;
-    top: 360px;
+    left: 38%;
+    top: 520px;
     background: #FEEF10;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
     font-size: 25px;
+    font-family: 'Itim';
     border: 2px solid #000000;
     box-sizing: border-box;
 }
 
 .abordagemRectangle {
     position:absolute;
-    width: 250px;
+    width: 350px;
     height: 45px;
-    left: 42%;
-    top: 520px;
+    left: 38%;
+    top: 720px;
     background: #FEEF10;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
     font-size: 25px;
+    font-family: 'Itim';
     border: 2px solid #000000;
     box-sizing: border-box;
 }
 
 .voluntariarRectangle {
     position: absolute;
-    width: 200px;
-    height: 45px;
-    left: 44%;
-    top: 620px;
+    width: 270px;
+    height: 80px;
+    left: 41%;
+    top: 880px;
     background: #FEEF10;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
-    font-size: 25px;
+    font-size: 50px;
+    font-family: 'Itim';
     border: 2px solid #000000;
     box-sizing: border-box;
-}
 }
