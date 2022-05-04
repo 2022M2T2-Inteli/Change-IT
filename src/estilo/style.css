@@ -332,6 +332,19 @@ a:hover {
     top: 804px;
 }
 
+#body {
+    margin: auto;
+    font-family: "apercu", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffff01;
+    background: #f4f7f6;
+    /* overflow-x: hidden; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 .imgPix {
     position: absolute;
     width: 180px;
@@ -351,4 +364,3 @@ a:hover {
 
     background: #424B5A;
 }
-
