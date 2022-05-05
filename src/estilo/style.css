@@ -2,13 +2,13 @@ html {
     background-color: black;
 }
 
-h1 {
-    color: yellow;
+h1, h2, h3, p {
+    font-family:'Itim';
 }
 
 p {
-    color: lightgray;
-    text-shadow: 1px 1px 1px gray;
+    color:#000000;
+    font-size: 20px;
 }
 
 #menu ul {
@@ -51,6 +51,24 @@ p {
 #menu ul li:hover ul {
     display: flex;
     flex-wrap: wrap;
+}
+
+@media only screen and (max-device-width: 900px) {
+    #menu {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 900px) {
+    #menu {
+        width: 600px;
+    }
+}
+
+@media only screen and (max-device-width: 700px) {
+    #menu {
+        width: 400px;
+    }
 }
 
 .form {
@@ -332,6 +350,19 @@ a:hover {
     top: 804px;
 }
 
+#body {
+    margin: auto;
+    font-family: "apercu", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffff01;
+    background: #f4f7f6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
 .imgPix {
     position: absolute;
     width: 180px;
@@ -352,3 +383,76 @@ a:hover {
     background: #424B5A;
 }
 
+
+.oficinasRectangle {
+    margin: auto;
+    position: absolute;
+    width: 350px;
+    height: 45px;
+    left: 38%;
+    justify-content: center;
+    top: 300px;
+    background: #FEEF10;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.eventosRectangle {
+    position: absolute;
+    width: 350px;
+    height: 45px;
+    left: 38%;
+    top: 520px;
+    background: #FEEF10;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+}
+
+.abordagemRectangle {
+<<<<<<< Updated upstream
+    position:absolute;
+    width: 350px;
+=======
+    position: absolute;
+    width: 250px;
+>>>>>>> Stashed changes
+    height: 45px;
+    left: 38%;
+    top: 720px;
+    background: #FEEF10;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+}
+
+.voluntariarRectangle {
+    position: absolute;
+    width: 270px;
+    height: 80px;
+    left: 41%;
+    top: 880px;
+    background: #FEEF10;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+}
+<<<<<<< Updated upstream
+=======
+}
+>>>>>>> Stashed changes
