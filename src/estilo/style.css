@@ -1,5 +1,6 @@
 html {
     background-color: black;
+    display: flex;
 }
 
 h1, h2, h3, p {
@@ -119,14 +120,20 @@ a:hover {
     color: black;
 }
 
-.rectangleA {
+.rectangleA{
+    display: flex;
+    flex-direction: column;
+    height: 10px;
+    background: #FEEF10;
+}
+/* .rectangleA {
     position: absolute;
     width: 1440px;
     height: 10px;
     left: 0px;
     top: 0px;
     background: #FEEF10;
-}
+} */
 
 .lineHome {
     position: absolute;
@@ -419,13 +426,8 @@ a:hover {
 }
 
 .abordagemRectangle {
-<<<<<<< Updated upstream
     position:absolute;
     width: 350px;
-=======
-    position: absolute;
-    width: 250px;
->>>>>>> Stashed changes
     height: 45px;
     left: 38%;
     top: 720px;
@@ -452,7 +454,29 @@ a:hover {
     border: 2px solid #000000;
     box-sizing: border-box;
 }
-<<<<<<< Updated upstream
-=======
+.folha{
+    display: flex;
+    align-items: center;
 }
->>>>>>> Stashed changes
+
+.formulario {
+    flex-direction: column;
+    display: flex;
+    border-radius: 30px;
+    background-color: rgb(204, 204, 204);
+    border: 1px solid #000000;
+    padding: 2%;
+    
+}
+
+input[type=text] {
+    padding: 1px 5px;
+    margin: 5px;
+    width: 100%;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.btn{
+    background-color: #9B287B;
+}
+
