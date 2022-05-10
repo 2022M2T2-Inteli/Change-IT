@@ -551,6 +551,9 @@ input[type=text] {
 .btn {
     background-color: #9B287B;
 }
+html{
+    display: flex;
+}
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
