@@ -94,6 +94,33 @@ header .container .col-md-7 button {
     font-weight: bold;
 }
 
+/* section 1 */
+.section-1 {
+    padding: 20vmin 0;
+}
+
+.section-1 .row .col-md-6 .pray img {
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+.section-1 .row .col-md-6:last-child {
+    position: relative;
+}
+
+.section-1 .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 10vmin;
+
+}
+
+
 html {
     background-color: black;
 }
