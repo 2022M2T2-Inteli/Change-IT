@@ -1,14 +1,16 @@
 html {
     background-color: black;
-    display: flex;
 }
 
-h1, h2, h3, p {
-    font-family:'Itim';
+h1,
+h2,
+h3,
+p {
+    font-family: 'Itim';
 }
 
 p {
-    color:#000000;
+    color: #000000;
     font-size: 20px;
 }
 
@@ -37,7 +39,6 @@ p {
 #menu ul li a:hover {
     opacity: 50%;
 }
-
 
 #menu ul ul {
     font: normal 10pt Arial;
@@ -76,7 +77,6 @@ p {
     width: 500px;
     margin: auto;
     padding-top: 50px;
-
 }
 
 .bx {
@@ -120,20 +120,14 @@ a:hover {
     color: black;
 }
 
-.rectangleA{
-    display: flex;
-    flex-direction: column;
-    height: 10px;
-    background: #FEEF10;
-}
-/* .rectangleA {
+.rectangleA {
     position: absolute;
     width: 1440px;
     height: 10px;
     left: 0px;
     top: 0px;
     background: #FEEF10;
-} */
+}
 
 .lineHome {
     position: absolute;
@@ -186,7 +180,6 @@ a:hover {
     height: 45.81px;
     left: 570px;
     top: 1517px;
-
     background: #FFD51E;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -229,17 +222,14 @@ a:hover {
     height: 45.6px;
     left: 669px;
     top: 1517px;
-
     font-family: 'Itim';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 160%;
     /* or 24px */
-
     display: flex;
     align-items: center;
-
     color: #000000;
 }
 
@@ -249,17 +239,13 @@ a:hover {
     height: 128px;
     left: 920px;
     top: 1346px;
-
     font-family: 'Itim';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
     line-height: 160%;
     /* or 58px */
-
-
     color: #000000;
-
 }
 
 .textFooter {
@@ -268,15 +254,12 @@ a:hover {
     height: 152px;
     left: 50px;
     top: 2076px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 50px;
     /* or 357% */
-
-
     color: #FFFFFF;
 }
 
@@ -310,15 +293,12 @@ a:hover {
     height: 50px;
     left: 956.03px;
     top: 2120px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 50px;
     /* identical to box height, or 357% */
-
-
     color: #FFFFFF;
 }
 
@@ -328,15 +308,12 @@ a:hover {
     height: 24px;
     left: 395.7px;
     top: 2232px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     /* identical to box height, or 171% */
-
-
     color: #FFFFFF;
 }
 
@@ -346,7 +323,6 @@ a:hover {
     left: 7.46063232421875px;
     top: 7.28759765625px;
     border-radius: 0px;
-
 }
 
 .slide {
@@ -376,7 +352,6 @@ a:hover {
     height: 64.17px;
     left: 368px;
     top: 1378px;
-
     background: url('../img/pix.png');
 }
 
@@ -386,10 +361,8 @@ a:hover {
     height: 272px;
     left: 0px;
     top: 2019px;
-
     background: #424B5A;
 }
-
 
 .oficinasRectangle {
     margin: auto;
@@ -426,11 +399,12 @@ a:hover {
 }
 
 .abordagemRectangle {
-    position:absolute;
-    width: 350px;
     height: 45px;
     left: 38%;
     top: 720px;
+    position: absolute;
+    width: 350px;
+
     background: #FEEF10;
     border-radius: 10px;
     text-align: center;
@@ -454,7 +428,8 @@ a:hover {
     border: 2px solid #000000;
     box-sizing: border-box;
 }
-.folha{
+
+.folha {
     display: flex;
     align-items: center;
 }
@@ -466,7 +441,7 @@ a:hover {
     background-color: rgb(204, 204, 204);
     border: 1px solid #000000;
     padding: 2%;
-    
+
 }
 
 input[type=text] {
@@ -476,7 +451,7 @@ input[type=text] {
     border-radius: 20px;
     box-sizing: border-box;
 }
-.btn{
+
+.btn {
     background-color: #9B287B;
 }
-
