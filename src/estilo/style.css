@@ -513,7 +513,8 @@ a:hover {
     background-color: rgb(204, 204, 204);
     border: 1px solid #000000;
     padding: 2%;
-
+    width: 80%;
+    
 }
 
 input[type=text] {
