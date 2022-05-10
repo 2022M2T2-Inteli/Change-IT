@@ -94,6 +94,33 @@ header .container .col-md-7 button {
     font-weight: bold;
 }
 
+/* section 1 */
+.section-1 {
+    padding: 20vmin 0;
+}
+
+.section-1 .row .col-md-6 .pray img {
+    opacity: 0.8;
+    width: 80%;
+    border-radius: 0.2em;
+}
+
+.section-1 .row .col-md-6:last-child {
+    position: relative;
+}
+
+.section-1 .row .col-md-6 .panel {
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 5vmin 20vmin 10vmin;
+
+}
+
+
 html {
     background-color: black;
 }
@@ -486,13 +513,23 @@ a:hover {
 }
 
 #botaoAbordagem {
+    margin: auto;
     position:absolute;
     background: #9b287b;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 
 
 #botaoVoluntariar {
+    margin: auto;
     position: absolute;
     background: #FEEF10;
     border-radius: 20px;
@@ -501,6 +538,8 @@ a:hover {
     font-family: 'Itim';
     border: 2px solid #000000;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 .folha {
@@ -513,7 +552,8 @@ a:hover {
     background-color: rgb(204, 204, 204);
     border: 1px solid #000000;
     padding: 2%;
-
+    width: 80%;
+    
 }
 
 input[type=text] {
