@@ -460,15 +460,21 @@ a:hover {
     background: #424B5A;
 }
 
-.oficinasRectangle {
+#botaoEventos {
+    position: absolute;
+    background: #9b287b;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Itim';
+    border: 2px solid #000000;
+    box-sizing: border-box;
+}
+
+#botaoOficinas {
     margin: auto;
     position: absolute;
-    width: 350px;
-    height: 45px;
-    left: 38%;
-    justify-content: center;
-    top: 300px;
-    background: #FEEF10;
+    background: #9b287b;
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
@@ -479,43 +485,15 @@ a:hover {
     justify-content: center;
 }
 
-.eventosRectangle {
-    position: absolute;
-    width: 350px;
-    height: 45px;
-    left: 38%;
-    top: 520px;
-    background: #FEEF10;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Itim';
-    border: 2px solid #000000;
-    box-sizing: border-box;
+#botaoAbordagem {
+    position:absolute;
+    background: #9b287b;
 }
 
-.abordagemRectangle {
-    height: 45px;
-    left: 38%;
-    top: 720px;
-    position: absolute;
-    width: 350px;
 
-    background: #FEEF10;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Itim';
-    border: 2px solid #000000;
-    box-sizing: border-box;
-}
 
-.voluntariarRectangle {
+#botaoVoluntariar {
     position: absolute;
-    width: 270px;
-    height: 80px;
-    left: 41%;
-    top: 880px;
     background: #FEEF10;
     border-radius: 20px;
     text-align: center;
@@ -531,8 +509,6 @@ a:hover {
 }
 
 .formulario {
-    flex-direction: column;
-    display: flex;
     border-radius: 30px;
     background-color: rgb(204, 204, 204);
     border: 1px solid #000000;
@@ -546,10 +522,6 @@ input[type=text] {
     width: 100%;
     border-radius: 20px;
     box-sizing: border-box;
-}
-
-.btn {
-    background-color: #9B287B;
 }
 
 /* Adding Google Font Tests =* */
