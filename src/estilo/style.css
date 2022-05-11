@@ -759,7 +759,6 @@ a:hover {
 
 .formulario {
     border-radius: 30px;
-    background-color: rgb(204, 204, 204);
     border: 1px solid #000000;
     padding: 2%;
     width: 80%;
@@ -772,6 +771,7 @@ input[type=text] {
     width: 100%;
     border-radius: 20px;
     box-sizing: border-box;
+    border: 1px solid #000;
 }
 
 /* Adding Google Font Tests =* */
