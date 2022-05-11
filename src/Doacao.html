@@ -23,62 +23,84 @@
 
 <body id="body">
     <header>
-        <div class="rectangleA"></div>
         <!-- Início Código NavBar -->
-        <nav class="navbar navbar-light" style="background-color: #FEEF10;top: 10px;">
-            <a class="navbar-brand" href="#" style="color: black;">
-                <img src="img/revirar_logo.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-                ReVirar
-            </a>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="Home.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Eventos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Galeria</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="sobrenos.html">Sobre Nós</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/revirar_logo.jpeg" alt="" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                    revirar
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Eventos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">...</a></li>
+                                <li><a class="dropdown-item" href="#">....</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">.....</a></li>
+                            </ul>
+                        </li>
 
-            </a>
+                    </ul>
+                    <form class="d-flex" action="Login.html">
+                        <button class="btn btn-outline-success" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
         </nav>
         <!-- Fim código NavBar -->
 
         <!-- Início código do corpo do texto -->
-        <div class="container text-center">
+        <div class="container text-center" style="background-color:rgb(248, 249, 250)">
             <div class="row">
-                <div style="background-color:#FEEF10">
-                    <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; color:black; font-size:5">
+                <div>
+                    <h1
+                        style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:black; font-size:50px">
                         Doações
                     </h1>
                 </div>
                 <div class="col-md-6 col-sm-12 text-black">
                     <p allignment="left" style="font-size:xx-large">Doações aceitas:</p>
                     <ul>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
-                        <li>a</li>
+                        <li>Agasalho</li>
+                        <li>Comida não perecível</li>
+                        <li>Móveis</li>
                         <li></li>
-                    </ul>
-
-                </div>
-                <div class="col-md-6 col-sm-12" style="background-color:blue">
-                    <ul>
-                        aaa
+                        <li></li>
+                        <li>hm</li>
                     </ul>
                 </div>
-                <div class="col-md-10 col-sm-12 text-black">
-
+                <div class="col-md-6 col-sm-12 text-black">
+                    <h2><strong> Importante: </strong></h2>
+                    <h3> Não estamos aceitando ração.</h3>
                 </div>
             </div>
-
+            <div class="col-md-10 col-sm-12 text-black">
+                <a href="fichaDoacao.html"><button class="btn btn-light px-5 py-2 primary-btn"
+                        style="background-color: yellow; font-size: large;">
+                        Doar
+                    </button></a>
+                    <a
+            </div>
         </div>
     </header>
 
