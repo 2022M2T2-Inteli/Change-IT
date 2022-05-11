@@ -759,6 +759,7 @@ a:hover {
 
 .formulario {
     border-radius: 30px;
+    background-color: rgba(204, 204, 204, 0);
     border: 1px solid #000000;
     padding: 2%;
     width: 80%;
