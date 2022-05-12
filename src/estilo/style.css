@@ -181,7 +181,7 @@ header .container .col-md-7 button {
 }
 
 .numbers .rect h1 {
-    font-size: 5rem;
+    font-size: 2rem;
     color: darkblue;
 }
 
@@ -352,71 +352,12 @@ h1,
 h2,
 h3,
 p {
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 p {
     color: #000000;
     font-size: 20px;
-}
-
-#menu ul {
-    font: normal 15pt Arial;
-    font-weight: bold;
-    list-style-type: none;
-    padding: 0;
-    max-width: 600px;
-    text-align: center;
-}
-
-#menu ul li {
-    display: inline;
-    position: relative;
-}
-
-#menu ul li a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 10px;
-    transition: 150ms;
-    color: var(--cor2);
-}
-
-#menu ul li a:hover {
-    opacity: 50%;
-}
-
-#menu ul ul {
-    font: normal 10pt Arial;
-    display: none;
-    position: absolute;
-    background-color: var(--cor4);
-    width: 1000px;
-    border-radius: 20px;
-    box-shadow: 1px 2px 20px rgb(184, 184, 184);
-}
-
-#menu ul li:hover ul {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-@media only screen and (max-device-width: 900px) {
-    #menu {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-device-width: 900px) {
-    #menu {
-        width: 600px;
-    }
-}
-
-@media only screen and (max-device-width: 700px) {
-    #menu {
-        width: 400px;
-    }
 }
 
 .form {
@@ -491,7 +432,7 @@ a:hover {
     height: 11.6px;
     left: 101.64px;
     top: 46.4px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -538,7 +479,7 @@ a:hover {
     height: 31px;
     left: 505px;
     top: 923px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -553,7 +494,7 @@ a:hover {
     height: 38px;
     left: 310px;
     top: 1217px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -568,7 +509,7 @@ a:hover {
     height: 45.6px;
     left: 669px;
     top: 1517px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -585,7 +526,7 @@ a:hover {
     height: 128px;
     left: 920px;
     top: 1346px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
@@ -600,7 +541,7 @@ a:hover {
     height: 152px;
     left: 50px;
     top: 2076px;
-    font-family: 'Inter';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -639,7 +580,7 @@ a:hover {
     height: 50px;
     left: 956.03px;
     top: 2120px;
-    font-family: 'Inter';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -654,7 +595,7 @@ a:hover {
     height: 24px;
     left: 395.7px;
     top: 2232px;
-    font-family: 'Inter';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -681,7 +622,7 @@ a:hover {
 
 #body {
     margin: auto;
-    font-family: "apercu", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 14px;
     font-weight: 300;
     color: #ffff01;
@@ -716,7 +657,7 @@ a:hover {
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: 2px solid #000000;
     box-sizing: border-box;
 }
@@ -728,7 +669,7 @@ a:hover {
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: 2px solid #000000;
     box-sizing: border-box;
     display: flex;
@@ -736,13 +677,12 @@ a:hover {
 }
 
 #botaoAbordagem {
-    <<<<<<< Updated upstream=======margin: auto;
-    >>>>>>>Stashed changes position: absolute;
+    position: absolute;
     background: #9b287b;
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: 2px solid #000000;
     box-sizing: border-box;
     display: flex;
@@ -758,7 +698,7 @@ a:hover {
     border-radius: 20px;
     text-align: center;
     font-size: 50px;
-    font-family: 'Itim';
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border: 2px solid #000000;
     box-sizing: border-box;
     display: flex;
@@ -788,10 +728,11 @@ input[type=text] {
     border: 1px solid #000;
 }
 
-#donateButton {
+.donateButton {
     padding: 3;
     border: none;
     font: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: pointer;
     border-radius: 5px;
     font-weight: 500;
