@@ -4,6 +4,8 @@
     <!-- Título -->
     <title>Doações</title>
 
+    <!-- script próprio (sem bootstrap) -->
+    <script src="main.js"></script>
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,20 +72,40 @@
         <!-- Fim código NavBar -->
 
         <!-- Início código do corpo do site-->
-        <div class="container text-center" style="background-color:rgb(248, 249, 250)">
+        <div class="container text-center">
             <div class="row">
-                <div>
-                    <h1
-                        style="background:url(img/PSR\ Background.jpg); color:yellow; font-size:50px">
+                <div class="col-md-7 col-sm-12  text-white">
+                    <h6>Revirar</h6>
+                    <h1>Doações</h1>
+                    <p>
+                        Faça parte da nossa comunidade!
+                    </p>
+                    <button onclick="scrollDoacoes()" class="btn btn-light px-5 py-2 primary-btn"
+                        style="background-color: #9B287B;color: white;">
+                        Quero Doar
+                    </button>
+                    <button class="btn btn-light px-5 py-2 primary-btn" style="background-color: #401454;color: white;">
+                        Quero Ser Voluntário
+                    </button>
+                </div>
+                <div class="col-md-5 col-sm-12  h-25">
+                    <img src="img/revirar_logo.jpeg" alt="Book" />
+                </div>
+            </div>
+        </div>
+        <div class="container text-center" style="background-color:rgb(248, 249, 250)">
+            <div id="linhaDoacoes" class="row">
+                <div style="height:120px;">
+                    <h1 style="color:yellow; font-size:50px">
                         Doações
                     </h1>
                 </div>
-                <div class="col-md-6 col-sm-12 text-black">
-                    <h1 allignment="left">Campanhas:</h1>
+                <div class="col-md-9 col-sm-12 text-black">
+                    <h1 allignment="left"> Campanhas: </h1>
                     <h5>Aqui haverá javascript para adicionar o esquema de doações mais necessárias atualmente (isso
-                        deve voltar para o feed também pra dar mais visibilidade a esse detalhe)</h1>
+                        deve voltar para o feed também pra dar mais visibilidade a esse detalhe)</h5>
                 </div>
-                <div class="col-md-6 col-sm-12 text-black">
+                <div class="col-md-3 col-sm-12 text-black">
                     <h4 style="padding-top:96px"> <strong> Porém, em especial, </strong> </h4>
                     <h6>sempre precisamos dos seguintes recursos:</h6>
                     <ul>
