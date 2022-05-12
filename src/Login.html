@@ -13,29 +13,51 @@
 
 
 <!-- Início Código NavBar -->
-<nav class="navbar navbar-light" style="background-color: white;">
-    <a class="navbar-brand" href="#" style="color: black;">
-        <img src="img/revirar_logo.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-        ReVirar
-    </a>
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" href="Home.html">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Eventos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Galeria</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="sobrenos.html">Sobre Nós</a>
-        </li>
-    </ul>
-    <a href="login.html">
-        <img src="img/icon.png" width="30" height="30" class="pull-right" alt="">
-    </a>
-</nav>
+<header>
+    <!-- Início código NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/revirar_logo.jpeg" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                revirar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="mr-auto"></div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="SobreNos.html">Sobre nós</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Mais
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="agendaEventos.html">Eventos</a></li>
+                            <li><a class="dropdown-item" href="fichaVoluntario.html">Inscrições</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="SobreNos.html">Sobre Nós</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <form class="d-flex" action="Login.html">
+                    <button class="btn btn-outline-success" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
 <!-- Fim código NavBar -->
 
 
