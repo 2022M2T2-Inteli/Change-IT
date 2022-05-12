@@ -320,16 +320,28 @@ footer input::placeholder {
     color: white !important;
 }
 
-footer .input-group .input-group-text{
+footer .input-group .input-group-text {
     background: var(--bggradient);
     border: none;
 }
 
-footer .column i{
+footer .column i {
     color: #dd2476;
 }
-footer .column i+i{
+
+footer .column i+i {
     padding: 0 0.5em;
+}
+
+/* Sticky Class */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
 }
 
 html {
@@ -724,11 +736,8 @@ a:hover {
 }
 
 #botaoAbordagem {
-<<<<<<< Updated upstream
-=======
-    margin: auto;
->>>>>>> Stashed changes
-    position: absolute;
+    <<<<<<< Updated upstream=======margin: auto;
+    >>>>>>>Stashed changes position: absolute;
     background: #9b287b;
     border-radius: 10px;
     text-align: center;
