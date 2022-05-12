@@ -50,3 +50,8 @@ $(document).ready(function () {
 function shownavbar() {
     navigator.classList.toggle('active');
 }
+
+function scrollDoacoes() {
+    element = document.getElementsById("linhaDoacoes")[0];
+    element.scrollIntoView();
+}
