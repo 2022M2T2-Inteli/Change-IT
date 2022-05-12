@@ -9,7 +9,7 @@ section {
 
 :root {
     --light-black: #2e2c2caf;
-    --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
+    --bggradient: linear-gradient(to bottom, #5c164e, #9b2e7c);
     --light-gray: rgba(255, 255, 255, 0.877);
 }
 
@@ -72,6 +72,16 @@ header .row .col-md-7 {
 
 header .row .col-md-5 img {
     width: 90%;
+}
+
+.tq{
+    padding: 90px;
+}
+.quadrado { 
+    background: rgb(207,108,28);
+background: linear-gradient(to top, rgba(207,108,28,1) 18%, rgba(166,40,70,1) 77%);
+    width: 100%;
+    height: 430px;
 }
 
 header .container .col-md-7 h6 {
@@ -747,6 +757,7 @@ input[type=text] {
         0 1px 5px 0 rgba(0, 0, 0, 0.2);
     background-color: #FEEF10
 }
+
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');

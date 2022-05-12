@@ -42,27 +42,30 @@
     .section-4 .carousel-item {
         padding-left: 0.6rem;
     }
-    .section-4 .team{
+
+    .section-4 .team {
         display: flex;
         flex-direction: column;
         align-content: center;
     }
-    .section-4 .carousel-inner{
+
+    .section-4 .carousel-inner {
         width: 24rem;
     }
 }
-@media only screen and(max-width){
-    footer .row .col-md-2{
+
+@media only screen and(max-width) {
+    footer .row .col-md-2 {
         margin-top: 8vmin;
     }
 }
 
-@media only screen and (max-width:320px){
-    .section-4 .card{
+@media only screen and (max-width:320px) {
+    .section-4 .card {
         width: 18rem;
     }
 
-    .section-4 .carousel-inner{
+    .section-4 .carousel-inner {
         margin-left: -14vmin;
     }
 }
