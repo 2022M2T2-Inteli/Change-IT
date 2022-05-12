@@ -333,6 +333,17 @@ footer .column i+i {
     padding: 0 0.5em;
 }
 
+/* Sticky Class */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.815);
+    z-index: 9999;
+    transition: all 1.5s ease;
+}
+
 html {
     background-color: black;
 }
@@ -666,7 +677,12 @@ a:hover {
 }
 
 #botaoAbordagem {
+<<<<<<< HEAD
     position: absolute;
+=======
+    <<<<<<< Updated upstream=======margin: auto;
+    >>>>>>>Stashed changes position: absolute;
+>>>>>>> 940655f434183b787ab216384276e54d5056ea93
     background: #9b287b;
     border-radius: 10px;
     text-align: center;
