@@ -764,6 +764,12 @@ input[type=text] {
     background-color: #FEEF10;
 }
 
+.imgSobreN {
+
+    background-image: "url(carro2.jpeg)";
+    
+
+}
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
