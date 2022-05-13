@@ -13,21 +13,21 @@ $(window).scroll(function () {
 
 // Animação Contagem
 
-let nCount = function (selector) {
-    $(selector).each(function () {
-        $(this).animate({
-            Counter: $(this).text()
-        }, {
+// let nCount = function (selector) {
+//     $(selector).each(function () {
+//         $(this).animate({
+//             Counter: $(this).text()
+//         }, {
 
-            duration: 4000,
-            easing: "swing",
-            step: function (value) {
-                $(this).text(Math.cell(value));
-            }
+//             duration: 4000,
+//             easing: "swing",
+//             step: function (value) {
+//                 $(this).text(Math.cell(value));
+//             }
 
-        })
-    });
-}
+//         })
+//     });
+// }
 
 let a = 0;
 $(window).scroll(function () {
@@ -47,6 +47,7 @@ $(document).ready(function () {
         $("#btn").on('click', showmenu);
     });
 });
+
 function shownavbar() {
     navigator.classList.toggle('active');
 }
