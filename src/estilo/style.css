@@ -74,13 +74,14 @@ header .row .col-md-5 img {
     width: 90%;
 }
 
-.tq{
+.tq {
     padding: 90px;
 }
-.quadrado { 
+
+.quadrado {
     background: #9B287B;
     background-image: url("img/muro-revirar-arvore.jpeg");
-/* background: linear-gradient(to top, rgba(207,108,28,1) 18%, rgba(166,40,70,1) 77%); */
+    /* background: linear-gradient(to top, rgba(207,108,28,1) 18%, rgba(166,40,70,1) 77%); */
     width: 100%;
     height: 430px;
 }
@@ -741,22 +742,26 @@ input[type=text] {
     border: 1px solid #000;
 }
 
+/* .titulo {
+    background: url(../img/logo\ revirar\ com\ insta.jpg);
+} */
+
 .donateButton {
-    padding: 3;
     border: none;
     font: inherit;
+    font-size: 40px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: pointer;
     border-radius: 5px;
     font-weight: 500;
     color: black;
     text-align: center;
-    width: 200px;
-    height: 30px;
+    width: 400px;
+    height: 60px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 3px 1px -2px rgba(0, 0, 0, 0.12),
         0 1px 5px 0 rgba(0, 0, 0, 0.2);
-    background-color: #FEEF10
+    background-color: #FEEF10;
 }
 
 
