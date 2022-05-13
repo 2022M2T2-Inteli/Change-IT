@@ -1,7 +1,7 @@
 // Código para dicionar uma campanha ao site de doações
 var campanha = "campaign";
 function adicionarCampanha() {
-    document.getElementById(campanha).innerHTML += `<div class="row"><div class="col-sm-3 col-ms-12">imagenzinha da campanha</div><div class="col-sm-9 col-ms-12 text-black"><h1> Título da campanha </h1><p> descrição da campanha </p></div></div>`;
+    document.getElementById(campanha).innerHTML += `<div class="row" style="background-color: #FEEF10;"><div class="col-sm-3 col-ms-12"><img src="img/youtube.png"></div><div class="col-sm-9 col-ms-12 text-black"><h1> Título da campanha </h1><p> descrição da campanha </p></div></div>`;
 };
 //
 
