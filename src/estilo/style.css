@@ -338,7 +338,7 @@ footer .input-group .input-group-text {
 }
 
 footer .column i {
-    color: #dd2476;
+    color: #FEEF10;
 }
 
 footer .column i+i {
@@ -770,6 +770,8 @@ input[type=text] {
     
 
 }
+
+
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
