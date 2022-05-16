@@ -162,7 +162,7 @@ header .container .col-md-7 button {
     height: 100%;
     width: 100%;
     padding-top: 19vmin;
-    color: whitesmoke;
+    color: #000000;
 }
 
 .cover .content>p {
@@ -338,7 +338,7 @@ footer .input-group .input-group-text {
 }
 
 footer .column i {
-    color: #FEEF10;
+    color: #dd2476;
 }
 
 footer .column i+i {
@@ -770,8 +770,6 @@ input[type=text] {
     
 
 }
-
-
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
