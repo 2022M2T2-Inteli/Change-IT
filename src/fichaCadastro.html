@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <title>ReVirar</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="estilo/style.css" rel="stylesheet">
+        <link href="estilo/mobile-style.css" rel="stylesheet">
+    
+        <script src="https://kit.fontawesome.com/8bda9b18c8.js" crossorigin="anonymous"></script>
+    </head>
+
+<body>
+
+    <header>
+        <!-- Início código NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="img/Logos/revirar_logo.jpeg" alt="" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                    revirar
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="mr-auto"></div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="SobreNos.html">Sobre nós</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Mais
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="agendaEventos.html">Eventos</a></li>
+                                <li><a class="dropdown-item" href="fichaVoluntario.html">Inscrições</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="SobreNos.html">Sobre Nós</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" action="Login.html">
+                        <button class="btn btn-outline-success" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <h1 style="text-align: center;">Cadastramento de Pessoas em Situação de Rua</h1>
+        <br>
+    </div>
+    </div>
+
+    <div>
+        <form action="">
+
+
+            <div class="container row-aling-itens-start formulario">
+
+                <h2 style="text-align: center;"> Indetificação de Pessoas</h2>
+                
+                <div class="input-group mb-3">
+                    <label>Nome Completo:
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                    
+                </div>
+                <div class="input-group mb-3">
+                    <label>Como gosta de ser clamado/como é conhecido:
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                    
+                </div>
+                <label> Possui Documento:
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="Sim">
+                        <label class="form-check-label" for="inlineRadio1">Sim</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Não</label>
+                    </div>
+                </label>
+
+                <div class="input-group mb-3">
+                    <label>Documento (RG/CPF):
+                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Data de Nasc:
+                        <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <label>Insira seu email:
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+                <br>
+
+                <div class="observacao">
+                    <fieldset>
+                        <div class="input-group">
+                            <span class="input-group-text">Observações</span>
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                        <br>
+
+                    </fieldset>
+                </div>
+                
+                <h2 style="text-align: center;"> Locais</h2>
+
+                <div class="input-group mb-3">
+                    <label>Marquises e viadutos
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Frente de prédios privados e públicos
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Parques, praças
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Estações de trem, rodoviárias
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Margem de rodovias
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Dentro de construções com áreas internas ocupáveis
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Galerias subterrâneas
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Casas e prédios abandonados
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Outros locais
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Albergue Abrigo ou Casa de Passagem para pessoas em situação de rua: 
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Domicílio particular: nesse quesito, considere como locais utilizados temporariamente pelo entrevistado para pernoitar, os quais pertencem a outras pessoas:
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </label>
+                </div>
+                <label> <h6>Número de dias na semana que a pessoa em situação de rua costuma utilizar os espaços listados:</h6> 
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="Sim">
+                        <label class="form-check-label" for="inlineRadio1">Rua</label>
+                        <input type="text" class="form-control" placeholder="Quantas vezes na semana" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Albergue</label>
+                        <input type="text" class="form-control" placeholder="Quantas vezes na semana" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Domicilio particular</label>
+                        <input type="text" class="form-control" placeholder="Quantas vezes na semana" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Outro</label>
+                        <input type="text" class="form-control" placeholder="Quantas vezes na semana" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                    </div>
+                </label>
+
+                <label> Quanto Tempo Vive na Rua:
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="Sim">
+                        <label class="form-check-label" for="inlineRadio1">Até seis meses</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2"> Entre seis meses e um ano</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Entre um e dois anos</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Entre dois e cinco anos</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Entre cinco e dez anos</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Não">
+                        <label class="form-check-label" for="inlineRadio2">Mais de dez anos</label>
+                    </div>
+                </label>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+    <br />
+    <footer>
+        <div class="container-fluid p-0">
+            <div class="row text-left">
+                <div class="col-md-5 col-md-5">
+                    <h1 class="text-light">Entre em contato</h1>
+                    <p class="text-muted">(11)97281-2081</p>
+                    <p class="pt-4 text-muted">info@form.com</p>
+                </div>
+                <div class="col-md-5">
+                    <h4 class="text-light">Novidades</h4>
+                    <p class="text-muted">Atualize-se</p>
+                    <form class="form-inline">
+                        <div class="col pl-0">
+                            <div class="input-group pr-5">
+                                <input type="text" class="form-control bg-dark text-white" placeholder="E-mail">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h4 class="text-light">Acompanhe nosso trabalho</h4>
+                    <p class="text-muted">Redes Sociais</p>
+                    <div class="column">
+                        <i class="fab fa-facebook-f"></i>
+                        <a target="_blank" href="https://www.instagram.com/projetorevirar/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
