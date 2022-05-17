@@ -756,5 +756,14 @@ input[type=text] {
 
 }
 
+
+.container-img-fluid {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
