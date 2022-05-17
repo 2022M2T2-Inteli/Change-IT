@@ -1,3 +1,8 @@
+$(document).ready(function)
+
+
+
+
 // Código para dicionar uma campanha ao site de doações
 var campanha = "campaign";
 function adicionarCampanha() {
