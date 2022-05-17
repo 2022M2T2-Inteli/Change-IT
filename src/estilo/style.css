@@ -226,6 +226,7 @@ header .container .col-md-7 button {
     background: rgba(208, 241, 241, 0.199);
     padding: 1.4rem 2.5rem;
     font-size: 2vmin;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .card .card-text {
@@ -752,7 +753,7 @@ input[type=text] {
 .imgSobreN {
 
     background-image: "url(carro2.jpeg)";
-    
+
 
 }
 
