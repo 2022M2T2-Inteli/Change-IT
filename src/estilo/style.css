@@ -766,5 +766,34 @@ input[type=text] {
 
 }
 
+
+/* css para o carrossel */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+.carousel-home-item- {
+    height: 32rem;
+}
+
+.carousel-home-item>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 32rem;
+    object-fit: cover;
+}
+
+.fundo-title {
+    background-color: #1f1d20;
+    font-family: "Space Grotesk";
+}
+
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');
