@@ -47,12 +47,20 @@ header .nav-item:last-child {
     padding-right: 10.5em;
 }
 
+header .nav-bggradient {
+    background-color: var(--bggradient);
+}
+
 header .nav-item {
     padding: 0.9em;
 }
 
 header .navbar-brand {
     padding-left: 8rem;
+}
+
+header .nav-link {
+    color: white;
 }
 
 header .nav-link:hover {
