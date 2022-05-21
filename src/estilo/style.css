@@ -47,12 +47,20 @@ header .nav-item:last-child {
     padding-right: 10.5em;
 }
 
+header .nav-bggradient {
+    background-color: var(--bggradient);
+}
+
 header .nav-item {
     padding: 0.9em;
 }
 
 header .navbar-brand {
     padding-left: 8rem;
+}
+
+header .nav-link {
+    color: white;
 }
 
 header .nav-link:hover {
@@ -149,7 +157,7 @@ header .container .col-md-7 button {
 
 .cover {
     width: 100%;
-    height: 55vmin;
+    height: 40vmin;
     background: url('../img/revirar_logo.jpeg');
     background-position: -24rem -19rem;
     background-size: 150%;
@@ -160,7 +168,7 @@ header .container .col-md-7 button {
     background: rgba(0, 0, 0, 0.7);
     height: 100%;
     width: 100%;
-    padding-top: 19vmin;
+    padding-top: 14vmin;
     color: #000000;
 }
 
@@ -247,21 +255,21 @@ header .container .col-md-7 button {
 
 /* Section 3 */
 .section-3 {
-    height: 70vmin;
+    height: 55vmin;
     margin-top: 15vmin;
-    background: var(--bggradient);
+    background: #FEEF10;
 }
 
 .section-3 .col-md-12>h1 {
-    padding: 2em 0 0.5em 0;
-    color: whitesmoke;
+    padding: 1em 0 0.5em 0;
+    color: #000000;
     font-size: 6vmin;
 }
 
 .section-3 .col-md-12>p {
     padding: 0 4em;
     padding-bottom: 2em;
-    color: var(--light-gray);
+    color: #000000;
     font-size: 3vmin;
 }
 
@@ -333,8 +341,9 @@ footer input::placeholder {
 }
 
 footer .input-group .input-group-text {
-    background: var(--bggradient);
+    background: #FEEF10;
     border: none;
+    height: 45px;
 }
 
 footer .column i {
@@ -630,6 +639,8 @@ a:hover {
     height: 20px;
 }
 
+
+
 #body {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -720,8 +731,7 @@ a:hover {
 input[type=text] {
     padding: 1px 5px;
     margin: 5px;
-    width: 100%;
-    border-radius: 20px;
+    border-radius: 2px;
     box-sizing: border-box;
     border: 1px solid #000;
 }
@@ -736,8 +746,8 @@ input[type=text] {
     font-size: 150%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: pointer;
-    border-radius: 5px;
-    font-weight: 500;
+    border-radius: 30px;
+    font-weight: bold;
     color: black;
     text-align: center;
     width: 100%;
@@ -766,7 +776,7 @@ input[type=text] {
 
 
 /* css para o carrossel */
-.carousel {
+/* .carousel {
     margin-bottom: 4rem;
 }
 
@@ -789,7 +799,7 @@ input[type=text] {
 .fundo-title {
     background-color: #1f1d20;
     font-family: "Space Grotesk";
-}
+} */
 
 /* Adding Google Font Tests =* */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,900&display=swap');

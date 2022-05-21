@@ -8,5 +8,5 @@ const port = 3022;
 app.use(express.static("../src/"));
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/Home.html`);
 });
