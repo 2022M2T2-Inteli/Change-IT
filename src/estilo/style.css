@@ -725,15 +725,24 @@ a:hover {
     border: 1px solid #000000;
     padding: 2%;
     width: 80%;
-
 }
 
+<<<<<<< Updated upstream
 input[type=text] {
     padding: 1px 5px;
     margin: 5px;
     border-radius: 2px;
     box-sizing: border-box;
     border: 1px solid #000;
+=======
+.formulariopesq{
+    border-radius: 30px;
+    background-color: rgba(204, 204, 204, 0);
+    border: 1px solid #000000;
+    padding: 2%;
+    width: 80%;
+    height: 500px;
+>>>>>>> Stashed changes
 }
 
 /* .titulo {

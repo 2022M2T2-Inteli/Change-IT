@@ -38,37 +38,37 @@
     <h1 style="text-align: center;">Abordagem de pessoas em situação de rua</h1>
     <br>
     <div>
-        <form class="d-flex justify-content-center">
+     <form class="d-flex justify-content-center">
             <div class="formulario justify-itens-center">
-                <div>
+        <!-- <form class="new-area">
+            <div class="container"> -->
+                <div class="">
                     <label>Nome Completo
-                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Nome" name="nome" id="email-input">
                     </label>
                 </div>
 
                 <div>
                     <label>Como gosta de ser conhecido/chamado?
-                        <input type="text" class="form-control" placeholder="Conhecido" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="Conhecido" name="clamado">
                     </label>
                 </div>
 
                 <div>
                     <label>Local da Abordagem Social
                         <input type="text" class="form-control" placeholder="Local" aria-label="Username"
-                            aria-describedby="basic-addon1"><a href="https://www.google.com.br/maps" target="_blank"
+                            aria-describedby="basic-addon1" name="local"><a href="https://www.google.com.br/maps" target="_blank"
                             rel="external">Mapa</a>
                     </label>
                 </div>
 
                 <div class="form-check">
                     <label>Está sendo atendido em Albergue ou Casa de Passagem nesse momento?<br>
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="Sim" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">Sim
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="Não" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">Não
                 </div><br>
 
@@ -77,12 +77,12 @@
                         <label>Quanto tempo vive na rua?
                             <select class="form-select" aria-label="Default select example">
                                 <option selected disabled value>Selecione</option>
-                                <option value="ate seis meses">Até seis meses</option>
-                                <option value="enete seis meses a um ano">Entre seis meses a um ano</option>
-                                <option value="entre um a dois anos">Entre um a dois anos</option>
-                                <option value="entre dois a cinco anos">Entre dois a cincos anos</option>
-                                <option value="entre cinco a dez anos">Entre cinco a dez anos</option>
-                                <option value="mais de dez anos">Mais de dez anos</option>
+                                <option value="Ate seis meses">Até seis meses</option>
+                                <option value="Entre seis meses a um ano">Entre seis meses a um ano</option>
+                                <option value="Entre um a dois anos">Entre um a dois anos</option>
+                                <option value="Entre dois a cinco anos">Entre dois a cincos anos</option>
+                                <option value="Entre cinco a dez anos">Entre cinco a dez anos</option>
+                                <option value="Mais de dez anos">Mais de dez anos</option>
                             </select>
                         </label>
                     </div>
@@ -109,28 +109,28 @@
                 <div class="input-group mb-3">
                     <label>Outros
                         <input type="text" class="form-control" placeholder="Opcional" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" name="outros">
                     </label>
                 </div>
 
                 <div class="form-check">
                     <label>Pretende ser atendido no Projeto revirar?
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            <input class="form-check-input" type="radio" name="sim" id="inlineRadio1"
                                 value="Sim">Sim
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            <input class="form-check-input" type="radio" name="não" id="inlineRadio2"
                                 value="Não">Não
                     </label>
                 </div>
                 <br>
 
-                <div class="observacao">
+                <div>
                     <fieldset>
                         <div class="input-group">
                             <span class="input-group-text">Observações</span>
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                            <textarea class="form-control" aria-label="With textarea" name="observacao"></textarea>
                         </div>
                         <br>
 
@@ -140,11 +140,10 @@
                     </div>
                 </div>
             </div>
-
-
         </form>
-        <br>
+
     </div>
+<<<<<<< Updated upstream
 
     <div id="reusofooter">
 
@@ -155,6 +154,48 @@
             $("#reusofooter").load("reuso/footer.html");
         });
     </script>
+=======
+    <br>
+    <footer>
+        <div class="container-fluid p-0">
+            <div class="row text-left">
+                <div class="col-md-5 col-md-5">
+                    <h1 class="text-light">Entre em contato</h1>
+                    <p class="text-muted">(11)97281-2081</p>
+                    <p class="pt-4 text-muted">info@form.com</p>
+                </div>
+                <div class="col-md-5">
+                    <h4 class="text-light">Novidades</h4>
+                    <p class="text-muted">Atualize-se</p>
+                    <form class="form-inline">
+                        <div class="col pl-0">
+                            <div class="input-group pr-5">
+                                <input type="text" class="form-control bg-dark text-white" placeholder="E-mail">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <h4 class="text-light">Acompanhe nosso trabalho</h4>
+                    <p class="text-muted">Redes Sociais</p>
+                    <div class="column">
+                        <i class="fab fa-facebook-f"></i>
+                        <a target="_blank" href="https://www.instagram.com/projetorevirar/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+>>>>>>> Stashed changes
 
 </body>
 
