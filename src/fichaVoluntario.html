@@ -16,7 +16,7 @@
     <!-- reuso -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
-        </script>
+    </script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
     <h1 style="text-align: center;">Ficha para se voluntariar</h1>
 
     <div>
-        <form action="">
+        <form action="" name="valform">
             <!-- <fieldset">
                 <div class="d-flex align-itens-center">
                     <label>Quem é você?
@@ -46,7 +46,7 @@
                 <div class="input-group mb-3">
                     <label>Nome Completo
                         <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="name">
                     </label>
                 </div>
                 <!-- <div>
@@ -58,7 +58,7 @@
                 <div class="input-group mb-3">
                     <label>Idade:
                         <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="idade">
                     </label>
                 </div>
 
@@ -70,14 +70,14 @@
                 <div class="input-group mb-3">
                     <label>Documento (RG/CPF):
                         <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="documento">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Como posso ajudar?
                         <input type="text" class="form-control" placeholder="Forma de ajuda" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="ajudar">
                     </label>
                     <br>
                 </div>
@@ -85,14 +85,14 @@
                 <div class="input-group mb-3">
                     <label>O que te inspira a fazer parte do projeto?
                         <input type="text" class="form-control" placeholder="Opcional" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="inspirar">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Insira seu email:
                         <input type="text" class="form-control" placeholder="Email" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" id="email">
                     </label>
                 </div>
 
@@ -138,6 +138,15 @@
                     $("#reusonavbar").load("reuso/navbar.html");
                     $("#reusofooter").load("reuso/footer.html");
                 });
+
+                var nameValue = document.getElementById("name").value;
+                var idadeValue = document.getElementById("idade").value;
+                var documentoValue = document.getElementById("documento").value;
+                var ajudarValue = document.getElementById("ajudar").value;
+                var inspirarValue = document.getElementById("inspirar").value;
+                var emailValue = document.getElementById("email").value;
+
+                console.log("nameValue");
             </script>
 </body>
 

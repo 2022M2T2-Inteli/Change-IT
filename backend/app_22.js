@@ -1,9 +1,9 @@
-
 const express = require('express');
 const app = express();
-
 const hostname = '127.0.0.1';
 const port = 3022;
+var db = require("./connection.js");
+
 app.use(express.static("../src/"));
 
 app.listen(port, hostname, () => {
