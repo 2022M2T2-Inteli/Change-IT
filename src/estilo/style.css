@@ -86,7 +86,9 @@ header .row .col-md-5 img {
 }
 
 .quadrado {
-    background: #9B287B;
+    /* background: #167bce; */
+    --bggradient: linear-gradient(to bottom, #167bce, #ffffff);
+    --light-gray: rgba(255, 255, 255, 0.877);
     background-image: url("img/muro-revirar-arvore.jpeg");
     /* background: linear-gradient(to top, rgba(207,108,28,1) 18%, rgba(166,40,70,1) 77%); */
     width: 100%;
@@ -727,14 +729,6 @@ a:hover {
     width: 80%;
 }
 
-<<<<<<< Updated upstream
-input[type=text] {
-    padding: 1px 5px;
-    margin: 5px;
-    border-radius: 2px;
-    box-sizing: border-box;
-    border: 1px solid #000;
-=======
 .formulariopesq{
     border-radius: 30px;
     background-color: rgba(204, 204, 204, 0);
@@ -742,7 +736,6 @@ input[type=text] {
     padding: 2%;
     width: 80%;
     height: 500px;
->>>>>>> Stashed changes
 }
 
 /* .titulo {
