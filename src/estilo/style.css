@@ -9,7 +9,7 @@ section {
 
 :root {
     --light-black: #2e2c2caf;
-    --bggradient: linear-gradient(to bottom, #5c164e, #9b2e7c);
+    --bggradient: linear-gradient(to bottom, #167bce, #ffffff);
     --light-gray: rgba(255, 255, 255, 0.877);
 }
 
