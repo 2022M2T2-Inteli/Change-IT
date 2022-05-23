@@ -118,23 +118,32 @@
             </div>
             <div class="container-fluid text-center">
                 <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
-                    <div class="rect">
-                        <h4>Regresso escolar</h4>
-                        <p>Encorajamento de volta aos estudos para assistidos</p>
+                    <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                        <div id="parent"><img src="img/Ícones/Regeresso escolar.png">
+                            <h4>Regresso escolar</h4>
+                            <div id="popup" style="display: none"><p style="font-size: 14px;">Encorajamento de volta aos estudos para assistidos</p></div>
+                            </div>
                     </div>
-                    <div class="rect">
-                        <h4 style="color: black;">Garantia dos Direitos Sociais</h4>
-                        <p>Atendimentos diversos no serviços da rede socioassistencial</p>
+                <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                    <div id="direito"><img src="img/Ícones/balance.png"> 
+                        <h4>Direitos Sociais</h4>
+                        <div id="popupDS" style="display: none"><p style="color: black; font-size: 14px;">Atendimentos diversos no serviços da rede socioassistencial</p></div>
+                        </div>
+                                
                     </div>
-                    <div class="rect">
-                        <h4>Fortalecimento de vínculos familiares</h4>
-                        <p style="font-size: 14px;">Buscando garantir a sua proteção integral redução das violações
-                            que a população sofre,
-                            promovemos retorno para a família de origem</p>
+                    <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                        <div id="familia"><img src="img/Ícones/family.png">
+                        <h4>Vínculos familiares</h4>
+                        <div id="popupVF" style="display: none"><p style="font-size: 14px;">Promovemos retorno para a família de origem</p></div>
+                        </div>
+                     
                     </div>
-                    <div class="rect">
+
+                    <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-4">
+                        <div id="aluguel"><img src="img/Ícones/Home.png">
                         <h4>Aluguel social</h4>
-                        <p>Aluguel de moradias para pessoas em maior vulnerabilidade</p>
+                        <div id="popupAS" style="display: none"><p style="font-size: 14px;">Aluguel de moradias para pessoas em maior vulnerabilidade</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -697,6 +706,44 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="main.js"></script>
+    
+    <script> 
+    
+    var e = document.getElementById('parent');
+    e.onmouseover = function() {
+    document.getElementById('popup').style.display = 'block';
+}
+    e.onmouseout = function() {
+    document.getElementById('popup').style.display = 'none';
+
+}
+
+    var e = document.getElementById('direito');
+    e.onmouseover = function() {
+    document.getElementById('popupDS').style.display = 'block';
+}
+    e.onmouseout = function() {
+    document.getElementById('popupDS').style.display = 'none';
+}
+
+    var e = document.getElementById('familia');
+    e.onmouseover = function() {
+    document.getElementById('popupVF').style.display = 'block';
+}
+    e.onmouseout = function() {
+    document.getElementById('popupVF').style.display = 'none';
+}
+
+
+var e = document.getElementById('aluguel');
+    e.onmouseover = function() {
+    document.getElementById('popupAS').style.display = 'block';
+}
+    e.onmouseout = function() {
+    document.getElementById('popupAS').style.display = 'none';
+}
+    
+    </script>
 
 </body>
 
