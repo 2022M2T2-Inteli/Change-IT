@@ -27,12 +27,12 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         // db.run(insert, ["zaidan", "zaidan@alexandre.kil", md5("ste123456")])
     }
 });
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(express.static(path.join(__dirname, './public')));
-app.use(helmet());
-app.use(limiter);
+// app.use(bodyParser.urlencoded({
+//     extended: false
+// }));
+// app.use(express.static(path.join(__dirname, './public')));
+// app.use(helmet());
+// app.use(limiter);
 
 
 module.exports = db // exporta o bd

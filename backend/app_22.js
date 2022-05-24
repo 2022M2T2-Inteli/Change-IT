@@ -30,51 +30,51 @@ app.get('/users', (req, res) => {
 });
 
 //Insere um registro (Create)
-app.post('/insert', urlencodedParser, (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS também
+// app.post('/insert', urlencodedParser, (req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS também
 
-  sql = "INSERT INTO tbUser (title, id, completed) VALUES ('" + req.body.title + "', '" + req.body.userId + "', false)'";
-  var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-  db.run(sql, [], err => {
-    if (err) {
-      throw err; // quando acontece algo errado
-    }
-  });
-  db.close(); // Fecha o banco
-  res.end();
-});
+//   sql = "INSERT INTO tbUser (title, id, completed) VALUES ('" + req.body.title + "', '" + req.body.userId + "', false)'";
+//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
+//   db.run(sql, [], err => {
+//     if (err) {
+//       throw err; // quando acontece algo errado
+//     }
+//   });
+//   db.close(); // Fecha o banco
+//   res.end();
+// });
 
 // Atualiza um registro (Update)
-app.post('/update', urlencodedParser, (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-  sql = "UPDATE tbUser SET title = '" + req.body.title + "' WHERE userId =" + req.body.userId;
-  var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-  db.run(sql, [], err => {
-    if (err) {
-      throw err;
-    }
-    res.end();
-  });
-  db.close(); // Fecha o banco
-});
+// app.post('/update', urlencodedParser, (req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+//   sql = "UPDATE tbUser SET title = '" + req.body.title + "' WHERE userId =" + req.body.userId;
+//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
+//   db.run(sql, [], err => {
+//     if (err) {
+//       throw err;
+//     }
+//     res.end();
+//   });
+//   db.close(); // Fecha o banco
+// });
 
-// Exclui um registro (Delete)
-app.post('/delete', urlencodedParser, (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Access-Control-Allow-Origin', '*');
+// // Exclui um registro (Delete)
+// app.post('/delete', urlencodedParser, (req, res) => {
+//   res.statusCode = 200;
+//   res.setHeader('Access-Control-Allow-Origin', '*');
 
-  sql = "DELETE FROM tbUser WHERE userId =" + req.body.userId;
-  var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-  db.run(sql, [], err => {
-    if (err) {
-      throw err;
-    }
-    res.end();
-  });
-  db.close(); // Fecha o banco
-});
+//   sql = "DELETE FROM tbUser WHERE userId =" + req.body.userId;
+//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
+//   db.run(sql, [], err => {
+//     if (err) {
+//       throw err;
+//     }
+//     res.end();
+//   });
+//   db.close(); // Fecha o banco
+// });
 
 
 app.listen(port, hostname, () => {
