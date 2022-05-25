@@ -25,7 +25,7 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-app.post("/padrao", (req, res) => {
+app.post("/Voluntario", (req, res) => {
     const username = req.body.username
     const age = req.body.idade
     const doc = req.body.documento
@@ -35,7 +35,16 @@ app.post("/padrao", (req, res) => {
     var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
     db.run(insert, [username, age, email])
     res.end()
-
+})
+app.post("/Insumos", (req, res) => {
+    const nameInsumos = req.body.nomeInsumos
+    const idadeInsumos = req.body.idadeInsumos
+    const documentoInsumos = req.body.documentoInsumos
+    const produtoInsumos = req.body.produtoInsumos
+    const emailInsumos = req.body.emailInsumos
+    var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+    db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
+    res.end()
 })
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
