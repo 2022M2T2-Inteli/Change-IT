@@ -4,79 +4,55 @@ const app = express(); // app faz o manuseio do express
 const hostname = '127.0.0.1'; // endereço 
 const port = 3022; // porta do site
 
-var db = require("./connection.js"); // db recebe tudo que tá no javascript do banco de dados
-
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
+var sqlite3 = require('sqlite3').verbose() // recebe o módulo do sqlite
+var md5 = require('md5') // recebe o módulo do md5 (criptografia)
+var sqlite3 = require('sqlite3').verbose();
+var http = require('http');
+var path = require("path");
+var bodyParser = require('body-parser');
+var helmet = require('helmet');
+var rateLimit = require("express-rate-limit"); // import de todos os módulos necessários
 
-/* =========================
-  DEFINIÇÃO DOS ENDPOINTS
-========================= */
-
-// Retorna todos os registros (Read)
-app.get('/users', (req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Access-Control-Allow-Origin', '*'); // o leitor analisa todos os registros (apelidados de *)
-
-  var db = new sqlite3.Database(DBPATH); // abre o banco de dados
-  var sql = 'SELECT * FROM tbUser ORDER BY userId COLLATE NOCASE'; // pega todos os registros (*) e ordena por ID
-  db.all(sql, [], (err, rows) => { // se der algum erro a gnt precisa de uma resposta
-    if (err) {
-      throw err;
-    }
-    res.json(rows);
-  });
-  db.close(); // fecha o banco
+const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
 });
 
-//Insere um registro (Create)
-// app.post('/insert', urlencodedParser, (req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS também
+app.use(express.urlencoded({
+    extended: true
+}))
 
-//   sql = "INSERT INTO tbUser (title, id, completed) VALUES ('" + req.body.title + "', '" + req.body.userId + "', false)'";
-//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-//   db.run(sql, [], err => {
-//     if (err) {
-//       throw err; // quando acontece algo errado
-//     }
-//   });
-//   db.close(); // Fecha o banco
-//   res.end();
-// });
+app.post("/padrao", (req, res) => {
+    const username = req.body.username
+    res.end()
+    console.log(username);
+})
 
-// Atualiza um registro (Update)
-// app.post('/update', urlencodedParser, (req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-//   sql = "UPDATE tbUser SET title = '" + req.body.title + "' WHERE userId =" + req.body.userId;
-//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-//   db.run(sql, [], err => {
-//     if (err) {
-//       throw err;
-//     }
-//     res.end();
-//   });
-//   db.close(); // Fecha o banco
-// });
-
-// // Exclui um registro (Delete)
-// app.post('/delete', urlencodedParser, (req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-
-//   sql = "DELETE FROM tbUser WHERE userId =" + req.body.userId;
-//   var db = new sqlite3.Database(DBPATH); // Abre o banco de dados
-//   db.run(sql, [], err => {
-//     if (err) {
-//       throw err;
-//     }
-//     res.end();
-//   });
-//   db.close(); // Fecha o banco
-// });
-
+let db = new sqlite3.Database(DBSOURCE, (err) => {
+    if (err) { // aparece o erro no console se ele existir
+        // Cannot open database
+        console.error(err.message)
+        throw err
+    } else {
+        console.log('Connected to the SQLite database.') // aparece isso no console se der bom
+        // var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+        // db.run(insert, ["admin", "admin@example.com", md5("admin123456")])
+        // db.run(insert, ["user", "user@example.com", md5("user123456")])
+        // db.run(insert, ["zaidan", "zaidan@alexandre.kil", md5("ste123456")])
+    }
+});
+// app.use(bodyParser.urlencoded({
+//     extended: false
+// }));
+// app.use(express.static(path.join(__dirname, './public')));
+// app.use(helmet());
+// app.use(limiter);
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
+    console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
 });
+
+module.exports = db // exporta o bd
