@@ -78,6 +78,5 @@ app.get('/users', (req, res) => {
 
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/Home.html <br /> asdoaisj`); // printa no console
+  console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
 });
-
