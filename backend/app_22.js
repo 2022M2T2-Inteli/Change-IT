@@ -27,8 +27,15 @@ app.use(express.urlencoded({
 
 app.post("/padrao", (req, res) => {
     const username = req.body.username
+    const age = req.body.idade
+    const doc = req.body.documento
+    const help = req.body.ajudar
+    const inspire = req.body.inspirar
+    const email = req.body.email
+    var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+    db.run(insert, [username, age, email])
     res.end()
-    console.log(username);
+
 })
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
