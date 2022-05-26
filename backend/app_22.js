@@ -16,6 +16,7 @@ var helmet = require('helmet');
 var rateLimit = require("express-rate-limit"); // import de todos os módulos necessários
 var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
 var atualizar = 'UPDATE INTO user (name, email, password) VALUES (?,?,?)'
+var get = 'SELECT * FROM user'
 
 const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
 const limiter = rateLimit({
