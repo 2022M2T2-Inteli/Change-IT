@@ -17,6 +17,7 @@ var rateLimit = require("express-rate-limit"); // import de todos os módulos ne
 var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
 var atualizar = 'UPDATE INTO user (name, email, password) VALUES (?,?,?)'
 var get = 'SELECT * FROM user'
+var delet = 'DELETE FROM user WHERE name'
 
 const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
 const limiter = rateLimit({
@@ -27,6 +28,8 @@ const limiter = rateLimit({
 app.use(express.urlencoded({
     extended: true
 }))
+
+//get, post, put, delete methods
 
 app.post("/registrarVoluntario", (req, res) => {
     const username = req.body.username
@@ -49,9 +52,18 @@ app.post("/registrarInsumos", (req, res) => {
     res.end()
 })
 
-app.post("/ativarVoluntario", (req, res) => {
-    //db.run(atualizar,[x,x,x])
+app.put("/ativarVoluntario", (req, res) => {
+    db.run(atualizar, [x, x, x]);
 })
+
+app.get("/returnVoluntario", (req, res) => {
+    db.run(get);
+})
+
+app.delete("deleteVoluntario", (req, res) => {
+    db.run(delet);
+})
+
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) { // aparece o erro no console se ele existir
