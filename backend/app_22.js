@@ -14,6 +14,10 @@ var path = require("path");
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var rateLimit = require("express-rate-limit"); // import de todos os módulos necessários
+var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+var atualizar = 'UPDATE INTO user (name, email, password) VALUES (?,?,?)'
+var get = 'SELECT * FROM user'
+var delet = 'DELETE FROM user WHERE name'
 
 const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
 const limiter = rateLimit({
@@ -25,27 +29,41 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-app.post("/Voluntario", (req, res) => {
+//get, post, put, delete methods
+
+app.post("/registrarVoluntario", (req, res) => {
     const username = req.body.username
     const age = req.body.idade
     const doc = req.body.documento
     const help = req.body.ajudar
     const inspire = req.body.inspirar
     const email = req.body.email
-    var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
     db.run(insert, [username, age, email])
     res.end()
 })
-app.post("/Insumos", (req, res) => {
+
+app.post("/registrarInsumos", (req, res) => {
     const nameInsumos = req.body.nomeInsumos
     const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
     const produtoInsumos = req.body.produtoInsumos
     const emailInsumos = req.body.emailInsumos
-    var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
     db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
     res.end()
 })
+
+app.put("/ativarVoluntario", (req, res) => {
+    db.run(atualizar, [x, x, x]);
+})
+
+app.get("/returnVoluntario", (req, res) => {
+    db.run(get);
+})
+
+app.delete("deleteVoluntario", (req, res) => {
+    db.run(delet);
+})
+
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) { // aparece o erro no console se ele existir
@@ -54,18 +72,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         throw err
     } else {
         console.log('Connected to the SQLite database.') // aparece isso no console se der bom
-        // var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-        // db.run(insert, ["admin", "admin@example.com", md5("admin123456")])
-        // db.run(insert, ["user", "user@example.com", md5("user123456")])
-        // db.run(insert, ["zaidan", "zaidan@alexandre.kil", md5("ste123456")])
     }
 });
-// app.use(bodyParser.urlencoded({
-//     extended: false
-// }));
-// app.use(express.static(path.join(__dirname, './public')));
-// app.use(helmet());
-// app.use(limiter);
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
