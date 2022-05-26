@@ -9,11 +9,11 @@ var http = require('http');
 var path = require("path");
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
-var rateLimit = require("express-rate-limit"); 
+var rateLimit = require("express-rate-limit");
 var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-var atualizar = 'UPDATE INTO user (name, email, password) VALUES (?,?,?)'
+var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
 var get = 'SELECT * FROM user'
-var delet = 'DELETE FROM user WHERE name'
+var delet = 'DELETE FROM user WHERE id=3'
 
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
@@ -63,14 +63,14 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
 })
 
 app.put("/ativarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
-    db.run(atualizar, [x, x, x]);
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato    "]);
 })
 
 app.get("/returnVoluntario", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, sendo possível exibi-las quando necessário
     db.run(get);
 })
 
-app.delete("deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+app.delete("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     db.run(delet);
 })
 
