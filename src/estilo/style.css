@@ -326,8 +326,9 @@ header .container .col-md-7 button {
 /* Footer */
 footer {
     background: rgba(0, 0, 0, 0.815);
-    overflow-x: hidden;
-    padding: 14vmin 18vmin;
+    /* overflow-x: hidden; */
+    padding: 1vmin 3vmin;
+    height: 200px;
 }
 
 footer p>span {
@@ -354,6 +355,15 @@ footer .column i {
 
 footer .column i+i {
     padding: 0 0.5em;
+}
+footer h1{
+    font-size: 20px;
+}
+footer h4{
+    font-size: 20px;
+}
+footer p{
+    font-size: 12px;
 }
 
 /* Sticky Class */
