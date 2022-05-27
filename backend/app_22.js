@@ -2,7 +2,6 @@ const express = require('express'); // framework express
 const app = express(); // app faz o manuseio do express
 const hostname = '127.0.0.1'; // endereço 
 const port = 3022; // porta do site
-var sqlite3 = require('sqlite3').verbose() // recebe o módulo do sqlite
 var md5 = require('md5') // recebe o módulo do md5 (criptografia)
 var sqlite3 = require('sqlite3').verbose(); // import de todos os módulos necessários
 var http = require('http');
@@ -73,6 +72,7 @@ app.get("/returnVoluntario", (req, res) => { //Método Get, pega todas as inform
 app.delete("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     db.run(delet);
 })
+
 
 
 app.listen(port, hostname, () => {
