@@ -802,6 +802,12 @@ a:hover {
     color: #000000;
 
   }
+  /* Login */
+  .gradient-login {
+    background: #fccb90;
+    background: rgb(254,239,16);
+background: linear-gradient(300deg, rgba(254,239,16,1) 13%, rgba(69,229,252,1) 95%);
+    }
 /* css para o carrossel */
 /* .carousel {
     margin-bottom: 4rem;
