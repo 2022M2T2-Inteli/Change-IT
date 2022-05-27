@@ -104,11 +104,3 @@ module.exports = db // exporta o bd
 // 	insertAtividade
 // 	updateAtividade
 // 	readAtividade
-
-
-
-
-
-
-
-
