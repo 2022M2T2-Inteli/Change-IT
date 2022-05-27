@@ -80,3 +80,35 @@ app.listen(port, hostname, () => {
 });
 
 module.exports = db // exporta o bd
+
+// Endpoints relacionados aos assistidos
+// 	insertAssistido (post)
+// 	updateAssistido (put)
+// 	readAssitido (get)
+// Endpoints relacionados aos voluntários
+// 	insertVoluntário (post)
+// 	switchVoluntário (put)
+// 	readVoluntário (get)
+// Endpoints relacionados aos colaboradores
+// 	insertColaborador
+// 	switchColaborador
+// 	updateColaborador
+// 	readColaborador
+// Endpoints relacionados aos doadores
+// 	insertDoador
+// 	readDoador
+// Endpoints relacionados às doações
+// 	insertDoação
+// 	readDoação
+// Endpoints relacionados às atividades
+// 	insertAtividade
+// 	updateAtividade
+// 	readAtividade
+
+
+
+
+
+
+
+
