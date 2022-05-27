@@ -474,6 +474,9 @@ a:hover {
     align-items: center;
     color: #000000;
 }
+nav a{
+    font-weight: bold;
+}
 
 .backgroundHome {
     position: absolute;
