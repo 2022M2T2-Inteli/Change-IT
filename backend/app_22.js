@@ -40,6 +40,50 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
 //get, post, put, delete methods
 
+// Endpoints relacionados aos assistidos/atendidos
+app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+    // constantes
+    db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
+    res.end();
+})
+app.put("/atualizarAssistido", (req, res) => {
+    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+})
+app.get("/returnInsumos", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get);
+})
+app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
+    db.run(delet);
+})
+//
+
+// Endpoints relacionados ao histórico dos assistidos
+
+
+//
+
+// Endpoints relacionados às doações
+app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
+    const nameInsumos = req.body.nomeInsumos
+    const idadeInsumos = req.body.idadeInsumos
+    const documentoInsumos = req.body.documentoInsumos
+    const produtoInsumos = req.body.produtoInsumos
+    const emailInsumos = req.body.emailInsumos
+    db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
+    res.end()
+})
+app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+})
+app.get("/returnInsumos", (req, res) => {// Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+    db.run(get);
+})
+app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+    db.run(delet);
+})
+//
+
+// Endpoints relacionados aos voluntários
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     const username = req.body.username
     const age = req.body.idade
@@ -48,16 +92,6 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     const inspire = req.body.inspirar
     const email = req.body.email
     db.run(insert, [username, age, email])
-    res.end()
-})
-
-app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-    const nameInsumos = req.body.nomeInsumos
-    const idadeInsumos = req.body.idadeInsumos
-    const documentoInsumos = req.body.documentoInsumos
-    const produtoInsumos = req.body.produtoInsumos
-    const emailInsumos = req.body.emailInsumos
-    db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
     res.end()
 })
 
