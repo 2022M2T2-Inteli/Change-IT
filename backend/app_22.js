@@ -9,10 +9,11 @@ var path = require("path");
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var rateLimit = require("express-rate-limit");
-var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
-var get = 'SELECT * FROM user'
-var delet = 'DELETE FROM user WHERE id=3'
+const req = require('express/lib/request');
+// var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+// var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
+// var get = 'SELECT * FROM user'
+// var delet = "DELETE FROM user WHERE id= '" + req.body.id + "'";
 
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
@@ -40,17 +41,29 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
 //get, post, put, delete methods
 
-app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
-    const username = req.body.username
-    const age = req.body.idade
-    const doc = req.body.documento
-    const help = req.body.ajudar
-    const inspire = req.body.inspirar
-    const email = req.body.email
-    db.run(insert, [username, age, email])
-    res.end()
+// Endpoints relacionados aos assistidos/atendidos
+app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+    // constantes
+    db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
+    res.end();
 })
+app.put("/atualizarAssistido", (req, res) => {
+    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+})
+app.get("/returnInsumos", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get);
+})
+app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
+    db.run(delet);
+})
+//
 
+// Endpoints relacionados ao histórico dos
+
+
+//
+
+// Endpoints relacionados às doações
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     const nameInsumos = req.body.nomeInsumos
     const idadeInsumos = req.body.idadeInsumos
@@ -60,18 +73,60 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
     res.end()
 })
-
-app.put("/ativarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato    "]);
+app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
 })
-
-app.get("/returnVoluntario", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, sendo possível exibi-las quando necessário
+app.get("/returnInsumos", (req, res) => {// Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     db.run(get);
 })
-
-app.delete("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     db.run(delet);
 })
+//
+
+// Endpoints relacionados aos voluntários
+app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
+    const username = req.body.username
+    const age = req.body.idade
+    const doc = req.body.documento
+    const help = req.body.ajudar
+    const inspire = req.body.inspirar
+    const email = req.body.email
+    sql = "INSERT INTO user (name, email, password) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+
+    // db.run(insert, [username, email, age])
+    res.end()
+})
+
+app.post("/atualizarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
+    const username = req.body.username
+    const idade = req.body.idade
+    sql = "UPDATE user SET name = '" + username + "' SET idade = '" + idade + "'WHERE id = " + req.body.id;
+    var db = new sqlite3.Database(DBSOURCE);
+    db.run(sql, []);
+    db.close();
+})
+
+app.get('/mostrarVoluntario', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM user ORDER BY id COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+});
+
+app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+    sql = "DELETE FROM user WHERE id= '" + req.body.id + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+
 
 
 
