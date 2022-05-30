@@ -689,7 +689,8 @@ nav a{
 
 #botaoEventos {
     position: absolute;
-    background: #9b287b;
+    background: #FEEF10;
+    color: #000000;
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
@@ -701,7 +702,8 @@ nav a{
 #botaoAbordagem {
     margin: auto;
     position: absolute;
-    background: #9b287b;
+    background: #FEEF10;
+    color: #000000;
     border-radius: 10px;
     text-align: center;
     font-size: 25px;
