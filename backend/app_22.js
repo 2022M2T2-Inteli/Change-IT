@@ -9,10 +9,11 @@ var path = require("path");
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var rateLimit = require("express-rate-limit");
-var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
-var get = 'SELECT * FROM user'
-var delet = 'DELETE FROM user WHERE id=3'
+const req = require('express/lib/request');
+// var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
+// var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
+// var get = 'SELECT * FROM user'
+// var delet = "DELETE FROM user WHERE id= '" + req.body.id + "'";
 
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
@@ -57,7 +58,7 @@ app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuá
 })
 //
 
-// Endpoints relacionados ao histórico dos assistidos
+// Endpoints relacionados ao histórico dos
 
 
 //
@@ -91,21 +92,41 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     const help = req.body.ajudar
     const inspire = req.body.inspirar
     const email = req.body.email
-    db.run(insert, [username, age, email])
+    sql = "INSERT INTO user (name, email, password) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+
+    // db.run(insert, [username, email, age])
     res.end()
 })
 
-app.put("/ativarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato    "]);
+app.post("/atualizarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
+    const username = req.body.username
+    const idade = req.body.idade
+    sql = "UPDATE user SET name = '" + username + "' SET idade = '" + idade + "'WHERE id = " + req.body.id;
+    var db = new sqlite3.Database(DBSOURCE);
+    db.run(sql, []);
+    db.close();
 })
 
-app.get("/returnVoluntario", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, sendo possível exibi-las quando necessário
-    db.run(get);
-})
+app.get('/mostrarVoluntario', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
-app.delete("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
-    db.run(delet);
-})
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM user ORDER BY id COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+});
+
+app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+    sql = "DELETE FROM user WHERE id= '" + req.body.id + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+
 
 
 
