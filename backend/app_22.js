@@ -44,7 +44,9 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 // Endpoints relacionados aos assistidos/atendidos
 app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
     // constantes
-    db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
+    const name = req.body.nome
+    console.log(name)
+    // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
     res.end();
 })
 app.put("/atualizarAssistido", (req, res) => {
