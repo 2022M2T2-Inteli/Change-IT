@@ -130,34 +130,88 @@ app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuár
 
 
 
-
-
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
 });
 
 module.exports = db // exporta o bd
 
+app.post("/insertAssistido", (req, res) => { //Método de inserir dados do assistido
+    sql = "INSERT INTO user (name, email, senha, idade, anosderua) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+app.put("/updateAssistido", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+});
+
+
+app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get)
+});
+
+
 // Endpoints relacionados aos assistidos
 // 	insertAssistido (post)
 // 	updateAssistido (put)
 // 	readAssitido (get)
-// Endpoints relacionados aos voluntários
-// 	insertVoluntário (post)
-// 	switchVoluntário (put)
-// 	readVoluntário (get)
+
+
+
 // Endpoints relacionados aos colaboradores
-// 	insertColaborador
+// 	insertColaborador (post)
 // 	switchColaborador
-// 	updateColaborador
-// 	readColaborador
+// 	updateColaborador (put)
+// 	readColaborador (get)
+
+app.post("/insertColaborador", (req, res) => { //Método de inserir dados do colaborador
+    sql = "INSERT INTO user (name, email, senha, idade, funcao) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+app.put("/updateColaborador", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+});
+
+app.get("/readColaborador", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get)
+});
+
 // Endpoints relacionados aos doadores
-// 	insertDoador
-// 	readDoador
-// Endpoints relacionados às doações
-// 	insertDoação
-// 	readDoação
+// 	insertDoador (post)
+// 	readDoador (get)
+
+app.post("/insertDoador", (req, res) => { //Método de inserir dados dos doares
+    sql = "INSERT INTO user (name, email, senha, idade, recorrencia) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+app.get("/readDoador", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get)
+});
+
 // Endpoints relacionados às atividades
-// 	insertAtividade
-// 	updateAtividade
-// 	readAtividade
+// 	insertAtividade (post)
+// 	updateAtividade (put)
+// 	readAtividade (get)
+
+app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
+    sql = "INSERT INTO user (name, email, senha, idade, atividade) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
+
+app.put("/updateAtividade", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+});
+
+app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get)
+});
