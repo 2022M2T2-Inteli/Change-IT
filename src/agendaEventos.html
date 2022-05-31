@@ -3,20 +3,7 @@
 <head>
     <!-- Título -->
     <title>Eventos | Agenda</title>
-
-    <!-- meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- css bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- css próprio -->
-    <link href="estilo/style.css" rel="stylesheet">
-    <link href="estilo/mobile-style.css" rel="stylesheet">
-
-    <!-- script's -->
+<div id="reusohead"></div>
 
     <!-- reuso -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
@@ -30,12 +17,6 @@
         <div id="reusonavbar">
 
         </div>
-        <!-- Fim da NavBar -->
-        <!-- <div class="container row align-items-center">
-    <div class="box container-fluid text-center">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 text-white ">
-                    <h6>Projeto revirar</h6> -->
         <div class="quadrado">
             <div class="box container-fluid text-center tq">
                 <div class="row">
@@ -99,7 +80,7 @@
                     <div class="pricing">
                         <h1>
                             03 de Junho
-                        </h1>
+                        </h1><br>
                         <a href="#" style="background: yellow; color: black; border-radius: 30px;"
                             class="btn btn-dark px-5 py-2 mb-5">Marcar
                             no Calendário</a>
@@ -154,7 +135,7 @@
     <div class="container mt-5">
         <h2>Confira a agenda completa de 2022:</h2>
         <br>
-        <h4>JULHO/2022</h4>
+        <h4 style="color: blue;">JULHO/2022</h4>
         <p>
             DIA 01 (Sexta-Feira): Brechó aberto das 10h às 16h.
             <br>
@@ -162,23 +143,23 @@
             <br>
             DIA 23 (Sábado): AMOSTRA CULTURAL- EDUCADORES E ATENDIDOS.
         </p>
-        <h4 style="color:red;">AGOSTO, SETEMBRO, OUTUBRO/2022</h4>
+        <h4 style="color:blue;">AGOSTO, SETEMBRO, OUTUBRO/2022</h4>
         <p>
             Agenda aberta
         </p>
-        <h4>NOVEMBRO/2022</h4>
+        <h4 style="color:blue;">NOVEMBRO/2022</h4>
         <p>
             DIA 23 ou 30 (Quarta-Feira): Iremos realizar um passeio de confraternização de fim de ano com os atendidos
             para o aquário de Santos, iremos passar o dia na praia, as datas serão confirmadas posteriormente. ( DATA DE
             PREFERÊNCIA DIA 23- A CONFIRMAR)
         </p>
-        <h4 style="color:red;">DEZEMBRO/2022</h4>
+        <h4 style="color:blue;">DEZEMBRO/2022</h4>
         <p>
             Agenda aberta: como a confraternização será o passeio no final de novembro, seguiremos com nossa programação
             normal abrindo exceções para entrega de doações caso o Projeto receba, como kits, panetones etc.
         </p>
         <br>
-        <p style="color:red;">
+        <p style="color:blue">
             OBS: A agenda poderá sofrer alterações conforme surgirem novos eventos, sendo atualizada a cada mês.
         </p>
     </div>
@@ -196,6 +177,7 @@
     $(document).ready(function () {
         $("#reusonavbar").load("reuso/navbar.html");
         $("#reusofooter").load("reuso/footer.html");
+        $("#reusohead").load("reuso/head.html");
     });
 </script>
 

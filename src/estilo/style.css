@@ -326,9 +326,8 @@ header .container .col-md-7 button {
 /* Footer */
 footer {
     background: rgba(0, 0, 0, 0.815);
-    /* overflow-x: hidden; */
     padding: 1vmin 3vmin;
-    height: 200px;
+    height: 10%;
 }
 
 footer p>span {
