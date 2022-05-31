@@ -355,13 +355,16 @@ footer .column i {
 footer .column i+i {
     padding: 0 0.5em;
 }
-footer h1{
+
+footer h1 {
     font-size: 20px;
 }
-footer h4{
+
+footer h4 {
     font-size: 20px;
 }
-footer p{
+
+footer p {
     font-size: 12px;
 }
 
@@ -473,7 +476,8 @@ a:hover {
     align-items: center;
     color: #000000;
 }
-nav a{
+
+nav a {
     font-weight: bold;
 }
 
@@ -743,7 +747,7 @@ nav a{
     width: 80%;
 }
 
-.formulariopesq{
+.formulariopesq {
     border-radius: 30px;
     background-color: rgba(204, 204, 204, 0);
     border: 1px solid #000000;
@@ -790,28 +794,30 @@ nav a{
 
 }
 
-  /* numero animado impacto */
-  
-  .content {
+/* numero animado impacto */
+
+.content {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100px;
-  }
-  
-  .value {
+}
+
+.value {
     font-size: 50px;
     display: block;
     font-weight: bold;
     color: #000000;
 
-  }
-  /* Login */
-  .gradient-login {
+}
+
+/* Login */
+.gradient-login {
     background: #fccb90;
-    background: rgb(254,239,16);
-background: linear-gradient(300deg, rgba(254,239,16,1) 13%, rgba(69,229,252,1) 95%);
-    }
+    background: rgb(254, 239, 16);
+    background: linear-gradient(300deg, rgba(254, 239, 16, 1) 13%, rgba(69, 229, 252, 1) 95%);
+}
+
 /* css para o carrossel */
 /* .carousel {
     margin-bottom: 4rem;
