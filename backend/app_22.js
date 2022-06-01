@@ -18,7 +18,7 @@ const req = require('express/lib/request');
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
 
-const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
+const DBSOURCE = "DatabaseOficial5.db" // responsável pela operação do bd
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100 // limit each IP to 100 requests per windowMs
@@ -78,7 +78,7 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
 app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
     db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
 })
-app.get("/returnInsumos", (req, res) => {// Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+app.get("/returnInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     db.run(get);
 })
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
@@ -89,14 +89,13 @@ app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuári
 // Endpoints relacionados aos voluntários
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     const username = req.body.username
-    const age = req.body.idade
+    const motivo = req.body.inspirar
+    const idade = req.body.idade
     const doc = req.body.documento
-    const help = req.body.ajudar
-    const inspire = req.body.inspirar
     const email = req.body.email
-    sql = "INSERT INTO user (name, email, password) VALUES ('" + username + "', '" + email + "', '" + age + "')";
-
-    // db.run(insert, [username, email, age])
+    const obs = req.body.obs
+    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    db.run(sql);
     res.end()
 })
 
