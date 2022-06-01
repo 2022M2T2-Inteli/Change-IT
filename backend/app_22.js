@@ -92,7 +92,9 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     const motivo = req.body.inspirar
     const idade = req.body.idade
     const doc = req.body.documento
-    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "')";
+    const email = req.body.email
+    const obs = req.body.obs
+    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
     db.run(sql);
     res.end()
 })
