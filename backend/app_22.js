@@ -42,22 +42,22 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 //get, post, put, delete methods
 
 // Endpoints relacionados aos assistidos/atendidos
-app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
-    // constantes
-    const name = req.body.nome
-    console.log(name)
-    // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
-    res.end();
-})
-app.put("/atualizarAssistido", (req, res) => {
-    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
-})
-app.get("/returnInsumos", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get);
-})
-app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
-    db.run(delet);
-})
+// app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+//     // constantes
+//     const name = req.body.nome
+//     console.log(name)
+//     // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
+//     res.end();
+// })
+// app.put("/atualizarAssistido", (req, res) => {
+//     db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+// })
+// app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+//     db.run(get);
+// })
+// app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
+//     db.run(delet);
+// })
 //
 
 // Endpoints relacionados ao histórico dos
@@ -66,7 +66,7 @@ app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuá
 //
 
 // Endpoints relacionados às doações
-app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
+app.post("/insertInsumo", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     const nameInsumos = req.body.nomeInsumos
     const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
@@ -78,7 +78,7 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
 app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
     db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
 })
-app.get("/returnInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+app.get("/readInsumo", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     db.run(get);
 })
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
@@ -87,7 +87,7 @@ app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuári
 //
 
 // Endpoints relacionados aos voluntários
-app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
+app.post("/insertVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     const username = req.body.username
     const motivo = req.body.inspirar
     const idade = req.body.idade
@@ -108,7 +108,7 @@ app.post("/atualizarVoluntario", (req, res) => { //Método Put, atualiza os camp
     db.close();
 })
 
-app.get('/mostrarVoluntario', (req, res) => {
+app.get('/readVoluntario', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -135,6 +135,7 @@ app.listen(port, hostname, () => {
 
 module.exports = db // exporta o bd
 
+// Endpoints relacionados à tabela de assistido
 app.post("/insertAssistido", (req, res) => { //Método de inserir dados do assistido
     sql = "INSERT INTO user (name, email, senha, idade, anosderua) VALUES ('" + username + "', '" + email + "', '" + age + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
