@@ -97,13 +97,9 @@ app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuári
 //
 
 // Endpoints relacionados aos voluntários
-<<<<<<< HEAD
 
 //ok
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
-=======
-app.post("/insertVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
->>>>>>> 541a42b0bb705da0d332c3d0d2836ea2861c4154
     const username = req.body.username
     const motivo = req.body.inspirar
     const idade = req.body.idade
@@ -151,12 +147,8 @@ app.listen(port, hostname, () => {
 
 module.exports = db // exporta o bd
 
-<<<<<<< HEAD
 //pendente
 
-=======
-// Endpoints relacionados à tabela de assistido
->>>>>>> 541a42b0bb705da0d332c3d0d2836ea2861c4154
 app.post("/insertAssistido", (req, res) => { //Método de inserir dados do assistido
     sql = "INSERT INTO user (name, email, senha, idade, anosderua) VALUES ('" + username + "', '" + email + "', '" + age + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
