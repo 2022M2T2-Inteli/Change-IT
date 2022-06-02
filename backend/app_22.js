@@ -28,7 +28,6 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) { // aparece o erro no console se ele existir
         // Cannot open database
@@ -81,18 +80,7 @@ app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuá
     db.run(delet);
 })
 
-
-// Endpoints relacionados ao histórico dos
-
-
-//
-
 // Endpoints relacionados às doações
-
-//pendente
-//doador e doacao
-
-//doador
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     //doador
     const nameInsumos = req.body.nomeInsumos
@@ -103,10 +91,8 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const NajudaInsumos = req.body.Nao
     const SajudaEntrega = req.body.SimAjuda
     const NajudaEntrega = req.body.NaoAjuda
-    //doacao
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
-    //anon e ajuda
     if (SajudaInsumos) {
         if (SajudaEntrega) {
             sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
@@ -135,7 +121,6 @@ app.get("/readInsumo", (req, res) => { // Método Get, pega todas as informaçõ
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     db.run(delet);
 })
-//
 
 // Endpoints relacionados aos voluntários
 
