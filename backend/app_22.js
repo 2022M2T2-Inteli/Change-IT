@@ -72,17 +72,26 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 
 //doador
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
+    //doador
     const nameInsumos = req.body.nomeInsumos
     const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
     const emailInsumos = req.body.emailInsumos
-    const SajudaInsumos = req.body.SimInsumos
-    const NAjudaInsumos = req.body.NaoInsumos
+    const SajudaInsumos = req.body.Sim
+    const NajudaInsumos = req.body.Nao
+    //doacao
     const produtoInsumos = req.body.produtoInsumos
+    const obsIns = req.body.ObsInsumos
     //anon e ajuda
-    sql = "INSERT INTO Doador (Nome, Idade, CPF, Documento, Email) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + email + "', '" + obs + "')";
-    //falta doacao
-    db.run(sql)
+    if (SajudaInsumos) {
+        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "')";
+    } else {
+        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "')";
+    }
+    sqld = "INSERT INTO Doação (NomeProduto, Observações) VALUES ('" + produtoInsumos + "', '" + obsIns + "')";
+
+    db.run(sql);
+    db.run(sqld);
     res.end()
 })
 app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
