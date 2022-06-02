@@ -79,14 +79,24 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
     const NajudaInsumos = req.body.Nao
+    const SajudaEntrega = req.body.SimAjuda
+    const NajudaEntrega = req.body.NaoAjuda
     //doacao
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
     //anon e ajuda
     if (SajudaInsumos) {
-        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "')";
+        if (SajudaEntrega) {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
+        } else {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
+        }
     } else {
-        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "')";
+        if (SajudaEntrega) {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
+        } else {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
+        }
     }
     sqld = "INSERT INTO Doação (NomeProduto, Observações) VALUES ('" + produtoInsumos + "', '" + obsIns + "')";
 
