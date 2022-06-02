@@ -79,14 +79,33 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
     const NajudaInsumos = req.body.Nao
+<<<<<<< HEAD
+=======
+    const SajudaEntrega = req.body.SimAjuda
+    const NajudaEntrega = req.body.NaoAjuda
+>>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
     //doacao
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
     //anon e ajuda
     if (SajudaInsumos) {
+<<<<<<< HEAD
         sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "')";
     } else {
         sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "')";
+=======
+        if (SajudaEntrega) {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
+        } else {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
+        }
+    } else {
+        if (SajudaEntrega) {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
+        } else {
+            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
+        }
+>>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
     }
     sqld = "INSERT INTO Doação (NomeProduto, Observações) VALUES ('" + produtoInsumos + "', '" + obsIns + "')";
 
