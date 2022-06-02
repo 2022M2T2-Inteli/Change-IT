@@ -57,16 +57,13 @@ app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos d
     if (seratendido) {
         if (satendimento) {
             sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
-        }
-        else {
+        } else {
             sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
         }
-    }
-    else {
+    } else {
         if (satendimento) {
             sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
-        }
-        else {
+        } else {
             sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
         }
     }
@@ -104,29 +101,13 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
     const NajudaInsumos = req.body.Nao
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     const SajudaEntrega = req.body.SimAjuda
     const NajudaEntrega = req.body.NaoAjuda
->>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
-=======
-    const SajudaEntrega = req.body.SimAjuda
-    const NajudaEntrega = req.body.NaoAjuda
->>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
     //doacao
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
     //anon e ajuda
     if (SajudaInsumos) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "')";
-    } else {
-        sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "')";
-=======
-=======
->>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
         if (SajudaEntrega) {
             sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
         } else {
@@ -138,10 +119,6 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
         } else {
             sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
         }
-<<<<<<< HEAD
->>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
-=======
->>>>>>> acaebb08f06cf13dd5fcee096eb8b0b6c60c105d
     }
     sqld = "INSERT INTO Doação (NomeProduto, Observações) VALUES ('" + produtoInsumos + "', '" + obsIns + "')";
 
