@@ -2,21 +2,11 @@
 <html lang="pt-br">
 
 <head>
+    <div id="reusohead"></div>
     <title>ficha Voluntário</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="estilo/style.css" rel="stylesheet">
-    <link href="estilo/mobile-style.css" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/8bda9b18c8.js" crossorigin="anonymous"></script>
-
-    <!-- reuso -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
-    </script>
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+</script>
 </head>
 
 <body>
@@ -31,16 +21,6 @@
 
     <div>
         <form action="/registrarVoluntario" name="valform" method="POST">
-            <!-- <fieldset">
-                <div class="d-flex align-itens-center">
-                    <label>Quem é você?
-                       <input type="radio" name="user" value="administrador" required>Administrador
-                    </label>
-                    <label>
-                        <input type="radio" name="user" value="educador">Educador
-                    </label>
-                </div>
-            </fieldset> -->
 
             <div class="container row-aling-itens-start formulario">
                 <div class="input-group mb-3">
@@ -49,11 +29,6 @@
                             aria-describedby="basic-addon1" id="name" name="username">
                     </label>
                 </div>
-                <!-- <div>
-        <label>Nome Completo<br>
-            <input type="text" name="nome" id="nome" required>
-        </label>
-        </div> -->
 
                 <div class="input-group mb-3">
                     <label>Idade:
@@ -61,12 +36,7 @@
                             aria-describedby="basic-addon1" id="idade" name="idade">
                     </label>
                 </div>
-
-                <!-- <div class="clamado">
-            <label>Como gosta de se clamado/como é conhecido<br>
-                    <input type="text" name="clamado" id="clamado">
-            </label>
-    </div> -->
+                
                 <div class="input-group mb-3">
                     <label>Documento (RG/CPF):
                         <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
@@ -74,81 +44,94 @@
                     </label>
                 </div>
 
-                
-                <!-- <div class="input-group mb-3">
-                    <label>Como posso ajudar?
-                        <input type="text" class="form-control" placeholder="Forma de ajuda" aria-label="Username"
-                            aria-describedby="basic-addon1" id="ajudar" name="ajudar">
-                    </label>
+                    <div>
+                        <label>Como você poderia nos ajudar?
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Servir lanche para os atendidos" checked>
+                                <label class="form-check-label">
+                                    Servir lanche para os atendidos
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="judar na limpeza do espaço">
+                                <label class="form-check-label">
+                                    Ajudar na limpeza do espaço
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Ajudar na organização do Projeto">
+                                <label class="form-check-label">
+                                    Ajudar na organização do Projeto
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Realização de oficinas">
+                                <label class="form-check-label">
+                                    Realização de oficinas
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Abordagem social de rua">
+                                <label class="form-check-label">
+                                    Abordagem social de rua
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Ajudar em eventos pontuais">
+                                <label class="form-check-label">
+                                    Ajudar em eventos pontuais
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Bazar de doações">
+                                <label class="form-check-label">
+                                    Bazar de doações
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="ajudar" value="Atividades de rotina">
+                                <label class="form-check-label">
+                                    Atividades de rotina
+                                </label>
+                              </div>
+                        </label>
+                    </div>
                     <br>
-                </div> -->
 
-                <div class="input-group mb-3">
-                    <label>O que te inspira a fazer parte do projeto?
-                        <input type="text" class="form-control" placeholder="Opcional" aria-label="Username"
-                            aria-describedby="basic-addon1" id="inspirar" name="inspirar">
-                    </label>
-                </div>
-
-                <div class="input-group mb-3">
-                    <label>Insira seu email:
-                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
-                            aria-describedby="basic-addon1" id="email" name="email">
-                    </label>
-                </div>
-
-                <!-- <div class="revirar">
-            <label>
-                <label>Pretende ser atendido no Projeto revirar?</label>
-                <label>
-                    <input type="radio" name="revirar" id="sim" required>Sim
-                </label>
-                <label>
-                    <input type="radio" name="revirar" id="nao">Não
-                </label>
-            </label><br>
-        </div> -->
+                    <div class="input-group mb-3">
+                        <label>Insira seu email:
+                            <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                                aria-describedby="basic-addon1" id="email" name="email">
+                        </label>
+                    </div>
 
                 <div class="observacao">
                     <fieldset>
                         <div class="input-group">
-                            <span class="input-group-text">Observações</span>
-                            <textarea class="form-control" aria-label="With textarea" name="obs"></textarea>
+                            <span class="input-group-text">Detalhes da participação(Opcional)</span>
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Ex: Tempo disponível, Possuo roupas para doação..."></textarea>
                         </div>
                         <br>
-                        <!-- <label>Observação:
-                    <textarea name="obeservacao" id="obeservacao" cols="50" rows="5"></textarea>
-                </label> -->
+
                     </fieldset>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary bnt">Enviar</button>
                 </div>
-                <!-- <button type="submit">Cadastrar</button>
-    </form> -->
-
             </div>
+            <br>
+
             <!-- inicio código footer (rodapé) -->
             <div id="reusofooter">
-
             </div>
-            <!-- fim código footer (rodapé) -->
 
             <script>
-                $(document).ready(function () {
-                    $("#reusonavbar").load("reuso/navbar.html");
-                    $("#reusofooter").load("reuso/footer.html");
-                });
-
-                // var nameValue = JSON.parse(document.getElementById("name").value);
-                // var idadeValue = document.getElementById("idade").value;
-                // var documentoValue = document.getElementById("documento").value;
-                // var ajudarValue = document.getElementById("ajudar").value;
-                // var inspirarValue = document.getElementById("inspirar").value;
-                // var emailValue = document.getElementById("email").value;
-
-                // console.log(nameValue);
-            </script>
+				$(document).ready(function () {
+					$("#reusonavbar").load("reuso/navbar.html");
+					$("#reusofooter").load("reuso/footer.html");
+					$("#reusohead").load("reuso/head.html");
+				});
+			</script>
 </body>
 
 </html>
