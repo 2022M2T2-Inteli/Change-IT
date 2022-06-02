@@ -18,7 +18,7 @@ const req = require('express/lib/request');
 app.use(express.static("../src/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
 
-const DBSOURCE = "Projeto5.db" // responsável pela operação do bd
+const DBSOURCE = "DatabaseOficial5.db" // responsável pela operação do bd
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100 // limit each IP to 100 requests per windowMs
@@ -42,22 +42,22 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 //get, post, put, delete methods
 
 // Endpoints relacionados aos assistidos/atendidos
-app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
-    // constantes
-    const name = req.body.nome
-    console.log(name)
-    // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
-    res.end();
-})
-app.put("/atualizarAssistido", (req, res) => {
-    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
-})
-app.get("/returnInsumos", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get);
-})
-app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
-    db.run(delet);
-})
+// app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+//     // constantes
+//     const name = req.body.nome
+//     console.log(name)
+//     // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
+//     res.end();
+// })
+// app.put("/atualizarAssistido", (req, res) => {
+//     db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+// })
+// app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+//     db.run(get);
+// })
+// app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
+//     db.run(delet);
+// })
 //
 
 // Endpoints relacionados ao histórico dos
@@ -66,19 +66,29 @@ app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuá
 //
 
 // Endpoints relacionados às doações
+
+//pendente
+//doador e doacao
+
+//doador
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     const nameInsumos = req.body.nomeInsumos
     const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
-    const produtoInsumos = req.body.produtoInsumos
     const emailInsumos = req.body.emailInsumos
-    db.run(insert, [nameInsumos, idadeInsumos, emailInsumos])
+    const SajudaInsumos = req.body.SimInsumos
+    const NAjudaInsumos = req.body.NaoInsumos
+    const produtoInsumos = req.body.produtoInsumos
+    //anon e ajuda
+    sql = "INSERT INTO Doador (Nome, Idade, CPF, Documento, Email) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + email + "', '" + obs + "')";
+    //falta doacao
+    db.run(sql)
     res.end()
 })
 app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
     db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
 })
-app.get("/returnInsumos", (req, res) => {// Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+app.get("/readInsumo", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     db.run(get);
 })
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
@@ -87,16 +97,17 @@ app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuári
 //
 
 // Endpoints relacionados aos voluntários
+
+//ok
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     const username = req.body.username
-    const age = req.body.idade
+    const motivo = req.body.inspirar
+    const idade = req.body.idade
     const doc = req.body.documento
-    const help = req.body.ajudar
-    const inspire = req.body.inspirar
     const email = req.body.email
-    sql = "INSERT INTO user (name, email, password) VALUES ('" + username + "', '" + email + "', '" + age + "')";
-
-    // db.run(insert, [username, email, age])
+    const obs = req.body.obs
+    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    db.run(sql);
     res.end()
 })
 
@@ -109,7 +120,7 @@ app.post("/atualizarVoluntario", (req, res) => { //Método Put, atualiza os camp
     db.close();
 })
 
-app.get('/mostrarVoluntario', (req, res) => {
+app.get('/readVoluntario', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -135,6 +146,8 @@ app.listen(port, hostname, () => {
 });
 
 module.exports = db // exporta o bd
+
+//pendente
 
 app.post("/insertAssistido", (req, res) => { //Método de inserir dados do assistido
     sql = "INSERT INTO user (name, email, senha, idade, anosderua) VALUES ('" + username + "', '" + email + "', '" + age + "')";
@@ -166,6 +179,9 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 // 	updateColaborador (put)
 // 	readColaborador (get)
 
+
+//pendente
+
 app.post("/insertColaborador", (req, res) => { //Método de inserir dados do colaborador
     sql = "INSERT INTO user (name, email, senha, idade, funcao) VALUES ('" + username + "', '" + email + "', '" + age + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -185,6 +201,8 @@ app.get("/readColaborador", (req, res) => { //Método Get, pega todas as informa
 // 	insertDoador (post)
 // 	readDoador (get)
 
+//pendente
+
 app.post("/insertDoador", (req, res) => { //Método de inserir dados dos doares
     sql = "INSERT INTO user (name, email, senha, idade, recorrencia) VALUES ('" + username + "', '" + email + "', '" + age + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -200,6 +218,9 @@ app.get("/readDoador", (req, res) => { //Método Get, pega todas as informaçõe
 // 	insertAtividade (post)
 // 	updateAtividade (put)
 // 	readAtividade (get)
+
+
+//pendente
 
 app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
     sql = "INSERT INTO user (name, email, senha, idade, atividade) VALUES ('" + username + "', '" + email + "', '" + age + "')";
