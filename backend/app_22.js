@@ -42,23 +42,48 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 //get, post, put, delete methods
 
 // Endpoints relacionados aos assistidos/atendidos
-// app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
-//     // constantes
-//     const name = req.body.nome
-//     console.log(name)
-//     // db.run(insert, [nomeAssistido, idadeAssistido, emailAssistido]);
-//     res.end();
-// })
-// app.put("/atualizarAssistido", (req, res) => {
-//     db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
-// })
-// app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-//     db.run(get);
-// })
-// app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
-//     db.run(delet);
-// })
-//
+app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+    const nameAssistido = req.body.nome
+    const nameSocialAssistido = req.body.NomeSocial
+    const local = req.body.local
+    const seratendido = req.body.Sim
+    const naoatendido = req.body.Nao
+    const temporua = req.body.rua
+    const motivo = req.body.motivo
+    const outromotivo = req.body.outros
+    const satendimento = req.body.simAtendido
+    const natendimento = req.body.naoAtendido
+    const observaçao = req.body.observacao
+    if (seratendido) {
+        if (satendimento) {
+            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
+        }
+        else {
+            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
+        }
+    }
+    else {
+        if (satendimento) {
+            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
+        }
+        else {
+            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
+        }
+    }
+
+    db.run(sql);
+    res.end();
+})
+app.put("/atualizarAssistido", (req, res) => {
+    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+})
+app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    db.run(get);
+})
+app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
+    db.run(delet);
+})
+
 
 // Endpoints relacionados ao histórico dos
 
