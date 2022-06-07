@@ -239,7 +239,7 @@ app.post("/insertColaborador", (req, res) => { //Método de inserir dados do col
     db.close(); // Fecha o banco
 });
 
-app.post('/updateColaborador', urlencodedParser, (req, res) => {
+app.post('/updateColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -249,7 +249,13 @@ app.post('/updateColaborador', urlencodedParser, (req, res) => {
         sql += ` SET Nome = ' ${NomeColab} '`;
     };
     if (CPFColab) {
-        sql += ` SET CPF = '${}`
+        sql += ` SET CPF = '${CPFColab}`
+    };
+    if (TipoColab) {
+        sql += ` SET Tipo = '${TipoColab}'`
+    };
+    if (SenhaColab) {
+        sql += ` SET Senha = '${SenhaColab}'`
     }
     var db = new sqlite3.Database(DBPATH); // Abre o banco
     db.run(sql, [], err => {
