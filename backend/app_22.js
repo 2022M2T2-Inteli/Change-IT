@@ -242,22 +242,23 @@ app.post("/insertColaborador", (req, res) => { //Método de inserir dados do col
 app.post('/updateColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-    sql = `UPDATE Colaborador WHERE CPFColabo = '${CPFColab}' `;
-
+    const NomeColab = req.body.NomeColab;
+    const CPFColab = req.body.CPFColab;
+    const TipoColab = req.body.TipoColab;
+    const SenhaColab = req.body.SenhaColab;
+    sql = `UPDATE Colaborador SET`
     if (NomeColab) {
-        sql += ` SET Nome = ' ${NomeColab} '`;
-    };
-    if (CPFColab) {
-        sql += ` SET CPF = '${CPFColab}`
+        sql += ` Nome = '${NomeColab}',`;
     };
     if (TipoColab) {
-        sql += ` SET Tipo = '${TipoColab}'`
+        sql += ` Tipo = '${TipoColab}'`
     };
     if (SenhaColab) {
-        sql += ` SET Senha = '${SenhaColab}'`
-    }
-    var db = new sqlite3.Database(DBPATH); // Abre o banco
+        sql += `, Senha = '${SenhaColab}'`
+    };
+    sql += ` WHERE CPF = '${CPFColab}'`;
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
         if (err) {
             throw err;
@@ -267,8 +268,21 @@ app.post('/updateColaborador', (req, res) => {
     db.close(); // Fecha o banco
 });
 
-app.get("/readColaborador", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get)
+app.post('/deleteColaborador', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    const CPFColab = req.body.CPFColab;
+
+    sql = "DELETE FROM Colaborador WHERE CPF = '" + CPFColab + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
 });
 
 // Endpoints relacionados aos doadores
