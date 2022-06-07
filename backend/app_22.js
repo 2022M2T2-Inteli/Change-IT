@@ -207,16 +207,58 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 
 
 //pendente
+app.get('/readColaborador', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Colaborador ORDER BY CPF COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+});
 
 app.post("/insertColaborador", (req, res) => { //Método de inserir dados do colaborador
-    sql = "INSERT INTO user (name, email, senha, idade, funcao) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    const NomeColab = req.body.NomeColab;
+    const CPFColab = req.body.CPFColab;
+    const TipoColab = req.body.TipoColab;
+    const SenhaColab = req.body.SenhaColab;
+    const EmailColab = req.body.EmailColab;
+    const EnderecoColab = req.body.EnderecoColab;
+    const PrimeiraDataColab = req.body.DataColab;
+    const PrimeiroAcessoColab = req.body.PrimeiroAcessoColab;
+    const UltimoAcessoColab = req.body.UltimoAcessoColab;
+
+    sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, Data, PrimeiroAcesso, UltimoAcesso) VALUES ('${NomeColab}','${CPFColab}','${TipoColab}', '${SenhaColab}', '${EmailColab}', '${EnderecoColab}', '${PrimeiraDataColab}', '${PrimeiroAcessoColab}', '${UltimoAcessoColab}')`;
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
 });
 
-app.put("/updateColaborador", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+app.post('/updateColaborador', urlencodedParser, (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    sql = `UPDATE Colaborador WHERE CPFColabo = '${CPFColab}' `;
+
+    if (NomeColab) {
+        sql += ` SET Nome = ' ${NomeColab} '`;
+    };
+    if (CPFColab) {
+        sql += ` SET CPF = '${}`
+    }
+    var db = new sqlite3.Database(DBPATH); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
 });
 
 app.get("/readColaborador", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
