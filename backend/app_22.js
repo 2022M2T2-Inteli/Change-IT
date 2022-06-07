@@ -313,10 +313,22 @@ app.get("/readDoador", (req, res) => { //Método Get, pega todas as informaçõe
 //pendente
 
 app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
-    sql = "INSERT INTO user (name, email, senha, idade, atividade) VALUES ('" + username + "', '" + email + "', '" + age + "')";
+    const idAssistido = req.body.idAssistido
+    const nome = req.body.nome
+    const tipo = req.body.tipo
+    const 
+    sql = "INSERT INTO Atividade (idAssistido, Nome, Tipo) VALUES ('" + idAssistido + "', '" + nome + "', '" + tipo + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
+
+
+    // const idAssistido = req.body.idAssistido
+    // const tipo = req.body.tipo
+    // sql = "INSERT INTO Atividade SET idAssistido = '" + idAssistido + "' SET Tipo = '" + tipo + "'WHERE id = " + req.body.id;
+    // var db = new sqlite3.Database(DBSOURCE);
+    // db.run(sql, []);
+    // db.close();
 });
 
 app.put("/updateAtividade", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
@@ -324,5 +336,16 @@ app.put("/updateAtividade", (req, res) => { //Método Put, atualzia os campos de
 });
 
 app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get)
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Atividade ORDER BY idAtividade COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
 });
