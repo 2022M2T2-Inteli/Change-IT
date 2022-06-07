@@ -71,10 +71,28 @@ app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos d
     res.end();
 })
 app.put("/atualizarAssistido", (req, res) => {
-    db.run(atualizar, ["acorda", "pedriinho", "campeonatoovsk"]);
+    const nome = req.body.nome
+    const endereco = req.body.endereco
+    var sql = "INSERT Assistido SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
+    var db = new sqlite3.Database(DBSOURCE);
+    db.run(sql, []);
+    db.close();;
 })
+
 app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get);
+
+    res.statusCode = 200;
+	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+	var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Assistido ORDER BY idAssistido COLLATE NOCASE';
+	db.all(sql, [],  (err, rows ) => {
+		if (err) {
+		    throw err;
+		}
+		res.json(rows);
+	});
+	db.close();
 })
 app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
     db.run(delet);
@@ -174,22 +192,6 @@ app.listen(port, hostname, () => {
 module.exports = db // exporta o bd
 
 //pendente
-
-app.post("/insertAssistido", (req, res) => { //Método de inserir dados do assistido
-    sql = "INSERT INTO user (name, email, senha, idade, anosderua) VALUES ('" + username + "', '" + email + "', '" + age + "')";
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
-    db.close(); // Fecha o banco
-});
-
-app.put("/updateAssistido", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
-});
-
-
-app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get)
-});
 
 
 // Endpoints relacionados aos assistidos
