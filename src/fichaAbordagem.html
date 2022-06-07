@@ -37,7 +37,7 @@
 
                 <div>
                     <label>Como gosta de ser conhecido/chamado?
-                        <input type="text" class="form-control" placeholder="Nome social" name="Nome Social">
+                        <input type="text" class="form-control" placeholder="Nome social" name="NomeSocial">
                     </label>
                 </div>
 
@@ -55,14 +55,14 @@
                         <label class="form-check-label" for="flexRadioDefault1">Sim
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Não" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="Nao" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">Não
                 </div><br>
 
                 <div class="row g-2">
                     <div class="col-md">
                         <label>Quanto tempo vive na rua?
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="rua">
                                 <option selected disabled value>Selecione</option>
                                 <option value="Ate seis meses">Até seis meses</option>
                                 <option value="Entre seis meses a um ano">Entre seis meses a um ano</option>
@@ -78,7 +78,7 @@
                 <div class="row g-2">
                     <div class="col-md">
                         <label>Quais os principais motivos pelos quais passou a morar na rua/albergue/outro?
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="motivo">
                                 <option selected disabled value>Selecione</option>
                                 <option value="desemprego">Desemprego</option>
                                 <option value="perda da moradia">Expulsão/perda da moradia</option>
@@ -103,11 +103,11 @@
                 <div class="form-check">
                     <label>Pretende ser atendido no Projeto revirar?
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="sim" id="inlineRadio1"
+                            <input class="form-check-input" type="radio" name="simAtendido" id="inlineRadio1"
                                 value="Sim">Sim
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="não" id="inlineRadio2"
+                            <input class="form-check-input" type="radio" name="naoAtendido" id="inlineRadio2"
                                 value="Não">Não
                     </label>
                 </div>
@@ -123,7 +123,7 @@
 
                     </fieldset>
                     <div class="col-auto">
-                        <button type="button" class="btn btn-outline-primary">Enviar</button>
+                        <button type="submit" class="btn btn-outline-primary">Enviar</button>
                     </div>
                 </div>
             </div>

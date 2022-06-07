@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>ficha colaborador</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="estilo/style.css" rel="stylesheet">
+    <link href="estilo/mobile-style.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/8bda9b18c8.js" crossorigin="anonymous"></script>
+
+    <!-- reuso -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+    </header>
+    <div>
+        <h1 style="text-align: center;">Ficha Regristro de novo Colaborador</h1>
+        <br>
+    </div>
+
+    <div>
+        <form action="/registrarColaboradores" method="POST">
+            <div class="container row-aling-itens-start formulario">
+                <div class="input-group mb-3">
+                    <label>Nome Completo:
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1" name="nomeColaboradores">
+                    </label>
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Como colabora ("função"):
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1" name="tipoColaboradores">
+                    </label>
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Idade:
+                        <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
+                            aria-describedby="basic-addon1" name="idadeColaboradores">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Documento (RG/CPF):
+                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                            aria-describedby="basic-addon1" name="documentoColaboradores">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Produto a ser doado:
+                        <input type="text" class="form-control" placeholder="Forma de ajuda" aria-label="Username"
+                            aria-describedby="basic-addon1" name="produtoColaboradores">
+                    </label>
+                    <br>
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <label>Insira seu email:
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1" name="emailColaboradores">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Endereço completo:
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1" name="enderecoColaboradores">
+                    </label>
+
+                </div>
+                <br>
+
+                <div class="observacao">
+                    <fieldset>
+                        <div class="input-group">
+                            <span class="input-group-text">Observações</span>
+                            <textarea class="form-control" aria-label="With textarea"
+                                name="ObsColaboradores"></textarea>
+                        </div>
+                        <br>
+
+                    </fieldset>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <br />
+
+    <!-- footer -->
+    <div id="reusofooter">
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        });
+    </script>
+
+</body>
+
+</html>
