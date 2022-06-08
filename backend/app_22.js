@@ -82,17 +82,17 @@ app.put("/atualizarAssistido", (req, res) => {
 app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
 
     res.statusCode = 200;
-	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
-	var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     var sql = 'SELECT * FROM Assistido ORDER BY idAssistido COLLATE NOCASE';
-	db.all(sql, [],  (err, rows ) => {
-		if (err) {
-		    throw err;
-		}
-		res.json(rows);
-	});
-	db.close();
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
 })
 app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
     db.run(delet);
@@ -225,17 +225,7 @@ app.get('/readColaborador', (req, res) => {
 });
 
 app.post("/insertColaborador", (req, res) => { //Método de inserir dados do colaborador
-    const NomeColab = req.body.NomeColab;
-    const CPFColab = req.body.CPFColab;
-    const TipoColab = req.body.TipoColab;
-    const SenhaColab = req.body.SenhaColab;
-    const EmailColab = req.body.EmailColab;
-    const EnderecoColab = req.body.EnderecoColab;
-    const PrimeiraDataColab = req.body.DataColab;
-    const PrimeiroAcessoColab = req.body.PrimeiroAcessoColab;
-    const UltimoAcessoColab = req.body.UltimoAcessoColab;
-
-    sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, Data, PrimeiroAcesso, UltimoAcesso) VALUES ('${NomeColab}','${CPFColab}','${TipoColab}', '${SenhaColab}', '${EmailColab}', '${EnderecoColab}', '${PrimeiraDataColab}', '${PrimeiroAcessoColab}', '${UltimoAcessoColab}')`;
+    sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, Data, PrimeiroAcesso, UltimoAcesso) VALUES ('${req.body.NomeColab}','${req.body.CPFColab}','${req.body.TipoColab}', '${req.body.SenhaColab}', '${req.body.EmailColab}', '${req.body.EnderecoColab}', '${req.body.PrimeiraDataColab}', '${req.body.PrimeiroAcessoColab}', '${req.body.UltimoAcessoColab}')`;
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
@@ -244,21 +234,18 @@ app.post("/insertColaborador", (req, res) => { //Método de inserir dados do col
 app.post('/updateColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-    const NomeColab = req.body.NomeColab;
-    const CPFColab = req.body.CPFColab;
-    const TipoColab = req.body.TipoColab;
-    const SenhaColab = req.body.SenhaColab;
+
     sql = `UPDATE Colaborador SET`
-    if (NomeColab) {
-        sql += ` Nome = '${NomeColab}',`;
+    if (req.body.NomeColab) {
+        sql += ` Nome = '${req.body.NomeColab}',`;
     };
-    if (TipoColab) {
-        sql += ` Tipo = '${TipoColab}'`
+    if (req.body.TipoColab) {
+        sql += ` Tipo = '${req.body.TipoColab}'`
     };
-    if (SenhaColab) {
-        sql += `, Senha = '${SenhaColab}'`
+    if (req.body.SenhaColab) {
+        sql += `, Senha = '${req.body.SenhaColab}'`
     };
-    sql += ` WHERE CPF = '${CPFColab}'`;
+    sql += ` WHERE CPF = '${req.body.CPFColab}'`;
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
@@ -274,9 +261,7 @@ app.post('/deleteColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
-    const CPFColab = req.body.CPFColab;
-
-    sql = "DELETE FROM Colaborador WHERE CPF = '" + CPFColab + "'";
+    sql = "DELETE FROM Colaborador WHERE CPF = '" + req.body.CPFColab + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
         if (err) {
@@ -316,8 +301,8 @@ app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colab
     const idAssistido = req.body.idAssistido
     const nome = req.body.nome
     const tipo = req.body.tipo
-    const 
-    sql = "INSERT INTO Atividade (idAssistido, Nome, Tipo) VALUES ('" + idAssistido + "', '" + nome + "', '" + tipo + "')";
+    const
+        sql = "INSERT INTO Atividade (idAssistido, Nome, Tipo) VALUES ('" + idAssistido + "', '" + nome + "', '" + tipo + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
