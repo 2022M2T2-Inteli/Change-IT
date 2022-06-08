@@ -47,3 +47,98 @@ $(document).ready(function () {
         element.scrollIntoView();
     }
 })
+
+api = 'http://127.0.0.1:3022'
+
+
+$(document).ready(() => {
+    users.list();
+});
+
+
+var users = {
+
+    list() {
+        $.ajax({
+            url: api + '/readColaborador',
+            type: 'GET',
+            success: data => {
+                var tx = '';
+                tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
+                data.forEach(element => {
+                    tx += '<div class="user">';
+                    tx += '<div style="display: inline-block;">' + element.Nome + '</div>';
+                    tx += '<div class="actions">';
+                    tx += '<div class="action" onclick="user.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
+                    tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div>';
+                    tx += '</div>';
+                    tx += '</div>';
+                });
+                $('#main').html(tx);
+            }
+        });
+
+    }
+
+};
+
+var user = {
+
+    insert() {
+        var NomeColab = prompt('Digite o nome:');
+        if (NomeColab) {
+            if (NomeColab.trim() != '') {
+                $.ajax({
+                    type: 'POST',
+                    url: api + '/insertColaborador',
+                    data: { NomeColab: NomeColab },
+                }).done(function () {
+                    users.list();
+                }).fail(function (msg) {
+                    console.log('FAIL');
+                }).always(function (msg) {
+                    console.log('ALWAYS');
+                });
+            }
+        }
+    },
+
+
+    update(userId, oldTitle) {
+
+        var title = prompt('Digite o novo nome:', oldTitle);
+        if (title) {
+            if (title.trim() != '') {
+                $.ajax({
+                    type: 'POST',
+                    url: api + '/updateColaborador',
+                    data: { title: title, userId: userId },
+                }).done(function () {
+                    users.list();
+                }).fail(function (msg) {
+                    //console.log('FAIL');
+                }).always(function (msg) {
+                    //console.log('ALWAYS');
+                });
+            }
+        }
+    },
+
+    delete(userId) {
+
+        if (confirm('Confirma a exclusão?')) {
+            $.ajax({
+                type: 'POST',
+                url: api + '/deleteColaborador',
+                data: { userId: userId },
+            }).done(function () {
+                users.list();
+            }).fail(function (msg) {
+                //console.log('FAIL');
+            }).always(function (msg) {
+                //console.log('ALWAYS');
+            });
+        }
+    },
+
+}
