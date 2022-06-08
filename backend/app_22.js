@@ -250,7 +250,7 @@ app.post('/updateColaborador', (req, res) => {
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
         if (err) {
-            throw err;
+            res.status(500).send(err.message);
         }
         res.end();
     });
