@@ -86,23 +86,23 @@ var user = {
 
     insert() {
         var NomeColab = prompt('Digite o nome:');
-        if (NomeColab) {
-            if (NomeColab.trim() != '') {
-                $.ajax({
-                    type: 'POST',
-                    url: api + '/insertColaborador',
-                    data: { NomeColab: NomeColab },
-                }).done(function () {
-                    users.list();
-                }).fail(function (msg) {
-                    console.log('FAIL');
-                }).always(function (msg) {
-                    console.log('ALWAYS');
-                });
-            }
+        var CPFColab = prompt('Digite o CPF:');
+        var TipoColab = 'fodido';
+        if (CPFColab) {
+            $.ajax({
+                type: 'POST',
+                url: api + '/register',
+                data: {
+                    Nome: `${NomeColab}`,
+                    CPF: `${CPFColab}`,
+                    Tipo: `${TipoColab}`,
+                }
+            }).done(function () {
+                users.list();
+                console.log("Chamei o user.list dps do insert");
+            });
         }
     },
-
 
     update(userId, oldTitle) {
 
