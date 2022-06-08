@@ -1,6 +1,6 @@
-const express = require('express'); // framework express 
+const express = require('express'); // framework express
 const app = express(); // app faz o manuseio do express
-const hostname = '127.0.0.1'; // endereço 
+const hostname = '127.0.0.1'; // endereço
 const port = 3022; // porta do site
 var md5 = require('md5') // recebe o módulo do md5 (criptografia)
 var sqlite3 = require('sqlite3').verbose(); // import de todos os módulos necessários
