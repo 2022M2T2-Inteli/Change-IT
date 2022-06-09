@@ -31,7 +31,7 @@
     </div>
 
     <div>
-        <form action="">
+        <form <form action="/registrar" method="POST" class="d-flex justify-content-center"></form>>
 
 
             <div class="container row-aling-itens-start formulario">
@@ -47,14 +47,14 @@
 
                 <div class="input-group mb-3">
                     <label>Nome Completo:
-                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                        <input type="text" name="NomeCA" class="form-control" placeholder="Nome" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
 
                 </div>
                 <div class="input-group mb-3">
                     <label>Como gosta de ser chamado/como é conhecido:
-                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                        <input type="text" name="NomeSocialCA" class="form-control" placeholder="Nome" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
 
@@ -74,14 +74,14 @@
 
                 <div class="input-group mb-3">
                     <label>Documento (RG/CPF):
-                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                        <input type="text" name="DocumentoCA" class="form-control" placeholder="RG/CPF" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Data de Nasc:
-                        <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
+                        <input type="text" name="NascCA" class="form-control" placeholder="Idade" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
@@ -104,70 +104,70 @@
 
                 <div class="input-group mb-3">
                     <label>Marquises e viadutos
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="marquises" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Frente de prédios privados e públicos
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Predios" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Parques, praças
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Parques" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Estações de trem, rodoviárias
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Estações" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Margem de rodovias
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Rodovias" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Dentro de construções com áreas internas ocupáveis
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Construções" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Galerias subterrâneas
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Galerias" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Casas e prédios abandonados
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="abandonados" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Outros locais
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Locais" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
 
                 <div class="input-group mb-3">
                     <label>Albergue Abrigo ou Casa de Passagem para pessoas em situação de rua:
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Moradia Albergue" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
@@ -175,83 +175,85 @@
                 <div class="input-group mb-3">
                     <label>Domicílio particular: nesse quesito, considere como locais utilizados temporariamente pelo
                         entrevistado para pernoitar, os quais pertencem a outras pessoas:
-                        <input type="text" class="form-control" placeholder="Exemplo" aria-label="Username"
+                        <input type="text" name="Domicilio Particular" class="form-control" placeholder="Exemplo" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </label>
                 </div>
-                <label>
-                    <h6>Número de dias na semana que a pessoa em situação de rua costuma utilizar os espaços listados:
-                    </h6>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
-                            value="Sim">
-                        <label class="form-check-label" for="inlineRadio1">Rua</label>
-                        <input type="text" class="form-control" placeholder="Quantas vezes na semana"
-                            aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
-                            value="Não">
-                        <label class="form-check-label" for="inlineRadio2">Albergue</label>
-                        <input type="text" class="form-control" placeholder="Quantas vezes na semana"
-                            aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
-                            value="Não">
-                        <label class="form-check-label" for="inlineRadio2">Domicilio particular</label>
-                        <input type="text" class="form-control" placeholder="Quantas vezes na semana"
-                            aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
-                            value="Não">
-                        <label class="form-check-label" for="inlineRadio2">Outro</label>
-                        <input type="text" class="form-control" placeholder="Quantas vezes na semana"
-                            aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                </label>
+                <div>
+                    <label>
+                        <h6>Número de dias na semana que a pessoa em situação de rua costuma utilizar os espaços listados:
+                        </h6>
+                        <br>
+                        <div class="form-check form-check-inline" name="Cad1">
+                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
+                                value="Sim">
+                            <label class="form-check-label" for="inlineRadio1">Rua</label>
+                            <input type="text" class="form-control" placeholder="Quantas vezes na semana"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline" name="Cad2">
+                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                                value="Não">
+                            <label class="form-check-label" for="inlineRadio2">Albergue</label>
+                            <input type="text" class="form-control" placeholder="Quantas vezes na semana"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline" name="Cad3">
+                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                                value="Não">
+                            <label class="form-check-label" for="inlineRadio2">Domicilio particular</label>
+                            <input type="text" class="form-control" placeholder="Quantas vezes na semana"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline" name="Cad4">
+                            <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                                value="Não">
+                            <label class="form-check-label" for="inlineRadio2">Outro</label>
+                            <input type="text" class="form-control" placeholder="Quantas vezes na semana"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </label>
+                </div>
                 <br>
                 <br>
                 <label>
                     <h6>Quanto Tempo Vive na Rua:</h6>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
+                        <input class="form-check-input" type="checkbox" name="Tempo1" 
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Até seis meses</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Tempo2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2"> Entre seis meses e um ano</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Tempo3"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre um e dois anos</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Tempo4"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre dois e cinco anos</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Tempo5"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre cinco e dez anos</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Tempo6"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Mais de dez anos</label>
                     </div>
@@ -261,62 +263,62 @@
                 <label>
                     <h6>Quais os principais motivos pelos quais passou a morar na rua/albergue/outro:</h6>
 
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo1">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Perda de moradia</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo2">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Problemas com familiares/
                             companheiro(a)</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo3">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Ameaça/ violência</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo4">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Desemprego</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo5">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Trabalho</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo6">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Alcoolismo/ droga</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo7">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Preferência/opção própria</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo8">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Tratamento de saúde</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo9">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Não sabe/não lembra</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="Motivo10">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Outro</label>
@@ -328,37 +330,37 @@
                 <label>
                     <h6>Há quanto tempo mora nesta cidade:</h6>
 
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp1">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Até seis meses</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp2">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2"> Entre seis meses e um ano</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp3">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre um e dois anos</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp4">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre dois e cinco anos</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp5">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Entre cinco e dez anos</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" name="tmp6">
                         <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Mais de dez anos</label>
@@ -370,13 +372,13 @@
                     <h6>Vive com sua família na rua:</h6>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
+                        <input class="form-check-input" type="checkbox" name="Sim"
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Sim</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" name="Nao"
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2"> Não</label>
                     </div>
@@ -387,38 +389,38 @@
                 <label>
                     <h6>Tem contato com parente que vive fora da rua:</h6>
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
+                    <div class="form-check form-check-inline" name="contato1">
+                        <input class="form-check-input" type="checkbox" 
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Todo dia</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                    <div class="form-check form-check-inline" name="contato2">
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Toda semana</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                    <div class="form-check form-check-inline" name="contato3">
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Todo mês</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                    <div class="form-check form-check-inline" name="contato4">
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Todo ano</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                    <div class="form-check form-check-inline" name="contato5">
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Quase Nunca</label>
                     </div>
                     <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                    <div class="form-check form-check-inline" name="Contato6">
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Nunca</label>
                     </div>
@@ -430,19 +432,19 @@
                     <h6>Nos últimos seis meses frequentou ou participou de alguma atividade comunitária:</h6>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1"
+                        <input class="form-check-input" type="checkbox" 
                             value="Sim">
                         <label class="form-check-label" for="inlineRadio1">Escola</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2">Movimento social</label>
                     </div>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2"
+                        <input class="form-check-input" type="checkbox" 
                             value="Não">
                         <label class="form-check-label" for="inlineRadio2"> Associação</label>
                     </div>
