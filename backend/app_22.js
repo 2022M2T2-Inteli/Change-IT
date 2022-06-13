@@ -346,7 +346,7 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let nomesocialac = req.body.NomeSocialCA
     // let documentosim = req.body.docsim
     // let documentonao = req.body.docnao
-    // let documento = req.body.DocumentoCA
+    let documento = req.body.DocumentoCA
     // let datanasc = req.body.NascCA
     // let obs = req.body.observacao
     // let viadutomarquise = req.body.marquises
@@ -424,8 +424,8 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     // let encamin1 = req.body.encaminhamento1
     // let encamin2 = req.body.encaminhamento2
     //     var sql = "INSERT INTO tbCadastramento (data , nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, encaminhamento_servico) VALUES ('" + dt + "','" + nomecompleto + "','" + nomesocialac + "','" + documentosim + "','" + documentonao+ "','" + documento+ "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + periodo1 + "','" + periodo2 + "','" + periodo3 + "','" + periodo4 + "','" + tempo1 + "','" + tempo2 + "','" + tempo3 + "','" + tempo4 + "','" + tempo5 + "','" + tempo6 + "','" + motivos1 + "','" + motivos2 + "','" + motivos3 + "','" + motivos4 + "','" + motivos5 + "','" + motivos6 + "','" + motivos7 + "','" + motivos8 + "','" + motivos9 + "','" + motivos10 + "','" + tempomora1 + "','" + tempomora2 + "','" + tempomora3 + "','" + tempomora4 + "','" + tempomora5 + "','" + tempomora6 + "','" + familias  + "','" + familian + "','" + contatofora1 + "','" + contatofora2 + "','" + contatofora3 + "','" + contatofora4 + "','" + contatofora5 + "','" + contatofora6 + "','" + frequencia1 + "','" + frequencia2 + "','" + frequencia3 + "','" + frequencia4 + "','" + frequencia5 + "','" + frequencia6 + "','" + atendimento1 + "','" + atendimento2 + "','" + atendimento3 + "','" + atendimento4 + "','" + atendimento5 + "','" + atendimento6 + "','" + carteiras + "','" + carteiran + "','" + ganhou1 + "','" + ganhou2 + "','" + ganhou3 + "','" + ganhou4 + "','" + ganhou5 + "','" + ganhou6 + "','" + ganhou7 + "','" + ganhou8 + "','" + benef1 + "','" + benef2 + "','" + benef3 + "','" + servico1 + "','" + servico2 + "','" + encamin1 + "','" + encamin2 + "')";
-    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado) VALUES ('" + dt + "','" + nomec + "','"+ nomesocialac + "')";    
+    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos) VALUES ('" + dt + "','" + nomec + "','"+ nomesocialac + "','" + documento + "')";    
     console.log(nomec);
-    db.run(sql);
-    res.end()
+    db.run(sql, []);
+    res.end();
 });
