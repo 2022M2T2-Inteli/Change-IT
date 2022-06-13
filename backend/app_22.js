@@ -334,3 +334,105 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
     });
     db.close(); // Fecha o banco
 });
+
+//Api Ficha Cadastro
+app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+    var db = new sqlite3.Database(DBSOURCE);
+    
+    const {data} = req.body
+    let dt = req.body.data
+    let nomec = req.body.NomeCA
+    let nomesocialac = req.body.NomeSocialCA
+    // let documentosim = req.body.docsim
+    // let documentonao = req.body.docnao
+    let documento = req.body.DocumentoCA
+    let datanasc = req.body.NascCA
+    let obs = req.body.observacao
+    let viadutomarquise = req.body.marquises
+    let predio = req.body.Predios
+    let parque = req.body.Parques
+    let estacao = req.body.Estacoes
+    let margem = req.body.Rodovias
+    let construcoes = req.body.Construcoes
+    let galeria = req.body.Galerias
+    let abandonado = req.body.abandonados
+    let outro_locais = req.body.Locais
+    let albergue = req.body.moradia_Albergue
+    let domicilios = req.body.domicilio_Particular
+    // let periodo1 = req.body.Cad1 
+    // let periodo2 = req.body.Cad2
+    // let periodo3 = req.body.Cad3
+    // let periodo4 = req.body.Cad4
+    // let tempo1 = req.body.Tempo1
+    // let tempo2 = req.body.Tempo2
+    // let tempo3 = req.body.Tempo3
+    // let tempo4 = req.body.Tempo4
+    // let tempo5 = req.body.Tempo5
+    // let tempo6 = req.body.Tempo6
+    // let motivos1 = req.body.Motivo1
+    // let motivos2 = req.body.Motivo2
+    // let motivos3 = req.body.Motivo3
+    // let motivos4 = req.body.Motivo4
+    // let motivos5 = req.body.Motivo5
+    // let motivos6 = req.body.Motivo6
+    // let motivos7 = req.body.Motivo7
+    // let motivos8 = req.body.Motivo8
+    // let motivos9 = req.body.Motivo9
+    // let motivos10 = req.body.Motivo10
+    // let tempomora1 = req.body.tmp1
+    // let tempomora2 = req.body.tmp2
+    // let tempomora3 = req.body.tmp3
+    // let tempomora4 = req.body.tmp4
+    // let tempomora5 = req.body.tmp5
+    // let tempomora6 = req.body.tmp6
+    // let familias = req.body.fSim
+    // let familian = req.body.fNao
+    // let contatofora1 = req.body.contato1
+    // let contatofora2 = req.body.contato2
+    // let contatofora3 = req.body.contato3
+    // let contatofora4 = req.body.contato4
+    // let contatofora5 = req.body.contato5
+    // let contatofora6 = req.body.contato6
+    // let frequencia1 = req.body.frequentou1
+    // let frequencia2 = req.body.frequentou2
+    // let frequencia3 = req.body.frequentou3
+    // let frequencia4 = req.body.frequentou4
+    // let frequencia5 = req.body.frequentou5
+    // let frequencia6 = req.body.frequentou6
+    // let atendimento1 = req.body.atendido1
+    // let atendimento2 = req.body.atendido2
+    // let atendimento3 = req.body.atendido3
+    // let atendimento4 = req.body.atendido4
+    // let atendimento5 = req.body.atendido5
+    // let atendimento6 = req.body.atendido6
+    // let carteiras = req.body.carteirasim
+    // let carteiran = req.body.carteiranao
+    // let ganhou1 = req.body.ganhar1
+    // let ganhou2 = req.body.ganhar2
+    // let ganhou3 = req.body.ganhar3
+    // let ganhou4 = req.body.ganhar4
+    // let ganhou5 = req.body.ganhar5
+    // let ganhou6 = req.body.ganhar6
+    // let ganhou7 = req.body.ganhar7
+    // let ganhou8 = req.body.ganhar8
+    // let benef1 = req.body.beneficio1
+    // let benef2 = req.body.beneficio2
+    // let benef3 = req.body.beneficio3
+    let dt1 = req.body.data1
+    let dt2 = req.body.data2
+    let dt3 = req.body.data3
+    let dt4 = req.body.data4
+    let dt5 = req.body.data5
+    let servico1 = req.body.serv1
+    let servico2 = req.body.serv2
+    let servico3 = req.body.serv3
+    let servico4 = req.body.serv4
+    let servico5 = req.body.serv5
+    //     var sql = "INSERT INTO tbCadastramento (data , nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, encaminhamento_servico) VALUES ('" + dt + "','" + nomecompleto + "','" + nomesocialac + "','" + documentosim + "','" + documentonao+ "','" + documento+ "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + periodo1 + "','" + periodo2 + "','" + periodo3 + "','" + periodo4 + "','" + tempo1 + "','" + tempo2 + "','" + tempo3 + "','" + tempo4 + "','" + tempo5 + "','" + tempo6 + "','" + motivos1 + "','" + motivos2 + "','" + motivos3 + "','" + motivos4 + "','" + motivos5 + "','" + motivos6 + "','" + motivos7 + "','" + motivos8 + "','" + motivos9 + "','" + motivos10 + "','" + tempomora1 + "','" + tempomora2 + "','" + tempomora3 + "','" + tempomora4 + "','" + tempomora5 + "','" + tempomora6 + "','" + familias  + "','" + familian + "','" + contatofora1 + "','" + contatofora2 + "','" + contatofora3 + "','" + contatofora4 + "','" + contatofora5 + "','" + contatofora6 + "','" + frequencia1 + "','" + frequencia2 + "','" + frequencia3 + "','" + frequencia4 + "','" + frequencia5 + "','" + frequencia6 + "','" + atendimento1 + "','" + atendimento2 + "','" + atendimento3 + "','" + atendimento4 + "','" + atendimento5 + "','" + atendimento6 + "','" + carteiras + "','" + carteiran + "','" + ganhou1 + "','" + ganhou2 + "','" + ganhou3 + "','" + ganhou4 + "','" + ganhou5 + "','" + ganhou6 + "','" + ganhou7 + "','" + ganhou8 + "','" + benef1 + "','" + benef2 + "','" + benef3 + "','" + servico1 + "','" + servico2 + "','" + encamin1 + "','" + encamin2 + "')";
+    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + dt + "','" + nomec + "','"+ nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','"+ viadutomarquise + "','"+ predio + "','"+ parque + "','"+ estacao + "','"+ margem + "','"+ construcoes + "','"+ galeria + "','"+ abandonado + "','"+ outro_locais + "','"+ albergue + "','"+ domicilios + "','"+ dt1 + "','"+ servico1 + "','"+ dt2 + "','"+ servico2 + "','"+ dt3 + "','"+ servico3 + "','"+ dt4 + "','"+ servico4 + "','"+ dt5 + "','"+ servico5 +"')";    
+    console.log(obs);
+    db.run(sql, []);
+    res.end();
+});

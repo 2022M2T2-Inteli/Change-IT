@@ -65,13 +65,45 @@
         });
 
 
-        var users = {
+
+        function inserirColaborador() {
+
+            const nomeColab = document.getElementsByName('NomeColab').value;
+
+
+            var settings = {
+                "url": "http://127.0.0.1:3022/insertColaborador",
+                "method": "POST",
+                "timeout": 0,
+                "data": {
+
+                    "nomeColab": nomeColab,
+
+                }
+            };
+
+            $.ajax(settings).done(response => {
+                console.log(response)
+            });
+        }
+
+
+        var colaboradores = {
 
             list() {
                 $.ajax({
-                    url: api + '/readColaborador',
+                    url: 'http://127.0.0.1:3022/readColaborador',
                     type: 'GET',
                     success: data => {
+                        data.forEach(element => {
+                            const tr = document.createElemenet("tr");
+                            tr.innerHTML = `
+                            <tr>
+                                <th scope="row">${element.NomeColab}
+                            <tr>`
+                        })
+
+
                         var tx = '';
                         tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
                         data.forEach(element => {
@@ -82,6 +114,7 @@
                             tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
                         });
                         $('#main').html(tx);
+                        main.appendChild(tx);
                     }
                 });
 
