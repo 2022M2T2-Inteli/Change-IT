@@ -61,12 +61,12 @@
 
 
         $(document).ready(() => {
-            users.list();
+            colaboradores.list();
         });
 
 
 
-        function inserirColaborador() {
+        /*function inserirColaborador() {
 
             const nomeColab = document.getElementsByName('NomeColab').value;
 
@@ -85,7 +85,7 @@
             $.ajax(settings).done(response => {
                 console.log(response)
             });
-        }
+        } */
 
 
         var colaboradores = {
@@ -96,33 +96,35 @@
                     type: 'GET',
                     success: data => {
                         data.forEach(element => {
-                            const tr = document.createElemenet("tr");
-                            tr.innerHTML = `
-                            <tr>
-                                <th scope="row">${element.NomeColab}
-                            <tr>`
+                            //     const tr = document.createElemenet("tr");
+                            //     tr.innerHTML = `
+                            //     <tr>
+                            //         <th scope="row">${element.NomeColab} </th>
+                            //     <tr>`
+                            // })
+
+
+                            var tx = '';
+                            tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
+                            data.forEach(element => {
+                                tx += '<div class="user">';
+                                tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`
+                                tx += '<div class="actions">';
+                                tx += '<div class="action" onclick="user.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
+                                tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
+                            });
+                            $('#main').html(tx);
+                            // main.appendChild(tx);
                         })
-
-
-                        var tx = '';
-                        tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
-                        data.forEach(element => {
-                            tx += '<div class="user">';
-                            tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`
-                            tx += '<div class="actions">';
-                            tx += '<div class="action" onclick="user.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
-                            tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
-                        });
-                        $('#main').html(tx);
-                        main.appendChild(tx);
                     }
                 });
+
 
             }
 
         };
 
-        var user = {
+        /* var user = {
 
             insert() {
                 var NomeColab = prompt('Digite o nome:');
@@ -185,7 +187,8 @@
                 }
             },
 
-        }
+        } */
+
     </script>
 </body>
 
