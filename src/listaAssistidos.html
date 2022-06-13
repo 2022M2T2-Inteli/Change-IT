@@ -3,13 +3,13 @@
 
 <head>
     <title>Assistidos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <div id="reusohead">
 
     </div>
     <!-- reuso -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
-        </script>
+
 </head>
 
 <body>
@@ -37,11 +37,11 @@
     <br>
     <div class="d-flex justify-content-center">
         <div class="formulariopesq justify-itens">
-            <h5>Aqui terá o código para esta caixa receber todos os registros do banco de dados</h5>
-            <h6>Eles precisarão ser clicáveis e, quando clicados, deverão mostrar mais detalhes sobre cada tuplas</h6>
+            <div id="main">
+
+            </div>
         </div>
-    </div>
-    <br>
+    </div> <br>
 
     <!-- Fim do código do início do site -->
 
@@ -58,8 +58,44 @@
         })
     </script>
 
+    <script>
+        $(document).ready(() => {
+            assistidos.list();
+        });
 
-    
+        var assistidos = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readAssistido',
+                    type: 'GET',
+                    success: data => {
+                        data.forEach(element => {
+                            console.log("entrei no ajax confia")
+                            var tx = '';
+                            tx +=
+                                '<div class="insert" onclick="assistido.insert()"> Inserir </div>';
+                            data.forEach(element => {
+                                tx += '<div class="user">';
+                                tx +=
+                                    `<div style="display: inline-block;"> ${element.Nome}`;
+                                tx += '<div class="actions">';
+                                tx +=
+                                    '<div class="action" onclick="assistido.update()"';
+                                tx +=
+                                    '<div class="action" onclick="assistido.delete(' +
+                                    element.Nome +
+                                    ')">Excluir</div></div></div></div>';
+                            });
+                            $('#main').html(tx);
+                            console.log(tx + "era pra printar isso aqui")
+                        })
+                    }
+                });
+            }
+        };
+    </script>
+
 
 </body>
 

@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet');
 var rateLimit = require("express-rate-limit");
 const req = require('express/lib/request');
+const { read } = require('fs');
 // var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
 // var atualizar = 'UPDATE user SET (name , email, password) WHERE VALUES id=1'
 // var get = 'SELECT * FROM user'
@@ -334,7 +335,28 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
     });
     db.close(); // Fecha o banco
 });
+app.post("/Educadores", (req,res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    var db = new sqlite3.Database(DBSOURCE);
+    sql = "INSERT INTO Educadores (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    db.run(sql, []);
+    res.end();
+});
+app.get("/readEducadores", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
 
+    var db = new sqlite3.Database(DBSOURCE);
+    var sql = 'SELECT * FROM Educador';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+});
 //Api Ficha Cadastro
 app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
     res.statusCode = 200;
