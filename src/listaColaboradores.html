@@ -124,7 +124,7 @@
 
         };
 
-        /* var user = {
+        var user = {
 
             insert() {
                 var NomeColab = prompt('Digite o nome:');
@@ -136,12 +136,12 @@
                         type: 'POST',
                         url: api + '/insertColaborador',
                         data: {
-                            Nome: `${NomeColab}`,
-                            CPF: `${CPFColab}`,
-                            Tipo: `${TipoColab}`,
+                            NomeColab: `${NomeColab}`,
+                            CPFColab: `${CPFColab}`,
+                            TipoColab: `${TipoColab}`,
                         },
                     }).done(function () {
-                        users.list();
+                        colaboradores.list();
                         console.log("Chamei o user.list dps do insert");
                     }).fail(function (msg) {
                         console.log("deu ruim aqui");
@@ -150,17 +150,20 @@
                 }
             },
 
-            update(userId, oldTitle) {
+            update(CPFColab, oldTitle) {
 
-                var title = prompt('Digite o novo nome:', oldTitle);
-                if (title) {
-                    if (title.trim() != '') {
+                var NomeColab = prompt('Digite o novo nome:', oldTitle);
+                if (NomeColab) {
+                    if (NomeColab.trim() != '') {
                         $.ajax({
                             type: 'POST',
                             url: api + '/updateColaborador',
-                            data: { title: title, userId: userId },
+                            data: {
+                                NomeColab: NomeColab,
+                                CPFColab: CPFColab
+                            },
                         }).done(function () {
-                            users.list();
+                            colaboradores.list();
                         }).fail(function (msg) {
                             //console.log('FAIL');
                         }).always(function (msg) {
@@ -170,15 +173,15 @@
                 }
             },
 
-            delete(userId) {
+            delete(CPFColab) {
 
                 if (confirm('Confirma a exclusão?')) {
                     $.ajax({
                         type: 'POST',
                         url: api + '/deleteColaborador',
-                        data: { userId: userId },
+                        data: { CPFColab: CPFColab },
                     }).done(function () {
-                        users.list();
+                        colaboradores.list();
                     }).fail(function (msg) {
                         //console.log('FAIL');
                     }).always(function (msg) {
@@ -187,8 +190,7 @@
                 }
             },
 
-        } */
-
+        } 
     </script>
 </body>
 
