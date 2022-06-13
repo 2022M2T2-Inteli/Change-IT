@@ -7,7 +7,6 @@
     <div id="reusohead">
     </div>
 
-    <script src="main.js"></script>
 </head>
 
 <body>
@@ -105,13 +104,13 @@
 
 
                             var tx = '';
-                            tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
+                            tx += '<div class="insert" onclick="colaborador.insert()">Inserir</div>';
                             data.forEach(element => {
                                 tx += '<div class="user">';
-                                tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`
+                                tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`;
                                 tx += '<div class="actions">';
-                                tx += '<div class="action" onclick="user.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
-                                tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
+                                tx += '<div class="action" onclick="colaborador.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
+                                tx += '<div class="action" onclick="colaborador.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
                             });
                             $('#main').html(tx);
                             // main.appendChild(tx);
@@ -124,7 +123,7 @@
 
         };
 
-        var user = {
+        var colaborador = {
 
             insert() {
                 var NomeColab = prompt('Digite o nome:');
