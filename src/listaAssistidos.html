@@ -32,9 +32,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <!-- <form>
                             <div class="container col-12 align-items-center mb-2" id="inputsAssistidos">
-                                <!-- Aqui estão todos os possíveis inputs para assistidos  -->
+                                Aqui estão todos os possíveis inputs para assistidos
 
                                 <select type="text" name="assistedID" id="assistido" placeholder="Nome do assistido"
                                     class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
@@ -62,19 +62,18 @@
                                 <input name="observation" type="text" id="obs" placeholder="Observações"
                                     class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
                             </div>
-                        </form>
-
+                        </form> -->
                         <form>
 
                             <div class="container row-aling-itens-start formulario">
 
                                 <h2 style="text-align: center;">Identificação de Pessoas</h2>
+
                                 <div class="input-group mb-3">
                                     <label>Data:
                                         <input type="date" name="data" class="form-control" placeholder="D/M/A"
                                             aria-label="Username" aria-describedby="basic-addon1">
                                     </label>
-
                                 </div>
 
                                 <div class="input-group mb-3">
@@ -82,15 +81,15 @@
                                         <input type="text" name="NomeCA" class="form-control" placeholder="Nome"
                                             aria-label="Username" aria-describedby="basic-addon1">
                                     </label>
-
                                 </div>
+
                                 <div class="input-group mb-3">
                                     <label>Como gosta de ser chamado/como é conhecido:
                                         <input type="text" name="NomeSocialCA" class="form-control" placeholder="Nome"
                                             aria-label="Username" aria-describedby="basic-addon1">
                                     </label>
-
                                 </div>
+
                                 <!-- <label> Possui document?
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" name="docsim"
@@ -105,7 +104,7 @@
                                 </label> -->
 
                                 <div class="input-group mb-3">
-                                    <label>Documento (RG/CPF):
+                                    <label>Documento (RG/CPF): (se não houver, deixe em branco)
                                         <input type="text" name="DocumentoCA" class="form-control" placeholder="RG/CPF"
                                             aria-label="Username" aria-describedby="basic-addon1" maxlength="11">
                                     </label>
@@ -117,9 +116,6 @@
                                             aria-label="Username" aria-describedby="basic-addon1">
                                     </label>
                                 </div>
-
-
-
 
                                 <div class="observacao">
                                     <div class="input-group">
@@ -711,10 +707,11 @@
         <!-- Fim do código do modal para os assistidos -->
 
         <!-- Código para a página com a lista de assistidos -->
+
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
                 <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-10"> Controle de Assistidos </p>
+                    <p class="arvo fs-2 text-center my-2 col-10"> Assistidos </p>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -760,108 +757,100 @@
                         <table class="table col-10" id="myTable">
                             <thead>
                                 <tr>
-                                    <th class="fs-6">Atividade</th>
-                                    <th class="fs-6">Data</th>
+                                    <th class="fs-6">Nome</th>
+                                    <th class="fs-6">Apelido</th>
+                                    <th class="fs-6">Documento</th>
                                     <th class="fs-6 d-none d-md-table-cell">Obs.</th>
-                                    <th class="fs-6">Assistido</th>
-                                    <th class="fs-6">Número Toalha</th>
+                                    <th class="fs-6">Data</th>
                                 </tr>
                             </thead>
 
-                            <tbody id="resultado">
+                            <tbody id="main" class="listaLinhas">
 
                             </tbody>
+
                         </table>
                     </div>
 
                 </div>
             </div>
 
-
-
-            <h1 style="text-align:center">Assistidos Cadastrados</h1>
-            <br>
-            <!-- Search box -->
-            <div class="input-group row col-md-6 offset-3">
-                <input type="search" class="form-control rounded"
-                    placeholder="Digite aqui para procurar o cadastro de um assistido" aria-label="Search"
-                    aria-describedby="search-addon" />
-                <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
-            </div>
-    </header>
-
-
-    <br>
-    <div class="d-flex justify-content-center">
-        <div class="formulariopesq justify-itens">
-            <div id="main">
-
-            </div>
         </div>
-    </div> <br>
 
-    <!-- Fim do código do início do site -->
+        <!-- Fim do código html e css da lista do site -->
 
+        <!-- reuso do footer -->
+        <div id="reusofooter">
 
-    <div id="reusofooter">
+        </div>
+        <!-- script para o reuso -->
+        <script>
+            $(document).ready(function () {
+                $("#reusohead").load("reuso/head.html");
+                $("#reusonavbar").load("reuso/navbar.html");
+                $("#reusofooter").load("reuso/footer.html");
+            })
+        </script>
 
-    </div>
+        <!-- script para o funcionameto das listas e da integração via AJAX -->
+        <script>
+            // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+            $(document).ready(() => {
+                assistidos.list();
+            });
 
-    <script>
-        $(document).ready(function () {
-            $("#reusohead").load("reuso/head.html");
-            $("#reusonavbar").load("reuso/navbar.html");
-            $("#reusofooter").load("reuso/footer.html");
-        })
-    </script>
+            // objeto que faz o get
+            var assistidos = {
 
-    <script>
-        $(document).ready(() => {
-            assistidos.list();
-        });
-
-        var assistidos = {
-
-            list() {
-                $.ajax({
-                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
-                    type: 'GET',
-                    success: data => {
-                        var tx = '';
-                        tx += '<div class="insert" onclick="assistido.insert()"> Inserir </div>';
-                        data.forEach(element => {
-                            tx += '<div class="user">';
-                            tx += `<div style="display: inline-block;"> ${element.nome_completo}`;
-                            tx += '<div class="actions">';
-                            tx += '<div class="action" onclick="assistido.update()"> Atualizar </div>';
-                            tx += `<div class="action" onclick="assistido.delete('${element.nome_completo}')">Excluir</div></div></div></div>`;
-                        });
-                        $('#main').html(tx);
-                    }
-                });
-            }
-        };
-
-        var assistido = {
-
-            delete(nome_completo) {
-
-                if (confirm(`Confirma a exclusão?`)) {
+                list() {
                     $.ajax({
-                        type: 'POST',
-                        url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
-                        data: { nome_completo: nome_completo },
-                    }).done(function () {
-                        assistidos.list();
-                    }).fail(function (msg) {
-                        console.log('FAIL');
+                        url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                        type: 'GET',
+                        success: data => {
+                            var tr = '';
+                            data.forEach(element => {
+                                tr += `<tr> <th scope = "row"> ${element.nome_completo} </th>`;
+                                tr += `<th scope = "row"> ${element.clamado} </th>`
+                                tr += `<th scope = "row"> ${element.possui_documentos} </th>`
+                                tr += `<th scope = "row"> ${element.observacao} </th>`
+                                tr += `<th scope = "row"> ${element.data} </th> </tr>`
+
+                                /* var tx = '';
+                                tx += '<div class="insert" onclick="assistido.insert()"> Inserir </div>';
+                                data.forEach(element => {
+                                    tx += '<div class="user">';
+                                    tx += `<div style="display: inline-block;"> ${element.nome_completo}`;
+                                    tx += '<div class="actions">';
+                                    tx += '<div class="action" onclick="assistido.update()"> Atualizar </div>';
+                                    tx += `<div class="action" onclick="assistido.delete('${element.nome_completo}')">Excluir</div></div></div></div>`; */
+                            });
+                            $('#main').html(tr);
+                        }
                     });
                 }
+            };
+
+            // objeto que faz as outras ações
+            var assistido = {
+
+                delete(nome_completo) {
+
+                    if (confirm(`Confirma a exclusão?`)) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
+                            data: { nome_completo: nome_completo },
+                        }).done(function () {
+                            assistidos.list();
+                        }).fail(function (msg) {
+                            console.log('FAIL');
+                        });
+                    }
+                }
+
             }
 
-        }
-
-    </script>
+        </script>
 
 
 </body>
