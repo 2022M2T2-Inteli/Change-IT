@@ -7,7 +7,6 @@
     <div id="reusohead">
     </div>
 
-    <script src="main.js"></script>
 </head>
 
 <body>
@@ -61,35 +60,68 @@
 
 
         $(document).ready(() => {
-            users.list();
+            colaboradores.list();
         });
 
 
-        var users = {
+
+        /*function inserirColaborador() {
+
+            const nomeColab = document.getElementsByName('NomeColab').value;
+
+
+            var settings = {
+                "url": "http://127.0.0.1:3022/insertColaborador",
+                "method": "POST",
+                "timeout": 0,
+                "data": {
+
+                    "nomeColab": nomeColab,
+
+                }
+            };
+
+            $.ajax(settings).done(response => {
+                console.log(response)
+            });
+        } */
+
+
+        var colaboradores = {
 
             list() {
                 $.ajax({
-                    url: api + '/readColaborador',
+                    url: 'http://127.0.0.1:3022/readColaborador',
                     type: 'GET',
                     success: data => {
-                        var tx = '';
-                        tx += '<div class="insert" onclick="user.insert()">Inserir</div>';
                         data.forEach(element => {
-                            tx += '<div class="user">';
-                            tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`
-                            tx += '<div class="actions">';
-                            tx += '<div class="action" onclick="user.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
-                            tx += '<div class="action" onclick="user.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
-                        });
-                        $('#main').html(tx);
+                            //     const tr = document.createElemenet("tr");
+                            //     tr.innerHTML = `
+                            //     <tr>
+                            //         <th scope="row">${element.NomeColab} </th>
+                            //     <tr>`
+                            // })
+                            var tx = '';
+                            tx += '<div class="insert" onclick="colaborador.insert()">Inserir</div>';
+                            data.forEach(element => {
+                                tx += '<div class="user">';
+                                tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`;
+                                tx += '<div class="actions">';
+                                tx += '<div class="action" onclick="colaborador.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
+                                tx += '<div class="action" onclick="colaborador.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
+                            });
+                            $('#main').html(tx);
+                            // main.appendChild(tx);
+                        })
                     }
                 });
+
 
             }
 
         };
 
-        var user = {
+        var colaborador = {
 
             insert() {
                 var NomeColab = prompt('Digite o nome:');
@@ -101,12 +133,12 @@
                         type: 'POST',
                         url: api + '/insertColaborador',
                         data: {
-                            Nome: `${NomeColab}`,
-                            CPF: `${CPFColab}`,
-                            Tipo: `${TipoColab}`,
+                            NomeColab: `${NomeColab}`,
+                            CPFColab: `${CPFColab}`,
+                            TipoColab: `${TipoColab}`,
                         },
                     }).done(function () {
-                        users.list();
+                        colaboradores.list();
                         console.log("Chamei o user.list dps do insert");
                     }).fail(function (msg) {
                         console.log("deu ruim aqui");
@@ -115,17 +147,20 @@
                 }
             },
 
-            update(userId, oldTitle) {
+            update(CPFColab, oldTitle) {
 
-                var title = prompt('Digite o novo nome:', oldTitle);
-                if (title) {
-                    if (title.trim() != '') {
+                var NomeColab = prompt('Digite o novo nome:', oldTitle);
+                if (NomeColab) {
+                    if (NomeColab.trim() != '') {
                         $.ajax({
                             type: 'POST',
                             url: api + '/updateColaborador',
-                            data: { title: title, userId: userId },
+                            data: {
+                                NomeColab: NomeColab,
+                                CPFColab: CPFColab
+                            },
                         }).done(function () {
-                            users.list();
+                            colaboradores.list();
                         }).fail(function (msg) {
                             //console.log('FAIL');
                         }).always(function (msg) {
@@ -135,24 +170,24 @@
                 }
             },
 
-            delete(userId) {
+            delete(CPFColab) {
 
                 if (confirm('Confirma a exclusão?')) {
                     $.ajax({
                         type: 'POST',
                         url: api + '/deleteColaborador',
-                        data: { userId: userId },
+                        data: { CPFColab: CPFColab },
                     }).done(function () {
-                        users.list();
+                        colaboradores.list();
                     }).fail(function (msg) {
                         //console.log('FAIL');
                     }).always(function (msg) {
                         //console.log('ALWAYS');
                     });
                 }
-            },
+            }
 
-        }
+        } 
     </script>
 </body>
 

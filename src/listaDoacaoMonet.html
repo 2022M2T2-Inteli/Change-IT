@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Doadores</title>
+    <div id="reusohead">
+
+    </div>
+    <!-- reuso -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+
+        <!-- Fim da NavBar -->
+        <!-- Início do código do início do site -->
+
+        <h1 style="text-align:center"> Doadores </h1>
+        <br>
+        <!-- Search box -->
+        <div class="input-group row col-md-6 offset-3">
+            <input type="search" class="form-control rounded"
+                placeholder="Digite aqui para procurar os dados registrados de um doador" aria-label="Search"
+                aria-describedby="search-addon" />
+            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
+        </div>
+    </header>
+
+    <body style="min-height: 100vh;">
+        <!-- Modal -->
+
+        <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar Atividade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="container col-12 align-items-center mb-2" id="serviceInputs">
+                    <select type="text" name="assistedID" id="assistido" placeholder="Nome do assistido" class="form-select"
+                      required>
+                      <option>Oficina X</option>
+                      <option>Oficina Z</option>
+                      <option>Oficina Y</option>
+                    </select>
+
+                
+                    <select name="type" id="service" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
+                      onchange="check()" required>
+                      <option value="atv"> Atividade </option>
+                      <option value="bath"> Banho </option>
+                      <option value="clothes"> Roupa </option>
+                      <option value="ubs"> Ubs </option>
+                      <option value="cras"> Cras </option>
+                      <option value="poupa_tempo"> PoupaTempo </option>
+                      <option value="transport"> Vale Transporte </option>
+                    </select>
+    
+                    <input placeholder="Número da toalha" id="towelInput"
+                      class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" disabled="true" type="number" min="0" />
+    
+                    <input name="observation" type="text" id="obs" placeholder="Observações"
+                      class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" onclick="insertService()">Salvar Mudança</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="formulariopesq justify-itens">
+            <h5>Aqui terá o código para esta caixa receber todos os registros do banco de dados</h5>
+            <h6>Eles precisarão ser clicáveis e, quando clicados, deverão mostrar mais detalhes sobre cada tuplas</h6>
+        </div>
+    </div>
+    <br>
+
+    <!-- Fim do código do início do site -->
+
+
+    <div id="reusofooter">
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        })
+
+    function check() {
+        let service = document.getElementById("service");
+        let towelId = document.getElementById("towelInput");
+
+        if (service.value == "bath") {
+            towelId.disabled = false;
+            towelId.required = true;
+
+        } else {
+            towelId.disabled = true;
+            towelId.required = false;
+            towelId.value = "";
+    }
+  }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
