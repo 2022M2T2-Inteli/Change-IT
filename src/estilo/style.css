@@ -880,6 +880,28 @@ nav a {
     background: linear-gradient(300deg, white, #167BCE);
 }
 
+a:link { 
+    text-decoration: none; 
+    color: #000000;
+}
+
+
+a:visited { 
+    text-decoration: none; 
+    color: #000000;
+}
+
+
+a:hover { 
+    text-decoration: none; 
+    color: #167BCE;
+}
+
+
+a:active { 
+    text-decoration: none; 
+}
+
 /* css para o carrossel */
 /* .carousel {
     margin-bottom: 4rem;
