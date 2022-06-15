@@ -32,70 +32,103 @@
             <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
         </div>
     </header>
-
-    <body style="min-height: 100vh;">
         <!-- Modal -->
-
-        <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Adicionar Atividade</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="container col-12 align-items-center mb-2" id="serviceInputs">
-                    <select type="text" name="assistedID" id="assistido" placeholder="Nome do assistido" class="form-select"
-                      required>
-                      <option>Oficina X</option>
-                      <option>Oficina Z</option>
-                      <option>Oficina Y</option>
-                    </select>
-
-                
-                    <select name="type" id="service" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
-                      onchange="check()" required>
-                      <option value="atv"> Atividade </option>
-                      <option value="bath"> Banho </option>
-                      <option value="clothes"> Roupa </option>
-                      <option value="ubs"> Ubs </option>
-                      <option value="cras"> Cras </option>
-                      <option value="poupa_tempo"> PoupaTempo </option>
-                      <option value="transport"> Vale Transporte </option>
-                    </select>
-    
-                    <input placeholder="Número da toalha" id="towelInput"
-                      class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" disabled="true" type="number" min="0" />
-    
-                    <input name="observation" type="text" id="obs" placeholder="Observações"
-                      class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" onclick="insertService()">Salvar Mudança</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-
+  
 
     <br>
     <div class="d-flex justify-content-center">
         <div class="formulariopesq justify-itens">
-            <h5>Aqui terá o código para esta caixa receber todos os registros do banco de dados</h5>
-            <h6>Eles precisarão ser clicáveis e, quando clicados, deverão mostrar mais detalhes sobre cada tuplas</h6>
+        <div class="container" style="width:700px;">  
+         <h3 allign="center"></h3>  
+         <br />  
+         <div class="table-responsive">
+          <div allign="right">
+           <button type="button" name="age" id="age" data-toggle="modal" data-target="#add_data_Modal" class="btn btn-warning">Inserir</button>
+          </div>
+          <br />
+          <div id="employee_table">
+           <table class="table table-bordered">
+            <tr>
+             <th width="70%">Employee Name</th>  
+             <th width="30%">View</th>
+            </tr>
+            
+            <tr>
+             <td></td>
+             <td><input type="button" name="view" value="view" id="" class="btn btn-info btn-xs view_data" /></td>
+            </tr>
+           
+           </table>
+          </div>
+         </div>  
         </div>
+       </body>  
+      </html>  
+      
+      <div id="add_data_Modal" class="modal fade">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">PHP Ajax Insert Data in MySQL By Using Bootstrap Modal</h4>
+         </div>
+         <div class="modal-body">
+          <form method="post" id="insert_form">
+           <label>Enter Employee Name</label>
+           <input type="text" name="name" id="name" class="form-control" />
+           <br />
+           <label>Enter Employee Address</label>
+           <textarea name="address" id="address" class="form-control"></textarea>
+           <br />
+           <label>Select Gender</label>
+           <select name="gender" id="gender" class="form-control">
+            <option value="Male">Male</option>  
+            <option value="Female">Female</option>
+           </select>
+           <br />  
+           <label>Enter Designation</label>
+           <input type="text" name="designation" id="designation" class="form-control" />
+           <br />  
+           <label>Enter Age</label>
+           <input type="text" name="age" id="age" class="form-control" />
+           <br />
+           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
+      
+          </form>
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+        </div>
+       </div>
+      </div>
+      
+      <div id="dataModal" class="modal fade">
+       <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Employee Details</h4>
+         </div>
+         <div class="modal-body" id="employee_detail">
+          
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+        </div>
+       </div>
+      </div>
+      
     </div>
     <br>
+        </div>
+        
+    
 
     <!-- Fim do código do início do site -->
 
-
-    <div id="reusofooter">
+<div id="reusofooter">
 
     </div>
 
