@@ -23,7 +23,7 @@
         <!-- Início do código do início do site -->
 
         <!-- Código do Modal para os assistidos -->
-        <div class="modal fade" id="modalAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="modalAddAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -63,7 +63,7 @@
                                     class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
                             </div>
                         </form> -->
-                        <form>
+                        <form action="/cadastro" method="POST">
 
                             <div class="container row-aling-itens-start formulario">
 
@@ -699,7 +699,44 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="insertService()">Salvar Mudança</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalVisAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog vis">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Assistido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="stefano">
+
+                            <div class="col-sm-4">
+                                Nome
+                                Idade
+                                dp
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                lugares
+                                praca
+
+                            </div>
+                            <div class="col-sm-4">
+                                pia
+                                Alkeil
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -748,15 +785,22 @@
                     <div>
                         <center><button id="addac" type="submit"
                                 class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
-                                data-bs-toggle="modal" data-bs-target="#modalAssistido">
+                                data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
                                 Adicionar Assistido
+                            </button></center>
+
+                        <center><button id="addac" type="submit"
+                                class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                                data-bs-toggle="modal" data-bs-target="#modalVisAssistido" onclick="assistidos.list2()">
+                                Visualizar Assistido
                             </button></center>
                     </div>
 
                     <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
-                        <table class="table col-10" id="myTable">
+                        <table class="table col-12" id="myTable">
                             <thead>
                                 <tr>
+                                    <th class="fs-6"> id </th>
                                     <th class="fs-6">Nome</th>
                                     <th class="fs-6">Apelido</th>
                                     <th class="fs-6">Documento</th>
@@ -809,25 +853,38 @@
                         success: data => {
                             var tr = '';
                             data.forEach(element => {
-                                tr += `<tr> <th scope = "row"> ${element.nome_completo} </th>`;
-                                tr += `<th scope = "row"> ${element.clamado} </th>`
-                                tr += `<th scope = "row"> ${element.possui_documentos} </th>`
-                                tr += `<th scope = "row"> ${element.observacao} </th>`
-                                tr += `<th scope = "row"> ${element.data} </th> </tr>`
-
-                                /* var tx = '';
-                                tx += '<div class="insert" onclick="assistido.insert()"> Inserir </div>';
-                                data.forEach(element => {
-                                    tx += '<div class="user">';
-                                    tx += `<div style="display: inline-block;"> ${element.nome_completo}`;
-                                    tx += '<div class="actions">';
-                                    tx += '<div class="action" onclick="assistido.update()"> Atualizar </div>';
-                                    tx += `<div class="action" onclick="assistido.delete('${element.nome_completo}')">Excluir</div></div></div></div>`; */
+                                tr += `<tr>`;
+                                tr += `<th scope = "row"> ${element.idCadastro} </th>`;
+                                tr += `<th scope = "row"> ${element.nome_completo} </th>`;
+                                tr += `<td scope = "row"> ${element.clamado} </td>`
+                                tr += `<td scope = "row"> ${element.possui_documentos} </td>`
+                                tr += `<td scope = "row"> ${element.observacao} </td>`
+                                tr += `<td scope = "row"> ${element.data} </td>`
+                                tr += `<td style="background-color: red; color: white" scope = "row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
+                                tr += `<td style="background-color: green; color: white" scope = "row" onclick="assistido.vis('${element.idCadastro}')"> Visualizar </td>`
+                                tr += `<td style="background-color: blue; color: white" scope = "row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
+                                tr += `</tr>`
                             });
                             $('#main').html(tr);
                         }
                     });
+                },
+
+
+                list2() {
+                    $.ajax({
+                        url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                        type: 'GET',
+                        success: data => {
+                            data.forEach(element => {
+                                var modal = '';
+                                modal += `<div `
+                            });
+                            $('#stefano').html(dive);
+                        }
+                    });
                 }
+
             };
 
             // objeto que faz as outras ações
