@@ -268,6 +268,7 @@ app.post('/updateColaborador', (req, res) => {
     if (req.body.SenhaColab) {
         sql += `, Senha = '${req.body.SenhaColab}'`
     };
+
     sql += ` WHERE CPF = '${req.body.CPFColab}'`;
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -396,6 +397,24 @@ app.get("/readCadastroAssistido", (req, res) => {
     });
     db.close();
 });
+
+// Alternativa sobre o modal seria abrir outra página e mandar o endpoint pra ela
+/* app.get("/readCadastroEspecifico", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    var db = new sqlite3.Database(DBSOURCE);
+    var sql = 'SELECT * FROM tbCadastramento WHERE idCadastro = ' + req.body.idCadastro;
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+
+    location.replace("../src/visualizarAssistido.html")
+}); */
 
 app.post("/deleteCadastroAssistido", (req, res) => {
     res.statusCode = 200;

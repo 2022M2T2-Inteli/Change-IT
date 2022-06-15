@@ -63,7 +63,8 @@
                                     class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
                             </div>
                         </form> -->
-                        <form action="/cadastro" method="POST">
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/cadastro" method="POST" target="iframe">
 
                             <div class="container row-aling-itens-start formulario">
 
@@ -791,7 +792,7 @@
 
                         <center><button id="addac" type="submit"
                                 class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
-                                data-bs-toggle="modal" data-bs-target="#modalVisAssistido" onclick="assistidos.list2()">
+                                data-bs-toggle="modal" data-bs-target="#myModal0" onclick="assistidos.list2()">
                                 Visualizar Assistido
                             </button></center>
                     </div>
@@ -855,15 +856,15 @@
                         var tr = '';
                         data.forEach(element => {
                             tr += `<tr>`;
-                            tr += `<th scope = "row"> ${element.idCadastro} </th>`;
-                            tr += `<th scope = "row"> ${element.nome_completo} </th>`;
-                            tr += `<td scope = "row"> ${element.clamado} </td>`
-                            tr += `<td scope = "row"> ${element.possui_documentos} </td>`
-                            tr += `<td scope = "row"> ${element.observacao} </td>`
-                            tr += `<td scope = "row"> ${element.data} </td>`
-                            tr += `<td style="background-color: red; color: white" scope = "row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
-                            tr += `<td style="background-color: green; color: white" scope = "row" onclick="assistidos.list2('${element.idCadastro}')" data-bs-target="#myModal${element.idCadastro}"> Visualizar </td>`
-                            tr += `<td style="background-color: blue; color: white" scope = "row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
+                            tr += `<th scope="row"> ${element.idCadastro} </th>`;
+                            tr += `<th scope="row"> ${element.nome_completo} </th>`;
+                            tr += `<td scope="row"> ${element.clamado} </td>`
+                            tr += `<td scope="row"> ${element.possui_documentos} </td>`
+                            tr += `<td scope="row"> ${element.observacao} </td>`
+                            tr += `<td scope="row"> ${element.data} </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
                             tr += `</tr>`
                         });
                         $('#main').html(tr);
@@ -879,25 +880,55 @@
                     success: data => {
                         console.log("entrei no success");
                         data.forEach(element => {
-                            console.log("entrei no forEach");
-                            var modal = '';
-                            modal += `<div id="myModal${id}" class="myModals"> <div class="modal-dialog vis"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div>`;
+                            console.log("entrei no forEach do elemento" + id);
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-body"> <div class="row"> 
+                                    <div class="col-sm-4"> <h3> Identificação </h3> 
+                                        <label> Nome completo: ${element.nome_completo} </label> <br /> 
+                                        <label> Nome social: ${element.clamado} </label> <br /> 
+                                        <label> Documento: ${element.possui_documentos} </label> <br /> 
+                                        <label> Data de Nascimento: ${element.nascimento} </label> <br /> </div> 
+                                    <div class="col-sm-4"> <h3> Locais </h3> 
+                                        <h5> Endereços </h5>
+                                        <label>  Marquis ou viaduto? ${element.marquises_viadutos} </label> <br />
+                                        <label>  Predios privados ou públicos? ${element.predios_pri_pub} </label> <br />
+                                        <label>  Parques ou praças? ${element.parques} </label> <br />
+                                        <label>  Estações de trem ou rodoviária? ${element.estacao} </label> <br />
+                                        <label>  Rodovia? ${element.rodovias} </label> <br />
+                                        <label>  Área interna ocupável? ${element.areas_internas} </label> <br />
+                                        <label>  Galeria subterrânea? ${element.galerias} </label> <br />
+                                        <label>  Lugar abandonado? ${element.lugares_abandonados} </label> <br />
+                                        <label>  Outro local? ${element.outros_locais} </label> <br />
+                                        <label>  Albergue, abrigo ou casa de passagem? ${element.albergue} </label> <br />
+                                        <label>  Domicílio particular? ${element.domiciliar_particular} </label> <br />
 
-                            modal += `<div class="modal-body"> <div class="row">`;
-                            modal += `<div class="col-sm-4"> <h3> Identificação </h3>`;
-                            modal += `<label>Nome completo: ${element.nome_completo}</label> <br />`;
-                            modal += `<label>Nome social: ${element.clamado}</label> <br />`;
-                            modal += `<label>Documento: ${element.possui_documentos}</label> <br />`;
-                            modal += `<label>Data de Nascimento: ${element.nascimento}</label> <br />`;
-                            modal += `<label>Observações: ${element.observacao}</label> <br />`;
+                                        <h5> Número de dias na semana em cada lugar: </h5>
+                                        <label>  Rua: ${element.dias_rua} </label> <br />
+                                        <label>  Albergue: ${element.dias_albergue} </label> <br />
+                                        <label>  Domicílio particular: ${element.dias_particular} </label> <br />
+                                        <label>  Outro: ${element.dias_outro} </label> <br />
 
-                            modal += `<div class="col-sm-4"> <h3> Lugar </h3>`;
-                            modal += `<div class="col-sm-4"> <h3> Tratamento </h3>`;
+                                        <h5> Tempos </h5>
+                                        <label>  Tempo de Rua: ${element.tempo_de_rua} </label> <br />
+                                        <label>  Tempo em São Paulo: ${element.quanto_tempo_mora_na_cidade} </label> <br />
 
-                            console.log("o modal é" + modal)
+                                        <h5> Motivações </h5>
+                                        <label> Não sei como será isso socorro  </label> <br />
+                                        </div>
+                                    <div class="col-sm-4"> <h3> Tratamento </h3>
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_1} </strong> </h5> <h5> dia ${element.encam_dt_1} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_2} </strong> </h5> <h5> dia ${element.encam_dt_2} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_3} </strong> </h5> <h5> dia ${element.encam_dt_3} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_4} </strong> </h5> <h5> dia ${element.encam_dt_4} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_5} </strong> </h5> <h5> dia ${element.encam_dt_5} </h5> <br />
+                                    </div> </div></div> <div class="modal-foorter"> 
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
                             if (element.idCadastro == id) {
-                                document.getElementById("stefano").append(modal);
-                                // $('#myModal' + id).modal('show');
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
                             }
 
                         });
@@ -907,7 +938,6 @@
             }
 
         };
-
         // objeto que faz as outras ações
         var assistido = {
 
