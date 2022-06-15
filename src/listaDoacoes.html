@@ -21,15 +21,226 @@
 
         <!-- Fim da NavBar -->
         <!-- Início do código do início do site -->
+        
+        <!-- Código do Modal para os doacoes de insumos-->
+        <div class="modal fade" id="modalAddDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Doação de Insumo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-        <h1 style="text-align:center"> Insumos e Pix Doados </h1>
+                        <form action="/registrarInsumos" method="POST"></form>
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Data:
+                                        <input type="date" name="dataInsumos" class="form-control" placeholder="D/M/A" aria-label="Username"
+                                            aria-describedby="basic-addon1">
+                                    </label>
+                
+                                </div>
+                                <label> Gostaria de permanecer anônimo(a) ?
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim" name="SimAnonimo">
+                                        <label class="form-check-label" for="inlineRadio1">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não" name="NaoAnonimo">
+                                        <label class="form-check-label" for="inlineRadio2">Não</label>
+                                    </div>
+                                </label>
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo:
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="nomeInsumos">
+                                    </label>
+                
+                                </div>
+                
+                                <div class="input-group mb-3">
+                                    <label>CPF (somente números):
+                                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="CPFInsumos">
+                                    </label>
+                                </div>
+                                
+                                <div class="input-group mb-3">
+                                    <label>Produto a ser doado:
+                                        <input type="text" class="form-control" placeholder="Forma de ajuda" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="NomeProduto">
+                                    </label>
+                                    <br>
+                                </div>
+                
+                                <div class="input-group mb-3">
+                                    <label>Insira seu email:
+                                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="emailInsumo">
+                                    </label>
+                                </div>
+                
+                                <div class="form-check">
+                                    <label> Necessita de ajuda para realizar a entrega?
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
+                                                name="SimAjuda">
+                                            <label class="form-check-label" for="inlineRadio1">Sim</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
+                                                name="NaoAjuda">
+                                            <label class="form-check-label" for="inlineRadio2">Não</label>
+                                        </div>
+                                    </label>
+                                </div>
+                                <br>
+                
+                                <div class="observacao">
+                                    <fieldset>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Observações</span>
+                                            <textarea class="form-control" aria-label="With textarea" name="ObsInsumos"></textarea>
+                                        </div>
+                                        <br>
+                
+                                    </fieldset>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                                </div>
+                
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalVisDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog vis">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Doação de insumo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="clarinhalinda">
+
+                            <div class="col-sm-4">
+                                Data
+                                Anonimo
+                                Nome
+
+                            </div>
+
+                            <div class="col-sm-4">
+                                CPF
+                                NomeProduto
+
+                            </div>
+                            <div class="col-sm-4">
+                                Email
+                                Ajuda
+                                Observações
+                                idDoacoes
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim do código do modal para as doacoes de insumos -->
+        <div class="container-fluid">
+            <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                    <p class="arvo fs-2 text-center my-2 col-10"> Controle doações de insumos </p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col-12 d-flex justify-content-around">
+                        <div class="col-5">
+                            <div class="input-group mb-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <center><button id="addinsumo" type="submit"
+                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos">
+                            Adicionar Insumo
+                        </button></center>
+
+                    <center><button id="addac" type="submit"
+                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalVisDoacaoInsumos" onclick="doacao.list2()">
+                            Visualizar Doação de insumo
+                        </button></center>
+                </div>  
+
+                <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                    <table class="table col-12" id="myTable">
+                        <thead>
+                            <tr>
+                                <th class="fs-6"> Data</th>
+                                <th class="fs-6">Anonimo</th>
+                                <th class="fs-6">Nome</th>
+                                <th class="fs-6">CPF</th>
+                                <th class="fs-6 d-none d-md-table-cell">Nome do produto</th>
+                                <th class="fs-6">Email</th>
+                                <th class="fs-6">Ajuda</th>
+                                <th class="fs-6">Observações</th>
+                                <th class="fs-6">id</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="main" class="listaLinhas">
+                        
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- Fim do código html e css da lista do site -->
+    <!-- reuso do footer  -->
+    <div id="reusofooter">
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+            
+        })
+    </script>
+
+
+        <!-- design antigo -->
+        <!-- <h1 style="text-align:center"> Controle de insumos </h1>
         <br>
-        <!-- Search box -->
         <div class="input-group row col-md-6 offset-3">
             <input type="search" class="form-control rounded"
                 placeholder="Digite aqui para procurar o registro de um insumo doado" aria-label="Search"
-                aria-describedby="search-addon" />
-            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
+                aria-describedby="search-addon" name="namedoacao" id="iddoacao"/>
+            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke" onclick="">Procurar</button>
         </div>
     </header>
 
@@ -41,22 +252,147 @@
             <h6>Eles precisarão ser clicáveis e, quando clicados, deverão mostrar mais detalhes sobre cada tuplas</h6>
         </div>
     </div>
-    <br>
+    <br> -->
 
-    <!-- Fim do código do início do site -->
-
-
-    <div id="reusofooter">
-
-    </div>
+<!-- script para o funcionameto das listas e da integração via AJAX -->
 
     <script>
-        $(document).ready(function () {
-            $("#reusohead").load("reuso/head.html");
-            $("#reusonavbar").load("reuso/navbar.html");
-            $("#reusofooter").load("reuso/footer.html");
-        })
+
+        $(document).ready(() => {
+            doacao.list();
+        });
+
+        var doacao = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readInsumos',
+                    type: 'GET',
+                    success: data => {
+                        var tx = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope = "row"> ${element.Data} </th>`;
+                            tr += `<th scope = "row"> ${element.Anonimo} </th>`;
+                            tr += `<td scope = "row"> ${element.Nome} </td>`
+                            tr += `<td scope = "row"> ${element.CPF} </td>`
+                            tr += `<td scope = "row"> ${element.NomeProduto} </td>`
+                            tr += `<td scope = "row"> ${element.Email} </td>`
+                            tr += `<td scope = "row"> ${element.Ajuda} </td>`
+                            tr += `<td scope = "row"> ${element.Observacoes} </td>`
+                            tr += `<td scope = "row"> ${element.idDoacoes} </td>`
+                            tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
+                            tr += `</tr>`
+                        });
+                            // tx += '<div class="insert" onclick="doacoes.insert();">Inserir</div>';
+                            // data.forEach(element => {
+                            //     tx += '<div class="user">';
+                            //     tx += `<div style="display: inline-block;"> ${element.Data} | ${element.Anonimo} | ${element.Nome} | ${element.CPF} | ${element.NomeProduto} | ${element.Email} | ${element.Ajuda} | ${element.Observacoes} | ${element.idDoacoes}`;
+                            //     tx += '<div class="actions">';
+                            //     tx += '<div class="action" onclick="doacoes.update(' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
+                            //     tx += '<div class="action" onclick="doacoes.delete(' + element.idDoacoes + ')">Excluir</div></div></div></div>';
+                            // });
+                        $('#main').html(tx);
+                            // main.appendChild(tx);
+                    }
+                });
+            },
+
+
+            list2() {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readInsumos',
+                    type: 'GET',
+                    success: data => {
+                        data.forEach(element => {
+                            var modal = '';
+                            modal += `<div `
+                        });
+                        $('#clarinhalinda').html(dive);
+                    }
+                });
+            }
+
+        };
+
+
+        // objeto que faz as outras ações
+        var doacoes = {
+            
+            
+            // CODIGO ANTIGO
+            // insert() {
+            //     var NomeProdutoDoacao = prompt('Digite o nome do produto:');
+            //     var idDoacaoDoacao = prompt('Digite o id da doação:');
+            //     var DataDoacao = prompt('Digite a data da doação:');
+            //     var TipoDoacao = prompt('Digite o tipo da doação:');
+            //     var ObservacoesDoacao = prompt('Digite uma observação sobre a doação:');
+                
+            //     if (idDoacaoDoacao) {
+            //         console.log("passei pelo if pq existe id da doação")
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: api + '/registrarInsumos',
+            //             data: {
+            //                 NomeProdutoDoacao: `${NomeProdutoDoacao}`,
+            //                 idDoacaoDoacao: `${idDoacaoDoacao}`,
+            //                 DataDoacao: `${DataDoacao}`,
+            //                 TipoDoacao: `${TipoDoacao}`,
+            //                 ObservacoesDoacao: `${ObservacoesDoacao}`,
+            //             },
+            //         }).done(function () {
+            //             doacoes.list();
+            //             console.log("Chamei o doacoes.list dps do insert");
+            //         }).fail(function (msg) {
+            //             console.log("deu ruim aqui");
+            //         });
+            //         console.log("será que rodou o ajax?")
+            //     }
+            // },
+
+            // update(idDoacaoDoacao, oldTitle) {
+
+            //     var NomeProdutoDoacao = prompt('Digite o novo nome:', oldTitle);
+            //     if (NomeProdutoDoacao) {
+            //         if (NomeProdutoDoacao.trim() != '') {
+            //             $.ajax({
+            //                 type: 'POST',
+            //                 url: api + '/updateInsumos',
+            //                 data: {
+            //                     NomeProdutoDoacao: NomeProdutoDoacao,
+            //                     idDoacaoDoacao: idDoacaoDoacao
+            //                 },
+            //             }).done(function () {
+            //                 doacoes.list();
+            //             }).fail(function (msg) {
+            //                 //console.log('FAIL');
+            //             }).always(function (msg) {
+            //                 //console.log('ALWAYS');
+            //             });
+            //         }
+            //     }
+            // },
+
+            delete(idDoacoes) {
+
+                if (confirm('Confirma a exclusão?')) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:3022/deleteInsumos',
+                        data: { idDoacoes: idDoacoes },
+                    }).done(function () {
+                        doacao.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            },
+
+        } 
     </script>
+
 </body>
 
 </html>
