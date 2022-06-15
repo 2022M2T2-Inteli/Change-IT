@@ -35,7 +35,7 @@
         <!-- Modal -->
   
 
-    <br>
+    <!-- <br>
     <div class="d-flex justify-content-center">
         <div class="formulariopesq justify-itens">
         <div class="container" style="width:700px;">  
@@ -122,6 +122,59 @@
       
     </div>
     <br>
+        </div> -->
+
+        <div class="container-fluid">
+            <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                    <p class="arvo fs-2 text-center my-2 col-10"> Doações Monetárias </p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col-12 d-flex justify-content-around">
+                        <div class="col-5">
+                            <div class="input-group mb-3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <center><button id="addac" type="submit"
+                                class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                                data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
+                                Adicionar Doações
+                            </button></center>
+
+                        <!-- Search box -->
+                        <div class="input-group row col-md-6 offset-3">
+                            <input type="search" class="form-control rounded" placeholder="Procurar..."
+                                aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
+                                id="searchFilter" />
+                        </div>
+                    </div>
+
+                    <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                        <table class="table col-12" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th class="fs-6"> ID </th>
+                                    <th class="fs-6">Nome</th>
+                                    <th class="fs-6">Valor</th>
+                                    <th class="fs-6 d-none d-md-table-cell">Obs.</th>
+                                    <th class="fs-6">Data</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="main" class="listaLinhas">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
         
     
@@ -139,26 +192,125 @@
             $("#reusofooter").load("reuso/footer.html");
         })
 
-    function check() {
-        let service = document.getElementById("service");
-        let towelId = document.getElementById("towelInput");
+//     function check() {
+//         let service = document.getElementById("service");
+//         let towelId = document.getElementById("towelInput");
 
-        if (service.value == "bath") {
-            towelId.disabled = false;
-            towelId.required = true;
+//         if (service.value == "bath") {
+//             towelId.disabled = false;
+//             towelId.required = true;
 
-        } else {
-            towelId.disabled = true;
-            towelId.required = false;
-            towelId.value = "";
-    }
-  }
+//         } else {
+//             towelId.disabled = true;
+//             towelId.required = false;
+//             towelId.value = "";
+//     }
+//   }
+
+// quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        $(document).ready(() => {
+            doacoesMon.list();
+        });
+
+        // objeto que faz o get
+        var doacoesMon = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/listaDoacaoMonet',
+                    type: 'POST',
+                    success: data => {
+                        var tr = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope="row"> ${element.idMonetario} </th>`;
+                            tr += `<th scope="row"> ${element.nome} </th>`;
+                            tr += `<td scope="row"> ${element.data} </td>`
+                            tr += `<td scope="row"> ${element.valor} </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idMonetario}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idMonetario}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="assistido.update('${element.idMonetario}')"> Atualizar </td>`
+                            tr += `</tr>`
+                        });
+                        $('#main').html(tr);
+                    }
+                });
+            },
 
 
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                    type: 'GET',
+                    success: data => {
+                        console.log("entrei no success");
+                        data.forEach(element => {
+                            console.log("entrei no forEach do elemento" + id);
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.nome}; id: ${element.idMonetario}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-body"> <div class="row"> 
+                                    <div class="col-sm-4"> <h3> Identificação </h3> 
+                                        <label> Nome completo: ${element.nome} </label> <br /> 
+                                        <label> Data do Pagamento: ${element.data} </label> <br /> 
+                                        <label> Valor: ${element.valor} </label> <br /> 
+                                     </div> 
+                                    <div class="col-sm-4"> <h3> Locais </h3> 
+
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                            if (element.idCadastro == id) {
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
+            }
+
+        };
+        // objeto que faz as outras ações
+        var assistido = {
+
+            delete(idCadastro) {
+
+                if (confirm(`Confirma a exclusão?`)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
+                        data: { idCadastro: idCadastro },
+                    }).done(function () {
+                        assistidos.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            }
+
+        };
 
 
-
-
+        function searchFilter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 
     </script>
 </body>
