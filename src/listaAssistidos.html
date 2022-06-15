@@ -822,92 +822,113 @@
         </div>
 
         <!-- Fim do código html e css da lista do site -->
+    </header>
 
-        <!-- reuso do footer -->
-        <div id="reusofooter">
+    <!-- reuso do footer -->
+    <div id="reusofooter">
 
-        </div>
-        <!-- script para o reuso -->
-        <script>
-            $(document).ready(function () {
-                $("#reusohead").load("reuso/head.html");
-                $("#reusonavbar").load("reuso/navbar.html");
-                $("#reusofooter").load("reuso/footer.html");
-            })
-        </script>
+    </div>
+    <!-- script para o reuso -->
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        })
+    </script>
 
-        <!-- script para o funcionameto das listas e da integração via AJAX -->
-        <script>
-            // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
-            $(document).ready(() => {
-                assistidos.list();
-            });
+    <!-- script para o funcionameto das listas e da integração via AJAX -->
+    <script>
+        // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        $(document).ready(() => {
+            assistidos.list();
+        });
 
-            // objeto que faz o get
-            var assistidos = {
+        // objeto que faz o get
+        var assistidos = {
 
-                list() {
-                    $.ajax({
-                        url: 'http://127.0.0.1:3022/readCadastroAssistido',
-                        type: 'GET',
-                        success: data => {
-                            var tr = '';
-                            data.forEach(element => {
-                                tr += `<tr>`;
-                                tr += `<th scope = "row"> ${element.idCadastro} </th>`;
-                                tr += `<th scope = "row"> ${element.nome_completo} </th>`;
-                                tr += `<td scope = "row"> ${element.clamado} </td>`
-                                tr += `<td scope = "row"> ${element.possui_documentos} </td>`
-                                tr += `<td scope = "row"> ${element.observacao} </td>`
-                                tr += `<td scope = "row"> ${element.data} </td>`
-                                tr += `<td style="background-color: red; color: white" scope = "row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
-                                tr += `<td style="background-color: green; color: white" scope = "row" onclick="assistido.vis('${element.idCadastro}')"> Visualizar </td>`
-                                tr += `<td style="background-color: blue; color: white" scope = "row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
-                                tr += `</tr>`
-                            });
-                            $('#main').html(tr);
-                        }
-                    });
-                },
-
-
-                list2() {
-                    $.ajax({
-                        url: 'http://127.0.0.1:3022/readCadastroAssistido',
-                        type: 'GET',
-                        success: data => {
-                            data.forEach(element => {
-                                var modal = '';
-                                modal += `<div `
-                            });
-                            $('#stefano').html(dive);
-                        }
-                    });
-                }
-
-            };
-
-            // objeto que faz as outras ações
-            var assistido = {
-
-                delete(nome_completo) {
-
-                    if (confirm(`Confirma a exclusão?`)) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
-                            data: { nome_completo: nome_completo },
-                        }).done(function () {
-                            assistidos.list();
-                        }).fail(function (msg) {
-                            console.log('FAIL');
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                    type: 'GET',
+                    success: data => {
+                        var tr = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope = "row"> ${element.idCadastro} </th>`;
+                            tr += `<th scope = "row"> ${element.nome_completo} </th>`;
+                            tr += `<td scope = "row"> ${element.clamado} </td>`
+                            tr += `<td scope = "row"> ${element.possui_documentos} </td>`
+                            tr += `<td scope = "row"> ${element.observacao} </td>`
+                            tr += `<td scope = "row"> ${element.data} </td>`
+                            tr += `<td style="background-color: red; color: white" scope = "row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope = "row" onclick="assistidos.list2('${element.idCadastro}')" data-bs-target="#myModal${element.idCadastro}"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope = "row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
+                            tr += `</tr>`
                         });
+                        $('#main').html(tr);
                     }
-                }
+                });
+            },
 
+
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                    type: 'GET',
+                    success: data => {
+                        console.log("entrei no success");
+                        data.forEach(element => {
+                            console.log("entrei no forEach");
+                            var modal = '';
+                            modal += `<div id="myModal${id}" class="myModals"> <div class="modal-dialog vis"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div>`;
+
+                            modal += `<div class="modal-body"> <div class="row">`;
+                            modal += `<div class="col-sm-4"> <h3> Identificação </h3>`;
+                            modal += `<label>Nome completo: ${element.nome_completo}</label> <br />`;
+                            modal += `<label>Nome social: ${element.clamado}</label> <br />`;
+                            modal += `<label>Documento: ${element.possui_documentos}</label> <br />`;
+                            modal += `<label>Data de Nascimento: ${element.nascimento}</label> <br />`;
+                            modal += `<label>Observações: ${element.observacao}</label> <br />`;
+
+                            modal += `<div class="col-sm-4"> <h3> Lugar </h3>`;
+                            modal += `<div class="col-sm-4"> <h3> Tratamento </h3>`;
+
+                            console.log("o modal é" + modal)
+                            if (element.idCadastro == id) {
+                                document.getElementById("stefano").append(modal);
+                                // $('#myModal' + id).modal('show');
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
             }
 
-        </script>
+        };
+
+        // objeto que faz as outras ações
+        var assistido = {
+
+            delete(idCadastro) {
+
+                if (confirm(`Confirma a exclusão?`)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
+                        data: { idCadastro: idCadastro },
+                    }).done(function () {
+                        assistidos.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            }
+
+        }
+
+    </script>
 
 
 </body>

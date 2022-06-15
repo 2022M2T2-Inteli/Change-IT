@@ -401,7 +401,7 @@ app.post("/deleteCadastroAssistido", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    sql = "DELETE FROM tbCadastramento WHERE nome_completo = '" + req.body.idCadastro + "'";
+    sql = "DELETE FROM tbCadastramento WHERE idCadastro = '" + req.body.idCadastro + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
         if (err) {
