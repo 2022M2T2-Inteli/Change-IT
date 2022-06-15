@@ -97,9 +97,10 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
     db.close();
 })
 
-// Endpoints relacionados às doações
+// Endpoints relacionados a tabela Doacoes
 
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
+<<<<<<< Updated upstream
     //doador
     const nameInsumos = req.body.nomeInsumos
     // const idadeInsumos = req.body.idadeInsumos
@@ -107,9 +108,18 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
     const NajudaInsumos = req.body.Nao
+=======
+    
+    const datainsumos = req.body.dataInsumos
+    const SaAnonimoInsumos = req.body.SimAnonimo
+    const NaAnonimoInsumos = req.body.NaoAnonimo
+    const nameInsumos = req.body.nomeInsumos
+    const documentoInsumos = req.body.CPFInsumos
+    const produtoInsumos = req.body.NomeProduto
+    const emailInsumos = req.body.emailInsumo
+>>>>>>> Stashed changes
     const SajudaEntrega = req.body.SimAjuda
     const NajudaEntrega = req.body.NaoAjuda
-    const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
     const datainsumos = req.body.dataInsumos
 
@@ -146,7 +156,7 @@ app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informaç�
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Doação ORDER BY idDoação COLLATE NOCASE';
+    var sql = 'SELECT * FROM Doacoes ORDER BY idDoacoes COLLATE NOCASE';
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
@@ -162,6 +172,9 @@ app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuári
     db.run(sql, []);
     db.close(); // Fecha o banco
 });
+
+// Endpoints relacionados a tabela Montarios
+
 
 // Endpoints relacionados aos voluntários
 
@@ -296,22 +309,6 @@ app.post('/deleteColaborador', (req, res) => {
     db.close(); // Fecha o banco
 });
 
-// Endpoints relacionados aos doadores
-// 	insertDoador (post)
-// 	readDoador (get)
-
-//pendente
-
-app.post("/insertDoador", (req, res) => { //Método de inserir dados dos doares
-    sql = "INSERT INTO user (name, email, senha, idade, recorrencia) VALUES ('" + username + "', '" + email + "', '" + age + "')";
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
-    db.close(); // Fecha o banco
-});
-
-app.get("/readDoador", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    db.run(get)
-});
 
 // Endpoints relacionados às atividades
 // 	insertAtividade (post)
