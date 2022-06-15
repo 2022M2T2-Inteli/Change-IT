@@ -102,43 +102,21 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     
     const datainsumos = req.body.dataInsumos
-    const SaAnonimoInsumos = req.body.SimAnonimo
-    const NaAnonimoInsumos = req.body.NaoAnonimo
+    const AnonimoInsumos = req.body.AnonimoIns
     const nameInsumos = req.body.nomeInsumos
     const documentoInsumos = req.body.CPFInsumos
     const produtoInsumos = req.body.NomeProduto
     const emailInsumos = req.body.emailInsumo
-    const SajudaEntrega = req.body.SimAjuda
-    const NajudaEntrega = req.body.NaoAjuda
+    const ajudaEntrega = req.body.AjudaIns
     const obsIns = req.body.ObsInsumos
+    
+    sql = `INSERT INTO Doacoes (Data, Anonimo, Nome, CPF, NomeProduto, Email, Ajuda, Observacoes) VALUES ('${req.body.dataInsumos}','${req.body.AnonimoIns}','${req.body.nomeInsumos}', '${req.body.CPFInsumos}', '${req.body.NomeProduto}', '${req.body.emailInsumo}', '${req.body.AjudaIns}', '${req.body.ObsInsumos}')`
+    
 
-    if (SajudaInsumos) {
-        if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
-        } else {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
-        }
-    } else {
-        if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
-        } else {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
-        }
-    }
-    sqld = "INSERT INTO Doação (NomeProduto, Data, Observações) VALUES ('" + produtoInsumos + "', '" + datainsumos + "', '" + obsIns + "')";
-
-    db.run(sql);
-    db.run(sqld);
-    res.end()
-})
-// app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-//     const nome = req.body.nome
-//     const endereco = req.body.endereco
-//     var sql = "INSERT Doação SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
-//     var db = new sqlite3.Database(DBSOURCE);
-//     db.run(sql, []);
-//     db.close();;
-// })
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
 
 app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     res.statusCode = 200;
@@ -153,14 +131,24 @@ app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informaç�
         res.json(rows);
     });
     db.close();
-})
+});
 
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
-    sql = "DELETE FROM Doação WHERE idDoação= '" + req.body.id + "'";
+    sql = "DELETE FROM Doacoes WHERE idDoacoes= '" + req.body.idDoacoas + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
 });
+
+    
+// app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+//     const nome = req.body.nome
+//     const endereco = req.body.endereco
+//     var sql = "INSERT Doação SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
+//     var db = new sqlite3.Database(DBSOURCE);
+//     db.run(sql, []);
+//     db.close();;
+// })
 
 // Endpoints relacionados a tabela Montarios
 
