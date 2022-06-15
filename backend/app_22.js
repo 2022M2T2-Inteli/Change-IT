@@ -387,7 +387,7 @@ app.get("/readCadastroAssistido", (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     var db = new sqlite3.Database(DBSOURCE);
-    var sql = 'SELECT * FROM tbCadastramento ORDER BY nome_completo COLLATE NOCASE';
+    var sql = 'SELECT * FROM tbCadastramento ORDER BY idCadastro COLLATE NOCASE';
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
