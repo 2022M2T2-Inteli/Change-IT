@@ -22,47 +22,21 @@
         <!-- Fim da NavBar -->
         <!-- Início do código do início do site -->
 
-        <!-- Código do Modal para os assistidos -->
+        <!-- Código do Modal para o adicionar assistidos -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
         <div class="modal fade" id="modalAddAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Adicionar Assistido</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- <form>
-                            <div class="container col-12 align-items-center mb-2" id="inputsAssistidos">
-                                Aqui estão todos os possíveis inputs para assistidos
 
-                                <select type="text" name="assistedID" id="assistido" placeholder="Nome do assistido"
-                                    class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
-                                    <option>Oficina X</option>
-                                    <option>Oficina Z</option>
-                                    <option>Oficina Y</option>
-                                </select>
-
-                                <select name="type" id="service"
-                                    class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" onchange="check()"
-                                    required>
-                                    <option value="atv"> Atividade </option>
-                                    <option value="bath"> Banho </option>
-                                    <option value="clothes"> Roupa </option>
-                                    <option value="ubs"> Ubs </option>
-                                    <option value="cras"> Cras </option>
-                                    <option value="poupa_tempo"> PoupaTempo </option>
-                                    <option value="transport"> Vale Transporte </option>
-                                </select>
-
-                                <input placeholder="Número da toalha" id="towelInput"
-                                    class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" disabled="true"
-                                    type="number" min="0" />
-
-                                <input name="observation" type="text" id="obs" placeholder="Observações"
-                                    class="col-md-5 col-sm-12 mx-auto w-100 form-control my-2" />
-                            </div>
-                        </form> -->
+                        <!-- formulário para adicionar um assistido -->
                         <iframe name="iframe" id="iframe" style="display:none;"></iframe>
                         <form action="/cadastro" method="POST" target="iframe">
 
@@ -698,6 +672,7 @@
                         </form>
 
                     </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     </div>
@@ -705,44 +680,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalVisAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog vis">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Assistido</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" id="stefano">
-
-                            <div class="col-sm-4">
-                                Nome
-                                Idade
-                                dp
-
-                            </div>
-
-                            <div class="col-sm-4">
-                                lugares
-                                praca
-
-                            </div>
-                            <div class="col-sm-4">
-                                pia
-                                Alkeil
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fim do código do modal para os assistidos -->
+        <!-- Fim do código do modal para o cadastro de assistidos -->
 
         <!-- Código para a página com a lista de assistidos -->
 
@@ -756,33 +694,10 @@
                     <div class="col-12 d-flex justify-content-around">
                         <div class="col-5">
                             <div class="input-group mb-3">
-                                <!-- <span class="input-group-text" id="basic-addon1">
-                            @
-                          </span>
-                          <input id="serviceFilterInput" type="text" onkeyup="serviceFilter();" class="form-control"
-                            placeholder="Serviço" aria-label="Serviço" aria-describedby="basic-addon1">
-                        </div>
-                      </div>
-                      <div class="col-5">
-                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="basic-addon1">
-                            ?
-                          </span>
-                          <input id="assistedFilterInput" type="text" onkeyup="assistedFilter();" class="form-control"
-                            placeholder="Assistido" aria-label="Assistido" aria-describedby="basic-addon1"> -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="col-11 d-flex mx-auto">
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">
-                          0
-                        </span>
-                        <input id="assistedFilterInput" type="text" onkeyup="dateFilter();" class="form-control" placeholder="Data"
-                          aria-label="Data" aria-describedby="basic-addon1">
-                      </div>
-                    </div> -->
                     <div>
                         <center><button id="addac" type="submit"
                                 class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
@@ -795,8 +710,6 @@
                             <input type="search" class="form-control rounded" placeholder="Procurar..."
                                 aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
                                 id="searchFilter" />
-                            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke"
-                                onclick="doacao.list();;">Procurar</button>
                         </div>
                     </div>
 
