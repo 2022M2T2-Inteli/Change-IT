@@ -164,8 +164,9 @@
         <!-- Fim do código do modal para as doacoes de insumos -->
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
-                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-10"> Controle doações de insumos </p>
+                <div class=" d-flex flex-row justify-content-evenly">
+                    <!-- <p class="arvo fs-2 text-center my-2 col-10"> Controle doações de insumos </p> -->
+                    <h1>Controle de insumos</h1>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -268,7 +269,7 @@
                     url: 'http://127.0.0.1:3022/readInsumos',
                     type: 'GET',
                     success: data => {
-                        var tx = '';
+                        var tr = '';
                         data.forEach(element => {
                             tr += `<tr>`;
                             tr += `<th scope = "row"> ${element.Data} </th>`;
@@ -293,7 +294,7 @@
                             //     tx += '<div class="action" onclick="doacoes.update(' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
                             //     tx += '<div class="action" onclick="doacoes.delete(' + element.idDoacoes + ')">Excluir</div></div></div></div>';
                             // });
-                        $('#main').html(tx);
+                        $('#main').html(tr);
                             // main.appendChild(tx);
                     }
                 });

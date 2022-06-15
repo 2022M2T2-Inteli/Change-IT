@@ -100,15 +100,6 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 // Endpoints relacionados a tabela Doacoes
 
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-<<<<<<< Updated upstream
-    //doador
-    const nameInsumos = req.body.nomeInsumos
-    // const idadeInsumos = req.body.idadeInsumos
-    const documentoInsumos = req.body.documentoInsumos
-    const emailInsumos = req.body.emailInsumos
-    const SajudaInsumos = req.body.Sim
-    const NajudaInsumos = req.body.Nao
-=======
     
     const datainsumos = req.body.dataInsumos
     const SaAnonimoInsumos = req.body.SimAnonimo
@@ -117,11 +108,9 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const documentoInsumos = req.body.CPFInsumos
     const produtoInsumos = req.body.NomeProduto
     const emailInsumos = req.body.emailInsumo
->>>>>>> Stashed changes
     const SajudaEntrega = req.body.SimAjuda
     const NajudaEntrega = req.body.NaoAjuda
     const obsIns = req.body.ObsInsumos
-    const datainsumos = req.body.dataInsumos
 
     if (SajudaInsumos) {
         if (SajudaEntrega) {
