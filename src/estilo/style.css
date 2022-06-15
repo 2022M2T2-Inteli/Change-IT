@@ -757,14 +757,27 @@ nav a {
     text-align: center;
 }
 
+.vis {
+    display: inline;
+}
+
+.modal-dialog {
+    width: 300%;
+    height: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}
+
 .listaLinhas {
     color: #000000;
     font-size: small;
 
-}
-
-tr th .row {
-    width: 100px;
 }
 
 .insert {
@@ -855,7 +868,7 @@ tr th .row {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
         0 3px 1px -2px rgba(0, 0, 0, 0.12),
         0 1px 5px 0 rgba(0, 0, 0, 0.2);
-    
+
 }
 
 .imgSobreN {
@@ -898,26 +911,26 @@ tr th .row {
     background: linear-gradient(300deg, white, #167BCE);
 }
 
-a:link { 
-    text-decoration: none; 
+a:link {
+    text-decoration: none;
     color: #000000;
 }
 
 
-a:visited { 
-    text-decoration: none; 
+a:visited {
+    text-decoration: none;
     color: #000000;
 }
 
 
-a:hover { 
-    text-decoration: none; 
+a:hover {
+    text-decoration: none;
     color: #167BCE;
 }
 
 
-a:active { 
-    text-decoration: none; 
+a:active {
+    text-decoration: none;
 }
 
 /* css para o carrossel */
