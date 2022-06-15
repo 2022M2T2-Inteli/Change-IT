@@ -721,7 +721,6 @@
                                     <th class="fs-6">Nome</th>
                                     <th class="fs-6">Apelido</th>
                                     <th class="fs-6">Documento</th>
-                                    <th class="fs-6 d-none d-md-table-cell">Obs.</th>
                                     <th class="fs-6">Data</th>
                                 </tr>
                             </thead>
@@ -776,7 +775,6 @@
                             tr += `<th scope="row"> ${element.nome_completo} </th>`;
                             tr += `<td scope="row"> ${element.clamado} </td>`
                             tr += `<td scope="row"> ${element.possui_documentos} </td>`
-                            tr += `<td scope="row"> ${element.observacao} </td>`
                             tr += `<td scope="row"> ${element.data} </td>`
                             tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
                             tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
@@ -805,7 +803,8 @@
                                         <label> Nome completo: ${element.nome_completo} </label> <br /> 
                                         <label> Nome social: ${element.clamado} </label> <br /> 
                                         <label> Documento: ${element.possui_documentos} </label> <br /> 
-                                        <label> Data de Nascimento: ${element.nascimento} </label> <br /> </div> 
+                                        <label> Data de Nascimento: ${element.nascimento} </label> <br />
+                                        <label> Observação: ${element.observacao} </label> <br /> </div>
                                     <div class="col-sm-4"> <h3> Locais </h3> 
                                         <h5> Endereços </h5>
                                         <label>  Marquis ou viaduto? ${element.marquises_viadutos} </label> <br />
