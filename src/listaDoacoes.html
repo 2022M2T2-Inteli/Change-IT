@@ -22,14 +22,14 @@
         <!-- Fim da NavBar -->
         <!-- Início do código do início do site -->
 
-        <h1 style="text-align:center"> Controle de insumos </h1>
+        <h1 style="text-align:center"> Insumos e Pix Doados </h1>
         <br>
         <!-- Search box -->
         <div class="input-group row col-md-6 offset-3">
             <input type="search" class="form-control rounded"
                 placeholder="Digite aqui para procurar o registro de um insumo doado" aria-label="Search"
-                aria-describedby="search-addon" name="namedoacao" id="iddoacao"/>
-            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke" onclick="doacao.list();;">Procurar</button>
+                aria-describedby="search-addon" />
+            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
         </div>
     </header>
 
@@ -37,12 +37,14 @@
     <br>
     <div class="d-flex justify-content-center">
         <div class="formulariopesq justify-itens">
-            <div id="main"></div>
+            <h5>Aqui terá o código para esta caixa receber todos os registros do banco de dados</h5>
+            <h6>Eles precisarão ser clicáveis e, quando clicados, deverão mostrar mais detalhes sobre cada tuplas</h6>
         </div>
     </div>
     <br>
 
     <!-- Fim do código do início do site -->
+
 
     <div id="reusofooter">
 
@@ -55,122 +57,6 @@
             $("#reusofooter").load("reuso/footer.html");
         })
     </script>
-    <script>
-        api = 'http://127.0.0.1:3022'
-
-        $(document).ready(() => {
-            doacao.list();
-        });
-
-        var doacao = {
-
-            list() {
-                $.ajax({
-                    url: 'http://127.0.0.1:3022/readInsumos',
-                    type: 'GET',
-                    success: data => {
-                        data.forEach(element => {
-                            //     const tr = document.createElemenet("tr");
-                            //     tr.innerHTML = `
-                            //     <tr>
-                            //         <th scope="row">${element.NomeProdutoDoacao} </th>
-                            //     <tr>`
-                            // })
-
-
-                            var tx = '';
-                            tx += '<div class="insert" onclick="Doação.insert();">Inserir</div>';
-                            data.forEach(element => {
-                                tx += '<div class="user">';
-                                tx += `<div style="display: inline-block;"> ${element.idDoação} | ${element.NomeProduto} | ${element.Data} | ${element.Tipo} | ${element.Observações}`;
-                                tx += '<div class="actions">';
-                                tx += '<div class="action" onclick="doacoes.update(' + element.idDoação + ',\'' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
-                                tx += '<div class="action" onclick="doacoes.delete(' + element.idDoação + ')">Excluir</div></div></div></div>';
-                            });
-                            $('#main').html(tx);
-                            // main.appendChild(tx);
-                        })
-                    }
-                });
-
-
-            }
-
-        };
-        var doacoes = {
-
-            insert() {
-                var NomeProdutoDoacao = prompt('Digite o nome do produto:');
-                var idDoacaoDoacao = prompt('Digite o id da doação:');
-                var DataDoacao = prompt('Digite a data da doação:');
-                var TipoDoacao = prompt('Digite o tipo da doação:');
-                var ObservacoesDoacao = prompt('Digite uma observação sobre a doação:');
-                
-                if (idDoacaoDoacao) {
-                    console.log("passei pelo if pq existe id da doação")
-                    $.ajax({
-                        type: 'POST',
-                        url: api + '/registrarInsumos',
-                        data: {
-                            NomeProdutoDoacao: `${NomeProdutoDoacao}`,
-                            idDoacaoDoacao: `${idDoacaoDoacao}`,
-                            DataDoacao: `${DataDoacao}`,
-                            TipoDoacao: `${TipoDoacao}`,
-                            ObservacoesDoacao: `${ObservacoesDoacao}`,
-                        },
-                    }).done(function () {
-                        doacoes.list();
-                        console.log("Chamei o doacoes.list dps do insert");
-                    }).fail(function (msg) {
-                        console.log("deu ruim aqui");
-                    });
-                    console.log("será que rodou o ajax?")
-                }
-            },
-
-            // update(idDoacaoDoacao, oldTitle) {
-
-            //     var NomeProdutoDoacao = prompt('Digite o novo nome:', oldTitle);
-            //     if (NomeProdutoDoacao) {
-            //         if (NomeProdutoDoacao.trim() != '') {
-            //             $.ajax({
-            //                 type: 'POST',
-            //                 url: api + '/updateInsumos',
-            //                 data: {
-            //                     NomeProdutoDoacao: NomeProdutoDoacao,
-            //                     idDoacaoDoacao: idDoacaoDoacao
-            //                 },
-            //             }).done(function () {
-            //                 doacoes.list();
-            //             }).fail(function (msg) {
-            //                 //console.log('FAIL');
-            //             }).always(function (msg) {
-            //                 //console.log('ALWAYS');
-            //             });
-            //         }
-            //     }
-            // },
-
-            delete(idDoacaoDoacao) {
-
-                if (confirm('Confirma a exclusão?')) {
-                    $.ajax({
-                        type: 'POST',
-                        url: api + '/deleteInsumos',
-                        data: { idDoacaoDoacao: idDoacaoDoacao },
-                    }).done(function () {
-                        doacoes.list();
-                    }).fail(function (msg) {
-                        //console.log('FAIL');
-                    }).always(function (msg) {
-                        //console.log('ALWAYS');
-                    });
-                }
-            },
-
-            } 
-    </script>
-
 </body>
 
 </html>

@@ -757,66 +757,43 @@ nav a {
     text-align: center;
 }
 
-.vis {
-    display: inline;
-}
-
-.modal-dialog {
-    width: 300%;
-    height: 90%;
-    margin: 0;
-    padding: 0;
-}
-
-.modal-content {
-    height: auto;
-    min-height: 100%;
-    border-radius: 0;
-}
-
-.listaLinhas {
-    color: #000000;
-    font-size: small;
-
-}
-
 .insert {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    color: blue;
-    cursor: pointer;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+	color: blue;
+	cursor: pointer;
 }
 
 .insert:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .actions {
-    display: block;
-    float: right;
+	display: block;
+	float: right;
 }
 
 .action {
-    display: inline-block;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    color: blue;
-    cursor: pointer;
+	display: inline-block;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+	color: blue;
+	cursor: pointer;
 }
 
 .action:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .user {
-    padding: 1rem;
-    margin: 1rem;
-    background-color: #F0F0F0;
-    text-align: left;
+	padding: 1rem;
+	margin: 1rem;
+	background-color: #F0F0F0;
+	text-align: left;
 }
 
 .folha {
@@ -863,14 +840,6 @@ nav a {
     background-color: #FEEF10;
 }
 
-.botaoquero {
-    color: black;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-        0 3px 1px -2px rgba(0, 0, 0, 0.12),
-        0 1px 5px 0 rgba(0, 0, 0, 0.2);
-
-}
-
 .imgSobreN {
 
     background-image: "url(carro2.jpeg)";
@@ -909,28 +878,6 @@ nav a {
     background: #ffffff;
     background: rgb(254, 239, 16);
     background: linear-gradient(300deg, white, #167BCE);
-}
-
-a:link {
-    text-decoration: none;
-    color: #000000;
-}
-
-
-a:visited {
-    text-decoration: none;
-    color: #000000;
-}
-
-
-a:hover {
-    text-decoration: none;
-    color: #167BCE;
-}
-
-
-a:active {
-    text-decoration: none;
 }
 
 /* css para o carrossel */
