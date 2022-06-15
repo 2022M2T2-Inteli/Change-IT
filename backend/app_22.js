@@ -100,9 +100,9 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 // Endpoints relacionados às doações
 
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-    //doador
+    
+    const datainsumos = req.body.dataInsumos
     const nameInsumos = req.body.nomeInsumos
-    // const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
@@ -111,7 +111,7 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const NajudaEntrega = req.body.NaoAjuda
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
-    const datainsumos = req.body.dataInsumos
+    
 
     if (SajudaInsumos) {
         if (SajudaEntrega) {
