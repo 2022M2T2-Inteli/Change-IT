@@ -71,6 +71,7 @@ app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos d
     db.run(sql);
     res.end();
 })
+
 app.put("/atualizarAssistido", (req, res) => {
     const nome = req.body.nome
     const endereco = req.body.endereco
@@ -95,15 +96,13 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
     });
     db.close();
 })
-app.delete("/deleteAssistido", (req, res) => { //Método Delete, delete um usuário do banco de dados, por exemplo
-    db.run(delet);
-})
 
 // Endpoints relacionados às doações
+
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     //doador
     const nameInsumos = req.body.nomeInsumos
-    const idadeInsumos = req.body.idadeInsumos
+    // const idadeInsumos = req.body.idadeInsumos
     const documentoInsumos = req.body.documentoInsumos
     const emailInsumos = req.body.emailInsumos
     const SajudaInsumos = req.body.Sim
@@ -112,34 +111,57 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const NajudaEntrega = req.body.NaoAjuda
     const produtoInsumos = req.body.produtoInsumos
     const obsIns = req.body.ObsInsumos
+    const datainsumos = req.body.dataInsumos
+
     if (SajudaInsumos) {
         if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
+            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
         } else {
-            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
+            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
         }
     } else {
         if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
+            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
         } else {
-            sql = "INSERT INTO Doador (Nome, Idade, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + idadeInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
+            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
         }
     }
-    sqld = "INSERT INTO Doação (NomeProduto, Observações) VALUES ('" + produtoInsumos + "', '" + obsIns + "')";
+    sqld = "INSERT INTO Doação (NomeProduto, Data, Observações) VALUES ('" + produtoInsumos + "', '" + datainsumos + "', '" + obsIns + "')";
 
     db.run(sql);
     db.run(sqld);
     res.end()
 })
-app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
+// app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
+//     const nome = req.body.nome
+//     const endereco = req.body.endereco
+//     var sql = "INSERT Doação SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
+//     var db = new sqlite3.Database(DBSOURCE);
+//     db.run(sql, []);
+//     db.close();;
+// })
+
+app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Doação ORDER BY idDoação COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
 })
-app.get("/readInsumo", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
-    db.run(get);
-})
+
 app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
-    db.run(delet);
-})
+    sql = "DELETE FROM Doação WHERE idDoação= '" + req.body.id + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
 
 // Endpoints relacionados aos voluntários
 
@@ -246,6 +268,7 @@ app.post('/updateColaborador', (req, res) => {
     if (req.body.SenhaColab) {
         sql += `, Senha = '${req.body.SenhaColab}'`
     };
+
     sql += ` WHERE CPF = '${req.body.CPFColab}'`;
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -335,7 +358,7 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
     });
     db.close(); // Fecha o banco
 });
-app.post("/Educadores", (req,res) => {
+app.post("/Educadores", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
     var db = new sqlite3.Database(DBSOURCE);
@@ -345,7 +368,7 @@ app.post("/Educadores", (req,res) => {
 });
 app.get("/readEducadores", (req, res) => {
     res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     var db = new sqlite3.Database(DBSOURCE);
     var sql = 'SELECT * FROM Educador';
@@ -357,7 +380,57 @@ app.get("/readEducadores", (req, res) => {
     });
     db.close();
 });
+
 //Api Ficha Cadastro
+// READ Cadastros de assistidos (GET)
+app.get("/readCadastroAssistido", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    var db = new sqlite3.Database(DBSOURCE);
+    var sql = 'SELECT * FROM tbCadastramento ORDER BY idCadastro COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+});
+
+// Alternativa sobre o modal seria abrir outra página e mandar o endpoint pra ela
+/* app.get("/readCadastroEspecifico", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    var db = new sqlite3.Database(DBSOURCE);
+    var sql = 'SELECT * FROM tbCadastramento WHERE idCadastro = ' + req.body.idCadastro;
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+
+    location.replace("../src/visualizarAssistido.html")
+}); */
+
+app.post("/deleteCadastroAssistido", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    sql = "DELETE FROM tbCadastramento WHERE idCadastro = '" + req.body.idCadastro + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
+
 app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -365,8 +438,7 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     
     let dt = req.body.data
     let nomec = req.body.NomeCA
-    let nomesocialac = req.body.NomeSocialCA
-    // let p_doc = req.body.possuidoc    
+    let nomesocialac = req.body.NomeSocialCA   
     let documento = req.body.DocumentoCA
     let datanasc = req.body.NascCA
     let obs = req.body.observacao
