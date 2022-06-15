@@ -98,6 +98,7 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 })
 
 // Endpoints relacionados às doações
+
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
     //doador
     const nameInsumos = req.body.nomeInsumos
