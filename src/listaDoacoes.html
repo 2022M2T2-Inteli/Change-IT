@@ -29,7 +29,7 @@
             <input type="search" class="form-control rounded"
                 placeholder="Digite aqui para procurar o registro de um insumo doado" aria-label="Search"
                 aria-describedby="search-addon" name="namedoacao" id="iddoacao"/>
-            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke" onclick=";">Procurar</button>
+            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke" onclick="doacao.list();;">Procurar</button>
         </div>
     </header>
 
@@ -59,7 +59,7 @@
         api = 'http://127.0.0.1:3022'
 
         $(document).ready(() => {
-            Doação.list();
+            doacao.list();
         });
 
         var doacao = {
