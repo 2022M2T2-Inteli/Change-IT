@@ -268,7 +268,7 @@
                     url: 'http://127.0.0.1:3022/readInsumos',
                     type: 'GET',
                     success: data => {
-                        var tx = '';
+                        var tr = '';
                         data.forEach(element => {
                             tr += `<tr>`;
                             tr += `<th scope = "row"> ${element.Data} </th>`;
@@ -281,8 +281,8 @@
                             tr += `<td scope = "row"> ${element.Observacoes} </td>`
                             tr += `<td scope = "row"> ${element.idDoacoes} </td>`
                             tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
-                            tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
-                            tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
+                            // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
+                            // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
                             tr += `</tr>`
                         });
                             // tx += '<div class="insert" onclick="doacoes.insert();">Inserir</div>';
@@ -293,7 +293,7 @@
                             //     tx += '<div class="action" onclick="doacoes.update(' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
                             //     tx += '<div class="action" onclick="doacoes.delete(' + element.idDoacoes + ')">Excluir</div></div></div></div>';
                             // });
-                        $('#main').html(tx);
+                        $('#main').html(tr);
                             // main.appendChild(tx);
                     }
                 });

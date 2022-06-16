@@ -100,56 +100,22 @@ app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informaç
 // Endpoints relacionados a tabela Doacoes
 
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-<<<<<<< Updated upstream
-    //doador
-    const nameInsumos = req.body.nomeInsumos
-    // const idadeInsumos = req.body.idadeInsumos
-    const documentoInsumos = req.body.documentoInsumos
-    const emailInsumos = req.body.emailInsumos
-    const SajudaInsumos = req.body.Sim
-    const NajudaInsumos = req.body.Nao
-=======
     
     const datainsumos = req.body.dataInsumos
-    const SaAnonimoInsumos = req.body.SimAnonimo
-    const NaAnonimoInsumos = req.body.NaoAnonimo
+    const AnonimoInsumos = req.body.AnonimoIns
     const nameInsumos = req.body.nomeInsumos
     const documentoInsumos = req.body.CPFInsumos
     const produtoInsumos = req.body.NomeProduto
     const emailInsumos = req.body.emailInsumo
->>>>>>> Stashed changes
-    const SajudaEntrega = req.body.SimAjuda
-    const NajudaEntrega = req.body.NaoAjuda
+    const AjudaEntrega = req.body.AjudaIns
     const obsIns = req.body.ObsInsumos
-    const datainsumos = req.body.dataInsumos
 
-    if (SajudaInsumos) {
-        if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + SajudaEntrega + "')";
-        } else {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + SajudaInsumos + "', '" + NajudaEntrega + "')";
-        }
-    } else {
-        if (SajudaEntrega) {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + SajudaEntrega + "')";
-        } else {
-            sql = "INSERT INTO Doador (Nome, CPF, Email, Anônimo, Ajuda) VALUES ('" + nameInsumos + "', '" + documentoInsumos + "', '" + emailInsumos + "', '" + NajudaInsumos + "', '" + NajudaEntrega + "')";
-        }
-    }
-    sqld = "INSERT INTO Doação (NomeProduto, Data, Observações) VALUES ('" + produtoInsumos + "', '" + datainsumos + "', '" + obsIns + "')";
-
-    db.run(sql);
-    db.run(sqld);
-    res.end()
-})
-// app.put("/atualizarInsumos", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-//     const nome = req.body.nome
-//     const endereco = req.body.endereco
-//     var sql = "INSERT Doação SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
-//     var db = new sqlite3.Database(DBSOURCE);
-//     db.run(sql, []);
-//     db.close();;
-// })
+    sql = `INSERT INTO Doacoes (Data, Anonimo, Nome, CPF, NomeProduto, Email, Ajuda, Observacoes) VALUES ('${req.body.dataInsumos}','${req.body.AnonimoIns}','${req.body.nomeInsumos}', '${req.body.CPFInsumos}', '${req.body.NomeProduto}', '${req.body.emailInsumo}', '${req.body.AjudaIns}', '${req.body.ObsInsumos}')`
+    
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, []);
+    db.close(); // Fecha o banco
+});
 
 app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     res.statusCode = 200;
@@ -164,14 +130,23 @@ app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informaç�
         res.json(rows);
     });
     db.close();
-})
+});
 
-app.delete("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
-    sql = "DELETE FROM Doação WHERE idDoação= '" + req.body.id + "'";
+app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    sql = "DELETE FROM Doacoes WHERE idDoacoes = '" + req.body.idDoacoes + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
     db.close(); // Fecha o banco
 });
+
 
 // Endpoints relacionados a tabela Montarios
 
@@ -432,13 +407,10 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
     var db = new sqlite3.Database(DBSOURCE);
-
-    const { data } = req.body
+    
     let dt = req.body.data
     let nomec = req.body.NomeCA
-    let nomesocialac = req.body.NomeSocialCA
-    // let documentosim = req.body.docsim
-    // let documentonao = req.body.docnao
+    let nomesocialac = req.body.NomeSocialCA   
     let documento = req.body.DocumentoCA
     let datanasc = req.body.NascCA
     let obs = req.body.observacao
@@ -453,65 +425,18 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let outro_locais = req.body.Locais
     let albergue = req.body.moradia_Albergue
     let domicilios = req.body.domicilio_Particular
-    // let periodo1 = req.body.Cad1 
-    // let periodo2 = req.body.Cad2
-    // let periodo3 = req.body.Cad3
-    // let periodo4 = req.body.Cad4
-    // let tempo1 = req.body.Tempo1
-    // let tempo2 = req.body.Tempo2
-    // let tempo3 = req.body.Tempo3
-    // let tempo4 = req.body.Tempo4
-    // let tempo5 = req.body.Tempo5
-    // let tempo6 = req.body.Tempo6
-    // let motivos1 = req.body.Motivo1
-    // let motivos2 = req.body.Motivo2
-    // let motivos3 = req.body.Motivo3
-    // let motivos4 = req.body.Motivo4
-    // let motivos5 = req.body.Motivo5
-    // let motivos6 = req.body.Motivo6
-    // let motivos7 = req.body.Motivo7
-    // let motivos8 = req.body.Motivo8
-    // let motivos9 = req.body.Motivo9
-    // let motivos10 = req.body.Motivo10
-    // let tempomora1 = req.body.tmp1
-    // let tempomora2 = req.body.tmp2
-    // let tempomora3 = req.body.tmp3
-    // let tempomora4 = req.body.tmp4
-    // let tempomora5 = req.body.tmp5
-    // let tempomora6 = req.body.tmp6
-    // let familias = req.body.fSim
-    // let familian = req.body.fNao
-    // let contatofora1 = req.body.contato1
-    // let contatofora2 = req.body.contato2
-    // let contatofora3 = req.body.contato3
-    // let contatofora4 = req.body.contato4
-    // let contatofora5 = req.body.contato5
-    // let contatofora6 = req.body.contato6
-    // let frequencia1 = req.body.frequentou1
-    // let frequencia2 = req.body.frequentou2
-    // let frequencia3 = req.body.frequentou3
-    // let frequencia4 = req.body.frequentou4
-    // let frequencia5 = req.body.frequentou5
-    // let frequencia6 = req.body.frequentou6
-    // let atendimento1 = req.body.atendido1
-    // let atendimento2 = req.body.atendido2
-    // let atendimento3 = req.body.atendido3
-    // let atendimento4 = req.body.atendido4
-    // let atendimento5 = req.body.atendido5
-    // let atendimento6 = req.body.atendido6
-    // let carteiras = req.body.carteirasim
-    // let carteiran = req.body.carteiranao
-    // let ganhou1 = req.body.ganhar1
-    // let ganhou2 = req.body.ganhar2
-    // let ganhou3 = req.body.ganhar3
-    // let ganhou4 = req.body.ganhar4
-    // let ganhou5 = req.body.ganhar5
-    // let ganhou6 = req.body.ganhar6
-    // let ganhou7 = req.body.ganhar7
-    // let ganhou8 = req.body.ganhar8
-    // let benef1 = req.body.beneficio1
-    // let benef2 = req.body.beneficio2
-    // let benef3 = req.body.beneficio3
+    let ut_esp = req.body.tempo_rua
+    let tempo = req.body.tempo_c
+    let motivo = req.body.motivos
+    let tempo_mora = req.body.tempo_m
+    let familia = req.body.f
+    let contatofora = req.body.contato_parente_fr
+    let freq = req.body.atv_comu
+    let atend = req.body.ult_atendimento
+    let carteiras = req.body.carteira
+    let ganhou = req.body.ganhar
+    let benef = req.body.beneficio
+    let q = req.body.qual
     let dt1 = req.body.data1
     let dt2 = req.body.data2
     let dt3 = req.body.data3
@@ -522,9 +447,8 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let servico3 = req.body.serv3
     let servico4 = req.body.serv4
     let servico5 = req.body.serv5
-    //     var sql = "INSERT INTO tbCadastramento (data , nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, encaminhamento_servico) VALUES ('" + dt + "','" + nomecompleto + "','" + nomesocialac + "','" + documentosim + "','" + documentonao+ "','" + documento+ "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + periodo1 + "','" + periodo2 + "','" + periodo3 + "','" + periodo4 + "','" + tempo1 + "','" + tempo2 + "','" + tempo3 + "','" + tempo4 + "','" + tempo5 + "','" + tempo6 + "','" + motivos1 + "','" + motivos2 + "','" + motivos3 + "','" + motivos4 + "','" + motivos5 + "','" + motivos6 + "','" + motivos7 + "','" + motivos8 + "','" + motivos9 + "','" + motivos10 + "','" + tempomora1 + "','" + tempomora2 + "','" + tempomora3 + "','" + tempomora4 + "','" + tempomora5 + "','" + tempomora6 + "','" + familias  + "','" + familian + "','" + contatofora1 + "','" + contatofora2 + "','" + contatofora3 + "','" + contatofora4 + "','" + contatofora5 + "','" + contatofora6 + "','" + frequencia1 + "','" + frequencia2 + "','" + frequencia3 + "','" + frequencia4 + "','" + frequencia5 + "','" + frequencia6 + "','" + atendimento1 + "','" + atendimento2 + "','" + atendimento3 + "','" + atendimento4 + "','" + atendimento5 + "','" + atendimento6 + "','" + carteiras + "','" + carteiran + "','" + ganhou1 + "','" + ganhou2 + "','" + ganhou3 + "','" + ganhou4 + "','" + ganhou5 + "','" + ganhou6 + "','" + ganhou7 + "','" + ganhou8 + "','" + benef1 + "','" + benef2 + "','" + benef3 + "','" + servico1 + "','" + servico2 + "','" + encamin1 + "','" + encamin2 + "')";
-    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + dt + "','" + nomec + "','" + nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + dt1 + "','" + servico1 + "','" + dt2 + "','" + servico2 + "','" + dt3 + "','" + servico3 + "','" + dt4 + "','" + servico4 + "','" + dt5 + "','" + servico5 + "')";
-    console.log(obs);
+    
+    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, qual, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + dt + "','" + nomec + "','"+ nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','"+ viadutomarquise + "','"+ predio + "','"+ parque + "','"+ estacao + "','"+ margem + "','"+ construcoes + "','"+ galeria + "','"+ abandonado + "','"+ outro_locais + "','"+ albergue + "','"+ domicilios + "','"+ ut_esp  + "','"+ tempo  + "','"+ motivo + "','"+ tempo_mora + "','"+ familia + "','"+ contatofora + "','"+ freq + "','"+ atend + "','"+ carteiras + "','"+ ganhou + "','"+ benef + "','"+ q + "','"+  dt1 + "','"+ servico1 + "','"+ dt2 + "','"+ servico2 + "','"+ dt3 + "','"+ servico3 + "','"+ dt4 + "','"+ servico4 + "','"+ dt5 + "','"+ servico5 +"')";
     db.run(sql, []);
     res.end();
 });
