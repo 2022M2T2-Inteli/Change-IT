@@ -156,7 +156,7 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     const doc = req.body.documento
     const email = req.body.email
     const obs = req.body.obs
-    sql = "INSERT INTO Voluntario (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    sql = "INSERT INTO Voluntario (Nome, Motivo, idVoluntario, Idade, Documento, Email, VObservacoes) VALUES ('" + username + "', '" + motivo + "','" + req.body.idVoluntario + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
     db.run(sql);
     res.end()
 })
@@ -175,7 +175,7 @@ app.get('/readVoluntario', (req, res) => {
 });
 
 app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
-    sql = "DELETE FROM Voluntario WHERE documento= '" + req.body.documento + "'";
+    sql = "DELETE FROM Voluntario WHERE idVoluntario = '" + req.body.idVoluntario + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
@@ -190,7 +190,7 @@ app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuár
 //                  Endpoints relacionados à tabela Colaborador                       //
 //                                   PENDENTE                                         //
 ========================================================================================
-*/                      
+*/
 
 app.get('/readColaborador', (req, res) => {
     res.statusCode = 200;
@@ -261,7 +261,7 @@ app.post('/deleteColaborador', (req, res) => {
 //                  Endpoints relacionados à tabela Atividade                         //
 //                                   PENDENTE                                         //
 ========================================================================================
-*/  
+*/
 app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
     const idAssistido = req.body.idAssistido
     const nome = req.body.nome
@@ -329,7 +329,7 @@ app.get("/readEducadores", (req, res) => {
 //                  Endpoints relacionados à tabela Colaborador                       //
 //                                  COMPLETO                                          //
 ========================================================================================
-*/  
+*/
 // READ Cadastros de assistidos (GET)
 app.get("/readCadastroAssistido", (req, res) => {
     res.statusCode = 200;
@@ -426,7 +426,7 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let servico5 = req.body.serv5
 
     if (documento == ' ' || documento == null) {
-        documento = 'não há';
+        documento = 'nao ha';
     };
 
     sql = "INSERT INTO tbCadastramento (idCadastro, data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, qual, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + req.body.idCadastro + "','" + dt + "','" + nomec + "','" + nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + ut_esp + "','" + tempo + "','" + motivo + "','" + tempo_mora + "','" + familia + "','" + contatofora + "','" + freq + "','" + atend + "','" + carteiras + "','" + ganhou + "','" + benef + "','" + qual + "','" + dt1 + "','" + servico1 + "','" + dt2 + "','" + servico2 + "','" + dt3 + "','" + servico3 + "','" + dt4 + "','" + servico4 + "','" + dt5 + "','" + servico5 + "')";
