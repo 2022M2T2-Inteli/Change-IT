@@ -150,15 +150,19 @@ app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário 
 
 // Registra um voluntário na tabela
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
-    const username = req.body.username
-    const motivo = req.body.inspirar
-    const idade = req.body.idade
-    const doc = req.body.documento
-    const email = req.body.email
-    const obs = req.body.obs
-    sql = "INSERT INTO Voluntario (Nome, Motivo, idVoluntario, Idade, Documento, Email, VObservacoes) VALUES ('" + username + "', '" + motivo + "','" + req.body.idVoluntario + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
-    db.run(sql);
-    res.end()
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    sql = `INSERT INTO voluntario (idVoluntario, Nome, Idade, Motivo, Documento, Email, VObservacoes) VALUES ('${req.body.idVoluntario}', '${req.body.username}', '${req.body.idade}', '${req.body.motivo}', '${req.body.documento}', '${req.body.email}', '${req.body.obs}')`;
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
 })
 
 // Torna possível receber o voluntário em uma lista ordenada pelo Nome
@@ -177,7 +181,12 @@ app.get('/readVoluntario', (req, res) => {
 app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     sql = "DELETE FROM Voluntario WHERE idVoluntario = '" + req.body.idVoluntario + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
+    db.run(sql, [], err => {
+        if (err) {
+            res.status(500).send(err.message);
+        }
+        res.end();
+    });
     db.close(); // Fecha o banco
 });
 
@@ -326,8 +335,8 @@ app.get("/readEducadores", (req, res) => {
 
 /*
 ========================================================================================
-//                  Endpoints relacionados à tabela Colaborador                       //
-//                                  COMPLETO                                          //
+//                  Endpoints relacionados à tabela assistidos                        //
+//                                 INCOMPLETO                                         //
 ========================================================================================
 */
 // READ Cadastros de assistidos (GET)
