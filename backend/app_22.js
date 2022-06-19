@@ -29,6 +29,10 @@ app.use(express.urlencoded({
     extended: true
 }))
 
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
+});
+
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) { // aparece o erro no console se ele existir
         // Cannot open database
@@ -72,35 +76,10 @@ app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos d
     res.end();
 })
 
-app.put("/atualizarAssistido", (req, res) => {
-    const nome = req.body.nome
-    const endereco = req.body.endereco
-    var sql = "INSERT Assistido SET Nome = '" + nome + "' SET Endereco = '" + endereco + "'WHERE idAssistido = " + req.body.idAssistido;
-    var db = new sqlite3.Database(DBSOURCE);
-    db.run(sql, []);
-    db.close();;
-})
-
-app.get("/readAssistido", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Assistido ORDER BY idAssistido COLLATE NOCASE';
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        res.json(rows);
-    });
-    db.close();
-})
-
 // Endpoints relacionados a tabela Doacoes
 
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-    
+
     const datainsumos = req.body.dataInsumos
     const AnonimoInsumos = req.body.AnonimoIns
     const nameInsumos = req.body.nomeInsumos
@@ -111,7 +90,7 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     const obsIns = req.body.ObsInsumos
 
     sql = `INSERT INTO Doacoes (Data, Anonimo, Nome, CPF, NomeProduto, Email, Ajuda, Observacoes) VALUES ('${req.body.dataInsumos}','${req.body.AnonimoIns}','${req.body.nomeInsumos}', '${req.body.CPFInsumos}', '${req.body.NomeProduto}', '${req.body.emailInsumo}', '${req.body.AjudaIns}', '${req.body.ObsInsumos}')`
-    
+
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
@@ -161,18 +140,9 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     const doc = req.body.documento
     const email = req.body.email
     const obs = req.body.obs
-    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    sql = "INSERT INTO Voluntario (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
     db.run(sql);
     res.end()
-})
-
-app.post("/atualizarVoluntario", (req, res) => { //Método Put, atualiza os campos dentro do banco de dados
-    const username = req.body.username
-    const idade = req.body.idade
-    sql = "UPDATE user SET name = '" + username + "' SET idade = '" + idade + "'WHERE id = " + req.body.id;
-    var db = new sqlite3.Database(DBSOURCE);
-    db.run(sql, []);
-    db.close();
 })
 
 app.get('/readVoluntario', (req, res) => {
@@ -180,7 +150,7 @@ app.get('/readVoluntario', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM user ORDER BY id COLLATE NOCASE';
+    var sql = 'SELECT * FROM Voluntario ORDER BY id COLLATE NOCASE';
     db.all(sql, [], (err, rows) => {
         res.json(rows);
     });
@@ -192,12 +162,6 @@ app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuár
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, []);
     db.close(); // Fecha o banco
-});
-
-
-
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/Home.html`); // printa no console
 });
 
 module.exports = db // exporta o bd
@@ -407,10 +371,11 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
     var db = new sqlite3.Database(DBSOURCE);
-    
+
+
     let dt = req.body.data
     let nomec = req.body.NomeCA
-    let nomesocialac = req.body.NomeSocialCA   
+    let nomesocialac = req.body.NomeSocialCA
     let documento = req.body.DocumentoCA
     let datanasc = req.body.NascCA
     let obs = req.body.observacao
@@ -436,7 +401,7 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let carteiras = req.body.carteira
     let ganhou = req.body.ganhar
     let benef = req.body.beneficio
-    let q = req.body.qual
+    let qual = req.body.qual
     let dt1 = req.body.data1
     let dt2 = req.body.data2
     let dt3 = req.body.data3
@@ -447,8 +412,12 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     let servico3 = req.body.serv3
     let servico4 = req.body.serv4
     let servico5 = req.body.serv5
-    
-    sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, qual, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + dt + "','" + nomec + "','"+ nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','"+ viadutomarquise + "','"+ predio + "','"+ parque + "','"+ estacao + "','"+ margem + "','"+ construcoes + "','"+ galeria + "','"+ abandonado + "','"+ outro_locais + "','"+ albergue + "','"+ domicilios + "','"+ ut_esp  + "','"+ tempo  + "','"+ motivo + "','"+ tempo_mora + "','"+ familia + "','"+ contatofora + "','"+ freq + "','"+ atend + "','"+ carteiras + "','"+ ganhou + "','"+ benef + "','"+ q + "','"+  dt1 + "','"+ servico1 + "','"+ dt2 + "','"+ servico2 + "','"+ dt3 + "','"+ servico3 + "','"+ dt4 + "','"+ servico4 + "','"+ dt5 + "','"+ servico5 +"')";
+
+    if (documento == ' ' || documento == null) {
+        documento = 'não há';
+    };
+
+    sql = "INSERT INTO tbCadastramento (idCadastro, data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular, dias_utilizar_espaco, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, qual, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + req.body.idCadastro + "','" + dt + "','" + nomec + "','" + nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + ut_esp + "','" + tempo + "','" + motivo + "','" + tempo_mora + "','" + familia + "','" + contatofora + "','" + freq + "','" + atend + "','" + carteiras + "','" + ganhou + "','" + benef + "','" + qual + "','" + dt1 + "','" + servico1 + "','" + dt2 + "','" + servico2 + "','" + dt3 + "','" + servico3 + "','" + dt4 + "','" + servico4 + "','" + dt5 + "','" + servico5 + "')";
     db.run(sql, []);
     res.end();
 });
