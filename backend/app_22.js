@@ -143,8 +143,43 @@ app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário 
 });
 
 
-// Endpoints relacionados a tabela Montarios
+/*
+========================================================================================
+//                  Endpoints relacionados à tabela Monetario                         //
+//                                   PENDENTE                                         //
+========================================================================================
+*/
 
+// Isso permite receber os insumos em uma tabela ordenada pelo id
+app.get("/readMonetario", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Monetario ORDER BY idD COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+});
+
+app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = `INSERT INTO Monetario ()`;
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+})
 
 /*
 ========================================================================================
@@ -463,18 +498,6 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     res.end();
 });
 
-app.post("/listaDoacaoMonet", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
-    const username = req.body.username
-    const motivo = req.body.inspirar
-    const idade = req.body.idade
-    const doc = req.body.documento
-    const email = req.body.email
-    const obs = req.body.obs
-    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
-    db.run(sql);
-    res.end()
-})
-
 
 app.post("/login", (req, res) => {
     res.statusCode = 200;
@@ -485,7 +508,7 @@ app.post("/login", (req, res) => {
     console.log(senha)
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     var sql = `SELECT * FROM Administrador WHERE Email = "${login}"`;
-    db.all(sql, [],  (err, rows) => {
+    db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
         }
