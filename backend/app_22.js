@@ -221,10 +221,22 @@ app.get('/readColaborador', (req, res) => {
     db.close(); // Fecha o banco
 });
 
-app.post("/insertColaborador", (req, res) => { //Método de inserir dados do colaborador
-    sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, Data, PrimeiroAcesso, UltimoAcesso) VALUES ('${req.body.NomeColab}','${req.body.CPFColab}','${req.body.TipoColab}', '${req.body.SenhaColab}', '${req.body.EmailColab}', '${req.body.EnderecoColab}', '${req.body.PrimeiraDataColab}', '${req.body.PrimeiroAcessoColab}', '${req.body.UltimoAcessoColab}')`;
+app.post("/registrarColaboradores", (req, res) => { //Método de inserir dados do colaborador
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const Senha = String(req.body.CPFColab) + String(req.body.SenhaColab);
+    const PrimeiroAcesso = today.toLocaleDateString();
+
+    sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, PrimeiroAcesso, ObsColab) VALUES ('${req.body.NomeColab}', '${req.body.CPFColab}', '${req.body.TipoColab}', '${Senha}', '${req.body.emailColab}', '${req.body.enderecoColab}', '${PrimeiroAcesso}', '${req.body.ObsColab}')`;
+
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
     db.close(); // Fecha o banco
 });
 

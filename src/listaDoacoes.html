@@ -21,7 +21,7 @@
 
         <!-- Fim da NavBar -->
         <!-- Início do código do início do site -->
-        
+
         <!-- Código do Modal para os doacoes de insumos-->
         <div class="modal fade" id="modalAddDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -34,85 +34,88 @@
                     <div class="modal-body">
 
                         <form action="/registrarInsumos" method="POST"></form>
-                            <div class="container row-aling-itens-start formulario">
-                                <div class="input-group mb-3">
-                                    <label>Data:
-                                        <input type="date" name="dataInsumos" class="form-control" placeholder="D/M/A" aria-label="Username"
-                                            aria-describedby="basic-addon1">
-                                    </label>
-                
+                        <div class="container row-aling-itens-start formulario">
+                            <div class="input-group mb-3">
+                                <label>Data:
+                                    <input type="date" name="dataInsumos" class="form-control" placeholder="D/M/A"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </label>
+
+                            </div>
+                            <label> Gostaria de permanecer anônimo(a) ?
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
+                                        name="SimAnonimo">
+                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
                                 </div>
-                                <label> Gostaria de permanecer anônimo(a) ?
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
+                                        name="NaoAnonimo">
+                                    <label class="form-check-label" for="inlineRadio2">Não</label>
+                                </div>
+                            </label>
+                            <div class="input-group mb-3">
+                                <label>Nome Completo:
+                                    <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                        aria-describedby="basic-addon1" name="nomeInsumos">
+                                </label>
+
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>CPF (somente números):
+                                    <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                                        aria-describedby="basic-addon1" name="CPFInsumos">
+                                </label>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>Produto a ser doado:
+                                    <input type="text" class="form-control" placeholder="Forma de ajuda"
+                                        aria-label="Username" aria-describedby="basic-addon1" name="NomeProduto">
+                                </label>
+                                <br>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>Insira seu email:
+                                    <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                                        aria-describedby="basic-addon1" name="emailInsumo">
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <label> Necessita de ajuda para realizar a entrega?
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim" name="SimAnonimo">
+                                        <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
+                                            name="SimAjuda">
                                         <label class="form-check-label" for="inlineRadio1">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não" name="NaoAnonimo">
+                                        <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
+                                            name="NaoAjuda">
                                         <label class="form-check-label" for="inlineRadio2">Não</label>
                                     </div>
                                 </label>
-                                <div class="input-group mb-3">
-                                    <label>Nome Completo:
-                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                                            aria-describedby="basic-addon1" name="nomeInsumos">
-                                    </label>
-                
-                                </div>
-                
-                                <div class="input-group mb-3">
-                                    <label>CPF (somente números):
-                                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
-                                            aria-describedby="basic-addon1" name="CPFInsumos">
-                                    </label>
-                                </div>
-                                
-                                <div class="input-group mb-3">
-                                    <label>Produto a ser doado:
-                                        <input type="text" class="form-control" placeholder="Forma de ajuda" aria-label="Username"
-                                            aria-describedby="basic-addon1" name="NomeProduto">
-                                    </label>
-                                    <br>
-                                </div>
-                
-                                <div class="input-group mb-3">
-                                    <label>Insira seu email:
-                                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
-                                            aria-describedby="basic-addon1" name="emailInsumo">
-                                    </label>
-                                </div>
-                
-                                <div class="form-check">
-                                    <label> Necessita de ajuda para realizar a entrega?
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
-                                                name="SimAjuda">
-                                            <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
-                                                name="NaoAjuda">
-                                            <label class="form-check-label" for="inlineRadio2">Não</label>
-                                        </div>
-                                    </label>
-                                </div>
-                                <br>
-                
-                                <div class="observacao">
-                                    <fieldset>
-                                        <div class="input-group">
-                                            <span class="input-group-text">Observações</span>
-                                            <textarea class="form-control" aria-label="With textarea" name="ObsInsumos"></textarea>
-                                        </div>
-                                        <br>
-                
-                                    </fieldset>
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
-                                </div>
-                
                             </div>
+                            <br>
+
+                            <div class="observacao">
+                                <fieldset>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Observações</span>
+                                        <textarea class="form-control" aria-label="With textarea"
+                                            name="ObsInsumos"></textarea>
+                                    </div>
+                                    <br>
+
+                                </fieldset>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                            </div>
+
+                        </div>
                         </form>
 
                     </div>
@@ -122,6 +125,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="modalVisDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog vis">
@@ -178,17 +182,17 @@
                 </div>
                 <div>
                     <center><button id="addinsumo" type="submit"
-                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            class="col-md-8 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
                             data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos">
-                            Adicionar Insumo
-                        </button></center>
+                            Adicionar Insumo </button></center>
 
+                    <!-- esse segundo botão pode não existir, né? -->
                     <center><button id="addac" type="submit"
-                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            class="col-md-12 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
                             data-bs-toggle="modal" data-bs-target="#modalVisDoacaoInsumos" onclick="doacao.list2()">
                             Visualizar Doação de insumo
                         </button></center>
-                </div>  
+                </div>
 
                 <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
                     <table class="table col-12" id="myTable">
@@ -207,7 +211,7 @@
                         </thead>
 
                         <tbody id="main" class="listaLinhas">
-                        
+
                         </tbody>
 
                     </table>
@@ -216,21 +220,21 @@
             </div>
         </div>
 
-    </div>
-    <!-- Fim do código html e css da lista do site -->
-    <!-- reuso do footer  -->
-    <div id="reusofooter">
+        </div>
+        <!-- Fim do código html e css da lista do site -->
+        <!-- reuso do footer  -->
+        <div id="reusofooter">
 
-    </div>
+        </div>
 
-    <script>
-        $(document).ready(function () {
-            $("#reusohead").load("reuso/head.html");
-            $("#reusonavbar").load("reuso/navbar.html");
-            $("#reusofooter").load("reuso/footer.html");
-            
-        })
-    </script>
+        <script>
+            $(document).ready(function () {
+                $("#reusohead").load("reuso/head.html");
+                $("#reusonavbar").load("reuso/navbar.html");
+                $("#reusofooter").load("reuso/footer.html");
+
+            })
+        </script>
 
 
         <!-- design antigo -->
@@ -253,38 +257,38 @@
     </div>
     <br> -->
 
-<!-- script para o funcionameto das listas e da integração via AJAX -->
+        <!-- script para o funcionameto das listas e da integração via AJAX -->
 
-    <script>
+        <script>
 
-        $(document).ready(() => {
-            doacao.list();
-        });
+            $(document).ready(() => {
+                doacao.list();
+            });
 
-        var doacao = {
+            var doacao = {
 
-            list() {
-                $.ajax({
-                    url: 'http://127.0.0.1:3022/readInsumos',
-                    type: 'GET',
-                    success: data => {
-                        var tr = '';
-                        data.forEach(element => {
-                            tr += `<tr>`;
-                            tr += `<th scope = "row"> ${element.Data} </th>`;
-                            tr += `<th scope = "row"> ${element.Anonimo} </th>`;
-                            tr += `<td scope = "row"> ${element.Nome} </td>`
-                            tr += `<td scope = "row"> ${element.CPF} </td>`
-                            tr += `<td scope = "row"> ${element.NomeProduto} </td>`
-                            tr += `<td scope = "row"> ${element.Email} </td>`
-                            tr += `<td scope = "row"> ${element.Ajuda} </td>`
-                            tr += `<td scope = "row"> ${element.Observacoes} </td>`
-                            tr += `<td scope = "row"> ${element.idDoacoes} </td>`
-                            tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
-                            // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
-                            // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
-                            tr += `</tr>`
-                        });
+                list() {
+                    $.ajax({
+                        url: 'http://127.0.0.1:3022/readInsumos',
+                        type: 'GET',
+                        success: data => {
+                            var tr = '';
+                            data.forEach(element => {
+                                tr += `<tr>`;
+                                tr += `<th scope = "row"> ${element.Data} </th>`;
+                                tr += `<th scope = "row"> ${element.Anonimo} </th>`;
+                                tr += `<td scope = "row"> ${element.Nome} </td>`
+                                tr += `<td scope = "row"> ${element.CPF} </td>`
+                                tr += `<td scope = "row"> ${element.NomeProduto} </td>`
+                                tr += `<td scope = "row"> ${element.Email} </td>`
+                                tr += `<td scope = "row"> ${element.Ajuda} </td>`
+                                tr += `<td scope = "row"> ${element.Observacoes} </td>`
+                                tr += `<td scope = "row"> ${element.idDoacoes} </td>`
+                                tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
+                                // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
+                                // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
+                                tr += `</tr>`
+                            });
                             // tx += '<div class="insert" onclick="doacoes.insert();">Inserir</div>';
                             // data.forEach(element => {
                             //     tx += '<div class="user">';
@@ -293,104 +297,104 @@
                             //     tx += '<div class="action" onclick="doacoes.update(' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
                             //     tx += '<div class="action" onclick="doacoes.delete(' + element.idDoacoes + ')">Excluir</div></div></div></div>';
                             // });
-                        $('#main').html(tr);
+                            $('#main').html(tr);
                             // main.appendChild(tx);
-                    }
-                });
-            },
+                        }
+                    });
+                },
 
 
-            list2() {
-                $.ajax({
-                    url: 'http://127.0.0.1:3022/readInsumos',
-                    type: 'GET',
-                    success: data => {
-                        data.forEach(element => {
-                            var modal = '';
-                            modal += `<div `
-                        });
-                        $('#clarinhalinda').html(dive);
-                    }
-                });
-            }
-
-        };
-
-
-        // objeto que faz as outras ações
-        var doacoes = {
-            
-            
-            // CODIGO ANTIGO
-            // insert() {
-            //     var NomeProdutoDoacao = prompt('Digite o nome do produto:');
-            //     var idDoacaoDoacao = prompt('Digite o id da doação:');
-            //     var DataDoacao = prompt('Digite a data da doação:');
-            //     var TipoDoacao = prompt('Digite o tipo da doação:');
-            //     var ObservacoesDoacao = prompt('Digite uma observação sobre a doação:');
-                
-            //     if (idDoacaoDoacao) {
-            //         console.log("passei pelo if pq existe id da doação")
-            //         $.ajax({
-            //             type: 'POST',
-            //             url: api + '/registrarInsumos',
-            //             data: {
-            //                 NomeProdutoDoacao: `${NomeProdutoDoacao}`,
-            //                 idDoacaoDoacao: `${idDoacaoDoacao}`,
-            //                 DataDoacao: `${DataDoacao}`,
-            //                 TipoDoacao: `${TipoDoacao}`,
-            //                 ObservacoesDoacao: `${ObservacoesDoacao}`,
-            //             },
-            //         }).done(function () {
-            //             doacoes.list();
-            //             console.log("Chamei o doacoes.list dps do insert");
-            //         }).fail(function (msg) {
-            //             console.log("deu ruim aqui");
-            //         });
-            //         console.log("será que rodou o ajax?")
-            //     }
-            // },
-
-            // update(idDoacaoDoacao, oldTitle) {
-
-            //     var NomeProdutoDoacao = prompt('Digite o novo nome:', oldTitle);
-            //     if (NomeProdutoDoacao) {
-            //         if (NomeProdutoDoacao.trim() != '') {
-            //             $.ajax({
-            //                 type: 'POST',
-            //                 url: api + '/updateInsumos',
-            //                 data: {
-            //                     NomeProdutoDoacao: NomeProdutoDoacao,
-            //                     idDoacaoDoacao: idDoacaoDoacao
-            //                 },
-            //             }).done(function () {
-            //                 doacoes.list();
-            //             }).fail(function (msg) {
-            //                 //console.log('FAIL');
-            //             }).always(function (msg) {
-            //                 //console.log('ALWAYS');
-            //             });
-            //         }
-            //     }
-            // },
-
-            delete(idDoacoes) {
-
-                if (confirm('Confirma a exclusão?')) {
+                list2() {
                     $.ajax({
-                        type: 'POST',
-                        url: 'http://127.0.0.1:3022/deleteInsumos',
-                        data: { idDoacoes: idDoacoes },
-                    }).done(function () {
-                        doacao.list();
-                    }).fail(function (msg) {
-                        console.log('FAIL');
+                        url: 'http://127.0.0.1:3022/readInsumos',
+                        type: 'GET',
+                        success: data => {
+                            data.forEach(element => {
+                                var modal = '';
+                                modal += `<div `
+                            });
+                            $('#clarinhalinda').html(dive);
+                        }
                     });
                 }
-            },
 
-        } 
-    </script>
+            };
+
+
+            // objeto que faz as outras ações
+            var doacoes = {
+
+
+                // CODIGO ANTIGO
+                // insert() {
+                //     var NomeProdutoDoacao = prompt('Digite o nome do produto:');
+                //     var idDoacaoDoacao = prompt('Digite o id da doação:');
+                //     var DataDoacao = prompt('Digite a data da doação:');
+                //     var TipoDoacao = prompt('Digite o tipo da doação:');
+                //     var ObservacoesDoacao = prompt('Digite uma observação sobre a doação:');
+
+                //     if (idDoacaoDoacao) {
+                //         console.log("passei pelo if pq existe id da doação")
+                //         $.ajax({
+                //             type: 'POST',
+                //             url: api + '/registrarInsumos',
+                //             data: {
+                //                 NomeProdutoDoacao: `${NomeProdutoDoacao}`,
+                //                 idDoacaoDoacao: `${idDoacaoDoacao}`,
+                //                 DataDoacao: `${DataDoacao}`,
+                //                 TipoDoacao: `${TipoDoacao}`,
+                //                 ObservacoesDoacao: `${ObservacoesDoacao}`,
+                //             },
+                //         }).done(function () {
+                //             doacoes.list();
+                //             console.log("Chamei o doacoes.list dps do insert");
+                //         }).fail(function (msg) {
+                //             console.log("deu ruim aqui");
+                //         });
+                //         console.log("será que rodou o ajax?")
+                //     }
+                // },
+
+                // update(idDoacaoDoacao, oldTitle) {
+
+                //     var NomeProdutoDoacao = prompt('Digite o novo nome:', oldTitle);
+                //     if (NomeProdutoDoacao) {
+                //         if (NomeProdutoDoacao.trim() != '') {
+                //             $.ajax({
+                //                 type: 'POST',
+                //                 url: api + '/updateInsumos',
+                //                 data: {
+                //                     NomeProdutoDoacao: NomeProdutoDoacao,
+                //                     idDoacaoDoacao: idDoacaoDoacao
+                //                 },
+                //             }).done(function () {
+                //                 doacoes.list();
+                //             }).fail(function (msg) {
+                //                 //console.log('FAIL');
+                //             }).always(function (msg) {
+                //                 //console.log('ALWAYS');
+                //             });
+                //         }
+                //     }
+                // },
+
+                delete(idDoacoes) {
+
+                    if (confirm('Confirma a exclusão?')) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'http://127.0.0.1:3022/deleteInsumos',
+                            data: { idDoacoes: idDoacoes },
+                        }).done(function () {
+                            doacao.list();
+                        }).fail(function (msg) {
+                            console.log('FAIL');
+                        });
+                    }
+                },
+
+            } 
+        </script>
 
 </body>
 
