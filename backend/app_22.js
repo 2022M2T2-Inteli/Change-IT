@@ -462,3 +462,15 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     db.run(sql, []);
     res.end();
 });
+
+app.post("/listaDoacaoMonet", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
+    const username = req.body.username
+    const motivo = req.body.inspirar
+    const idade = req.body.idade
+    const doc = req.body.documento
+    const email = req.body.email
+    const obs = req.body.obs
+    sql = "INSERT INTO Voluntário (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
+    db.run(sql);
+    res.end()
+})
