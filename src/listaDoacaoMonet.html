@@ -157,10 +157,10 @@
                         <thead>
                             <tr>
                                 <th class="fs-6"> ID </th>
-                                <th class="fs-6">Nome</th>
+                                <th class="fs-6"> Nome Completo </th>
                                 <th class="fs-6">Valor</th>
-                                <th class="fs-6 d-none d-md-table-cell">Obs.</th>
                                 <th class="fs-6">Data</th>
+                                <th class="fs-6">Ações</th>
                             </tr>
                         </thead>
 
@@ -201,19 +201,18 @@
 
             list() {
                 $.ajax({
-                    url: 'http://127.0.0.1:3022/listaDoacaoMonet',
-                    type: 'POST',
+                    url: 'http://127.0.0.1:3022/readMonetario',
+                    type: 'GET',
                     success: data => {
                         var tr = '';
                         data.forEach(element => {
                             tr += `<tr>`;
                             tr += `<th scope="row"> ${element.idMonetario} </th>`;
-                            tr += `<th scope="row"> ${element.nome} </th>`;
-                            tr += `<td scope="row"> ${element.data} </td>`
-                            tr += `<td scope="row"> ${element.valor} </td>`
+                            tr += `<th scope="row"> ${element.Nome} </th>`;
+                            tr += `<td scope="row"> ${element.Valor} </td>`
+                            tr += `<td scope="row"> ${element.Data} </td>`
                             tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idMonetario}')"> Excluir </td>`
-                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idMonetario}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
-                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="assistido.update('${element.idMonetario}')"> Atualizar </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idMonetario}" onclick="doacoesMon.list2('${element.idMonetario}')"> Visualizar </td>`
                             tr += `</tr>`
                         });
                         $('#main').html(tr);
@@ -222,7 +221,7 @@
             },
 
 
-            list2(id) {
+            /* list2(id) {
                 $.ajax({
                     url: 'http://127.0.0.1:3022/readCadastroAssistido',
                     type: 'GET',
@@ -232,14 +231,14 @@
                             console.log("entrei no forEach do elemento" + id);
                             const modal = document.createElement("div");
                             modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
-                                 <div class="modal-header"> <h5 class="modal-title"> ${element.nome}; id: ${element.idMonetario}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.Nome}; id: ${element.idMonetario}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
                                  <div class="modal-body"> <div class="row"> 
                                     <div class="col-sm-4"> <h3> Identificação </h3> 
-                                        <label> Nome completo: ${element.nome} </label> <br /> 
-                                        <label> Data do Pagamento: ${element.data} </label> <br /> 
-                                        <label> Valor: ${element.valor} </label> <br /> 
+                                        <label> Nome completo: ${element.Nome} </label> <br /> 
+                                        <label> Data do Pagamento: ${element.Data} </label> <br /> 
+                                        <label> Valor: ${element.Valor} </label> <br /> 
                                      </div> 
-                                    <div class="col-sm-4"> <h3> Locais </h3> 
+                                    <div class="col-sm-4">
 
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
 
@@ -250,9 +249,9 @@
 
                         });
                         // $('#stefano').html(dive);
-                    }
+                    } 
                 });
-            }
+            }*/
 
         };
         // objeto que faz as outras ações
