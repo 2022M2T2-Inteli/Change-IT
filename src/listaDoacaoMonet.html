@@ -32,8 +32,8 @@
             <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
         </div>
     </header>
-        <!-- Modal -->
-  
+    <!-- Modal -->
+
 
     <!-- <br>
     <div class="d-flex justify-content-center">
@@ -124,64 +124,63 @@
     <br>
         </div> -->
 
-        <div class="container-fluid">
-            <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
-                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-10"> Doações Monetárias </p>
-                </div>
-
-                <div class="col-12 col-md-6">
-                    <div class="col-12 d-flex justify-content-around">
-                        <div class="col-5">
-                            <div class="input-group mb-3">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <center><button id="addac" type="submit"
-                                class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
-                                data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
-                                Adicionar Doações
-                            </button></center>
-
-                        <!-- Search box -->
-                        <div class="input-group row col-md-6 offset-3">
-                            <input type="search" class="form-control rounded" placeholder="Procurar..."
-                                aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
-                                id="searchFilter" />
-                        </div>
-                    </div>
-
-                    <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
-                        <table class="table col-12" id="myTable">
-                            <thead>
-                                <tr>
-                                    <th class="fs-6"> ID </th>
-                                    <th class="fs-6">Nome</th>
-                                    <th class="fs-6">Valor</th>
-                                    <th class="fs-6 d-none d-md-table-cell">Obs.</th>
-                                    <th class="fs-6">Data</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="main" class="listaLinhas">
-
-                            </tbody>
-
-                        </table>
-                    </div>
-
-                </div>
+    <div class="container-fluid">
+        <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+            <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                <p class="arvo fs-2 text-center my-2 col-10"> Doações Monetárias </p>
             </div>
 
+            <div class="col-12 col-md-6">
+                <div class="col-12 d-flex justify-content-around">
+                    <div class="col-5">
+                        <div class="input-group mb-3">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <center><button id="addac" type="submit"
+                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
+                            Adicionar Doações
+                        </button></center>
+
+                    <!-- Search box -->
+                    <div class="input-group row col-md-6 offset-3">
+                        <input type="search" class="form-control rounded" placeholder="Procurar..." aria-label="Search"
+                            aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
+                    </div>
+                </div>
+
+                <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                    <table class="table col-12" id="myTable">
+                        <thead>
+                            <tr>
+                                <th class="fs-6"> ID </th>
+                                <th class="fs-6">Nome</th>
+                                <th class="fs-6">Valor</th>
+                                <th class="fs-6 d-none d-md-table-cell">Obs.</th>
+                                <th class="fs-6">Data</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="main" class="listaLinhas">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
         </div>
-        
-    
+
+    </div>
+
+
 
     <!-- Fim do código do início do site -->
 
-<div id="reusofooter">
+    <div id="reusofooter">
 
     </div>
 
@@ -192,22 +191,22 @@
             $("#reusofooter").load("reuso/footer.html");
         })
 
-//     function check() {
-//         let service = document.getElementById("service");
-//         let towelId = document.getElementById("towelInput");
+        //     function check() {
+        //         let service = document.getElementById("service");
+        //         let towelId = document.getElementById("towelInput");
 
-//         if (service.value == "bath") {
-//             towelId.disabled = false;
-//             towelId.required = true;
+        //         if (service.value == "bath") {
+        //             towelId.disabled = false;
+        //             towelId.required = true;
 
-//         } else {
-//             towelId.disabled = true;
-//             towelId.required = false;
-//             towelId.value = "";
-//     }
-//   }
+        //         } else {
+        //             towelId.disabled = true;
+        //             towelId.required = false;
+        //             towelId.value = "";
+        //     }
+        //   }
 
-// quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
         $(document).ready(() => {
             doacoesMon.list();
         });
