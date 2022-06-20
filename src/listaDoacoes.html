@@ -169,7 +169,7 @@
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
                 <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-10"> Controle doações de insumos </p>
+                    <p class="arvo fs-2 text-center my-2 col-30"> Controle doações de insumos </p>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -181,23 +181,19 @@
                     </div>
                 </div>
                 <div>
-                    <center><button id="addinsumo" type="submit"
-                            class="col-md-8 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
-                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos">
-                            Adicionar Insumo </button></center>
+                    <center>
+                        <button id="addinsumo" type="submit"
+                            class="col-md-12 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos"> Adicionar Insumo </button>
+                    </center>
 
-                    <!-- esse segundo botão pode não existir, né? -->
-                    <center><button id="addac" type="submit"
-                            class="col-md-12 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
-                            data-bs-toggle="modal" data-bs-target="#modalVisDoacaoInsumos" onclick="doacao.list2()">
-                            Visualizar Doação de insumo
-                        </button></center>
                 </div>
 
                 <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
                     <table class="table col-12" id="myTable">
                         <thead>
                             <tr>
+                                <th class="fs-6">id</th>
                                 <th class="fs-6"> Data</th>
                                 <th class="fs-6">Anonimo</th>
                                 <th class="fs-6">Nome</th>
@@ -206,7 +202,6 @@
                                 <th class="fs-6">Email</th>
                                 <th class="fs-6">Ajuda</th>
                                 <th class="fs-6">Observações</th>
-                                <th class="fs-6">id</th>
                             </tr>
                         </thead>
 
@@ -236,27 +231,6 @@
             })
         </script>
 
-
-        <!-- design antigo -->
-        <!-- <h1 style="text-align:center"> Controle de insumos </h1>
-        <br>
-        <div class="input-group row col-md-6 offset-3">
-            <input type="search" class="form-control rounded"
-                placeholder="Digite aqui para procurar o registro de um insumo doado" aria-label="Search"
-                aria-describedby="search-addon" name="namedoacao" id="iddoacao"/>
-            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke" onclick="">Procurar</button>
-        </div>
-    </header>
-
-
-    <br>
-    <div class="d-flex justify-content-center">
-        <div class="formulariopesq justify-itens">
-            <div id="main"></div>
-        </div>
-    </div>
-    <br> -->
-
         <!-- script para o funcionameto das listas e da integração via AJAX -->
 
         <script>
@@ -275,6 +249,7 @@
                             var tr = '';
                             data.forEach(element => {
                                 tr += `<tr>`;
+                                tr += `<td scope = "row"> ${element.idDoacoes} </td>`
                                 tr += `<th scope = "row"> ${element.Data} </th>`;
                                 tr += `<th scope = "row"> ${element.Anonimo} </th>`;
                                 tr += `<td scope = "row"> ${element.Nome} </td>`
@@ -283,7 +258,6 @@
                                 tr += `<td scope = "row"> ${element.Email} </td>`
                                 tr += `<td scope = "row"> ${element.Ajuda} </td>`
                                 tr += `<td scope = "row"> ${element.Observacoes} </td>`
-                                tr += `<td scope = "row"> ${element.idDoacoes} </td>`
                                 tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
                                 // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
                                 // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
