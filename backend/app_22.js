@@ -474,3 +474,37 @@ app.post("/listaDoacaoMonet", (req, res) => { //Método Post, pega os campos da 
     db.run(sql);
     res.end()
 })
+
+
+app.post("/login", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+    var login = req.body.user
+    console.log(login)
+    var senha = req.body.senha
+    console.log(senha)
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = `SELECT * FROM Administrador WHERE Email = "${login}"`;
+    db.all(sql, [],  (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        console.log(rows)
+        if (rows == '') {
+            res.status(400).send('Credenciais incorretas!')
+        } else {
+            console.log(rows[0])
+            if (rows[0].Senha == senha) {
+                res.status(200).send('Usuário Logado!')
+            } else {
+                res.status(400).send('Credenciais incorretas!')
+            }
+        }
+    });
+    db.close(); // Fecha o banco
+})
+
+
+
+
+
