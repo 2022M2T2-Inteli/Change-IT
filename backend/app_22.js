@@ -156,7 +156,7 @@ app.get("/readMonetario", (req, res) => { // Método Get, pega todas as informa�
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Monetario ORDER BY idD COLLATE NOCASE';
+    var sql = 'SELECT * FROM Monetario ORDER BY idMonetario COLLATE NOCASE';
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
@@ -171,7 +171,9 @@ app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da f
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = `INSERT INTO Monetario ()`;
+    
+    var sql = `INSERT INTO Monetario (Data, Anonimo, Nome, Valor, Observacoes) VALUES ('${req.body.Data}', '${req.body.Anonimo}', '${req.body.Nome}', '${req.body.Valor}', '${req.body.Observacoes}')`;
+
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
@@ -360,6 +362,8 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
     });
     db.close(); // Fecha o banco
 });
+
+
 app.post("/Educadores", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
