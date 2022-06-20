@@ -21,6 +21,100 @@
         </div>
 
         <!-- Fim da NavBar -->
+        <!-- Código do Modal para o adicionar doação monetária -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
+        <div class="modal fade" id="modalAddMonetario" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Doação Monetária</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- formulário para adicionar um Doação Monetária -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/insertMonetario" method="POST" target="iframe">
+
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" id="name" name="Nome">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Valor doado:
+                                        <input type="text" class="form-control" placeholder="Valor"
+                                            aria-label="Username" aria-describedby="basic-addon1" id="name"
+                                            name="Valor">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>Data da transferência:
+                                    <input type="date" name="Data" class="form-control" placeholder="D/M/A"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </label>
+
+                            </div>
+
+                            <div>
+                                <label> Você deseja permanecer anônimo nesta doação?
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Anonimo" id="ajudar"
+                                            value="Sim" checked>
+                                        <label class="form-check-label">
+                                            Sim
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Anonimo" id="ajudar"
+                                            value="Nao">
+                                        <label class="form-check-label">
+                                            Não
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                            <br>
+
+                            <div class="observacao">
+                                <fieldset>
+                                    <h5 class="input-group-text">Alguma outra observação ou forma de
+                                        contato?</h5>
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea" name="Observacoes"
+                                            placeholder="Observação: email, telefone, contrato..."></textarea>
+                                    </div>
+                                    <br>
+
+                                </fieldset>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim do código do modal para o cadastro de Doação Monetária -->
+
+
         <!-- Início do código do início do site -->
 
         <h1 style="text-align:center"> Controle de Doações Monetárias </h1>
@@ -44,11 +138,12 @@
                 </div>
 
                 <div>
-                    <center><button id="addac" type="submit"
+                    <center>
+                        <button id="addac" type="submit"
                             class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
-                            data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
-                            Adicionar Doações
-                        </button></center>
+                            data-bs-toggle="modal" data-bs-target="#modalAddMonetario">
+                            Adicionar Doações </button>
+                    </center>
 
                     <!-- Search box -->
                     <div class="input-group row col-md-6 offset-3">
@@ -95,21 +190,6 @@
             $("#reusonavbar").load("reuso/navbar.html");
             $("#reusofooter").load("reuso/footer.html");
         })
-
-        //     function check() {
-        //         let service = document.getElementById("service");
-        //         let towelId = document.getElementById("towelInput");
-
-        //         if (service.value == "bath") {
-        //             towelId.disabled = false;
-        //             towelId.required = true;
-
-        //         } else {
-        //             towelId.disabled = true;
-        //             towelId.required = false;
-        //             towelId.value = "";
-        //     }
-        //   }
 
         // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
         $(document).ready(() => {

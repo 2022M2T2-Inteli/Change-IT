@@ -151,7 +151,7 @@ app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário 
 */
 
 // Isso permite receber os insumos em uma tabela ordenada pelo id
-app.get("/readMonetario", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+app.get("/readMonetario", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -171,10 +171,10 @@ app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da f
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    
+
     var sql = `INSERT INTO Monetario (Data, Anonimo, Nome, Valor, Observacoes) VALUES ('${req.body.Data}', '${req.body.Anonimo}', '${req.body.Nome}', '${req.body.Valor}', '${req.body.Observacoes}')`;
 
-    db.all(sql, [], (err, rows) => {
+    db.run(sql, [], (err, rows) => {
         if (err) {
             throw err;
         }
