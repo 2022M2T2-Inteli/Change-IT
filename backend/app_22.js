@@ -193,7 +193,7 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    sql = `INSERT INTO voluntario (idVoluntario, Nome, Idade, Motivo, Documento, Email, VObservacoes) VALUES ('${req.body.idVoluntario}', '${req.body.username}', '${req.body.idade}', '${req.body.motivo}', '${req.body.documento}', '${req.body.email}', '${req.body.obs}')`;
+    sql = `INSERT INTO voluntario (Nome, Idade, Motivo, Documento, Email, VObservacoes) VALUES ('${req.body.username}', '${req.body.idade}', '${req.body.motivo}', '${req.body.documento}', '${req.body.email}', '${req.body.obs}')`;
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
     db.run(sql, [], err => {
