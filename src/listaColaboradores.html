@@ -17,24 +17,165 @@
         </div>
         <!-- Fim da NavBar -->
 
+        <!-- Código do Modal para o adicionar colaboradores -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
+        <div class="modal fade" id="modalAddColaborador" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Colaborador</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- formulário para adicionar um voluntario -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/registrarColaboradores" method="POST" target="iframe">
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo:
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="NomeColab">
+                                    </label>
+
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Como colabora ("função"):
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="TipoColab">
+                                    </label>
+
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Idade:
+                                        <input type="text" class="form-control" placeholder="Idade"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="IdadeColab">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Documento (CPF):
+                                        <input type="text" class="form-control" placeholder="CPF" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="CPFColab">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Insira seu email:
+                                        <input type="text" class="form-control" placeholder="Email"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="emailColab">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Endereço completo:
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="enderecoColab">
+                                    </label>
+
+                                </div>
+                                <br>
+
+                                <div class="observacao">
+                                    <fieldset>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Observações</span>
+                                            <textarea class="form-control" aria-label="With textarea"
+                                                name="ObsColab"></textarea>
+                                        </div>
+                                        <br>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim do código do modal para o cadastro de colaboradores -->
+
         <!-- Início do código do início do site -->
 
         <h1 style="text-align:center">Controle de Colaboradores</h1>
         <br>
-        <!-- Search box -->
-        <div class="input-group row col-md-6 offset-3">
-            <input type="search" class="form-control rounded"
-                placeholder="Digite aqui para procurar os dados de um colaborador" aria-label="Search"
-                aria-describedby="search-addon" />
-            <button type="button" class="btn" style="background-color:#167bce;color:whitesmoke">Procurar</button>
-        </div>
     </header>
 
 
     <br>
     <div class="d-flex justify-content-center">
         <div class="formulariopesq justify-itens">
-            <div id="main"></div>
+            <div class="container-fluid">
+                <div
+                    class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+                    <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                        <p class="arvo fs-2 text-center my-2 col-10"> Colaboradores </p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="col-12 d-flex justify-content-around">
+                            <div class="col-5">
+                                <div class="input-group mb-3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <center><button id="addac" type="submit"
+                                    class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                                    data-bs-toggle="modal" data-bs-target="#modalAddColaborador">
+                                    Adicionar colaborador
+                                </button></center>
+
+                            <!-- Search box -->
+                            <div class="input-group row col-md-6 offset-3">
+                                <input type="search" class="form-control rounded" placeholder="Procurar..."
+                                    aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
+                                    id="searchFilter" />
+                            </div>
+                        </div>
+
+                        <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                            <table class="table col-12" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th class="fs-6"> CPF </th>
+                                        <th class="fs-6">Nome</th>
+                                        <th class="fs-6">Função</th>
+                                        <th class="fs-6">Email</th>
+                                        <th class="fs-6">Primeiro Acesso</th>
+                                        <th class="fs-6"></th>
+                                        <th class="fs-6">Ações</th>
+                                        <th class="fs-6"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="main" class="listaLinhas">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     </div>
@@ -56,36 +197,9 @@
     </script>
 
     <script>
-        api = 'http://127.0.0.1:3022'
-
-
         $(document).ready(() => {
             colaboradores.list();
         });
-
-
-
-        /*function inserirColaborador() {
-
-            const nomeColab = document.getElementsByName('NomeColab').value;
-
-
-            var settings = {
-                "url": "http://127.0.0.1:3022/insertColaborador",
-                "method": "POST",
-                "timeout": 0,
-                "data": {
-
-                    "nomeColab": nomeColab,
-
-                }
-            };
-
-            $.ajax(settings).done(response => {
-                console.log(response)
-            });
-        } */
-
 
         var colaboradores = {
 
@@ -94,25 +208,20 @@
                     url: 'http://127.0.0.1:3022/readColaborador',
                     type: 'GET',
                     success: data => {
+                        var tr = '';
                         data.forEach(element => {
-                            //     const tr = document.createElemenet("tr");
-                            //     tr.innerHTML = `
-                            //     <tr>
-                            //         <th scope="row">${element.NomeColab} </th>
-                            //     <tr>`
-                            // })
-                            var tx = '';
-                            tx += '<div class="insert" onclick="colaborador.insert()">Inserir</div>';
-                            data.forEach(element => {
-                                tx += '<div class="user">';
-                                tx += `<div style="display: inline-block;"> ${element.Nome} | ${element.CPF} | ${element.Tipo} | ${element.Senha} | ${element.Endereco} | ${element.Data} | ${element.PrimeiroAcesso} | ${element.UltimoAcesso}`;
-                                tx += '<div class="actions">';
-                                tx += '<div class="action" onclick="colaborador.update(' + element.CPF + ',\'' + element.Nome + '\')">Editar</div>';
-                                tx += '<div class="action" onclick="colaborador.delete(' + element.CPF + ')">Excluir</div></div></div></div>';
-                            });
-                            $('#main').html(tx);
-                            // main.appendChild(tx);
-                        })
+                            tr += `<tr>`;
+                            tr += `<th scope="row"> ${element.CPF} </th>`;
+                            tr += `<th scope="row"> ${element.Nome} </th>`;
+                            tr += `<td scope="row"> ${element.Tipo} </td>`
+                            tr += `<td scope="row"> ${element.Email} </td>`
+                            tr += `<td scope="row"> ${element.PrimeiroAcesso} </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="colaborador.delete('${element.CPF}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" onclick="colaboradores.list2('${element.CPF}')"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="colaborador.update('${element.CPF}')"> Atualizar </td>`
+                            tr += `</tr>`
+                        });
+                        $('#main').html(tr);
                     }
                 });
 
@@ -123,71 +232,42 @@
 
         var colaborador = {
 
-            insert() {
-                var NomeColab = prompt('Digite o nome:');
-                var CPFColab = prompt('Digite o CPF:');
-                var TipoColab = 'fodido';
-                if (CPFColab) {
-                    console.log("passei pelo if pq existe cpf")
-                    $.ajax({
-                        type: 'POST',
-                        url: api + '/insertColaborador',
-                        data: {
-                            NomeColab: `${NomeColab}`,
-                            CPFColab: `${CPFColab}`,
-                            TipoColab: `${TipoColab}`,
-                        },
-                    }).done(function () {
-                        colaboradores.list();
-                        console.log("Chamei o user.list dps do insert");
-                    }).fail(function (msg) {
-                        console.log("deu ruim aqui");
-                    });
-                    console.log("será que rodou o ajax?")
-                }
-            },
-
-            update(CPFColab, oldTitle) {
-
-                var NomeColab = prompt('Digite o novo nome:', oldTitle);
-                if (NomeColab) {
-                    if (NomeColab.trim() != '') {
-                        $.ajax({
-                            type: 'POST',
-                            url: api + '/updateColaborador',
-                            data: {
-                                NomeColab: NomeColab,
-                                CPFColab: CPFColab
-                            },
-                        }).done(function () {
-                            colaboradores.list();
-                        }).fail(function (msg) {
-                            //console.log('FAIL');
-                        }).always(function (msg) {
-                            //console.log('ALWAYS');
-                        });
-                    }
-                }
-            },
-
             delete(CPFColab) {
 
-                if (confirm('Confirma a exclusão?')) {
+                if (confirm(`Confirma a exclusão?`)) {
                     $.ajax({
                         type: 'POST',
-                        url: api + '/deleteColaborador',
+                        url: 'http://127.0.0.1:3022/deleteColaborador',
                         data: { CPFColab: CPFColab },
                     }).done(function () {
                         colaboradores.list();
                     }).fail(function (msg) {
-                        //console.log('FAIL');
-                    }).always(function (msg) {
-                        //console.log('ALWAYS');
+                        console.log('FAIL');
                     });
                 }
             }
 
-        } 
+        };
+
+
+        function searchFilter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 </body>
 
