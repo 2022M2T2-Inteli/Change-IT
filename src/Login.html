@@ -69,6 +69,7 @@
       </div>
     </div>
   </section>
+  <!-- função para verificar as credenciais  -->
   <script>
     function Login() {
       var user = document.getElementById('usuario').value
@@ -82,10 +83,12 @@
           user: user,
           senha: senha
         },
+        //método de sucesso das credenciais 
         success: data => {
           console.log(data)
           window.location.href = '/AcessoRestrito.html'
         }
+        //método de falha das credenciais 
       }).fail(function (err) {
         console.log(err)
         alert('Credenciais inválidas')
