@@ -263,7 +263,9 @@ app.post("/registrarColaboradores", (req, res) => { //Método de inserir dados d
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     const Senha = String(req.body.CPFColab) + String(req.body.SenhaColab);
+    var today = new Date();
     const PrimeiroAcesso = today.toLocaleDateString();
+
 
     sql = `INSERT INTO Colaborador (Nome, CPF, Tipo, Senha, Email, Endereco, PrimeiroAcesso, ObsColab) VALUES ('${req.body.NomeColab}', '${req.body.CPFColab}', '${req.body.TipoColab}', '${Senha}', '${req.body.emailColab}', '${req.body.enderecoColab}', '${PrimeiroAcesso}', '${req.body.ObsColab}')`;
 
