@@ -101,7 +101,12 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     sql = `INSERT INTO Doacoes (Data, Anonimo, Nome, CPF, NomeProduto, Email, Ajuda, Observacoes) VALUES ('${req.body.dataInsumos}','${req.body.AnonimoIns}','${req.body.nomeInsumos}', '${req.body.CPFInsumos}', '${req.body.NomeProduto}', '${req.body.emailInsumo}', '${req.body.AjudaIns}', '${req.body.ObsInsumos}')`
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
     db.close(); // Fecha o banco
 });
 
