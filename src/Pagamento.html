@@ -69,8 +69,11 @@
                 <p style="font-size: 36px">Contribua da forma que puder!</p>
                 <div class="col-lg-12 col-md-6 col-xs-12 text-center">
                     <br>
-                    <button onclick="Copy()" class="copyButton"  id="buttonPix" class="btn btn-light px-5 py-2 primary-btn botaoquero"
+                    <button onclick="" class="copyButton"  id="buttonPix" class="btn btn-light px-5 py-2 primary-btn botaoquero"
 					style="background-color: #FEEF10;color: black; border-radius: 30px; border: none;">Copiar Pix</button>
+                        <div id="Copy" name="copy">
+                            62.180.252/0001-05
+                        </div>
                     <br>
                     <br>
                     <p style="font-size: 24px; font-weight: bold;">Chave Pix:</p>
@@ -93,13 +96,15 @@
     </div>
 
     <script>
-        function Copy ()
+        $(function(){
+            $("#buttonPix").on("click", function(){
+            navigator.clipboard.writeText("62180252000105");
+      });
+ });
             
-            document.execCommand("copy");
-        
 
     </script>
-    
+
     <!-- inicio código footer (rodapé) -->
     <div id="reusofooter">
 
