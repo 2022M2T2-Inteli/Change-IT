@@ -25,6 +25,11 @@
 
         </div>
     </header>
+    
+<button>
+    
+</button>
+
     <div>
         <h1 style="text-align: center;">Novo cadastro</h1>
         <br>
@@ -665,13 +670,25 @@
                 <!-- Fim do formulário -->
 
                 <div class="col-auto">
-                    <button style="background-color:#FEEF10;" type="submit" class="btn btn-primary bnt">Enviar</button>
+                    <button id="registroCadastro" style="background-color:#FEEF10;" type="submit" class="btn btn-primary bnt">Enviar</button>
+                        <div id="snackbar">Registro enviado com sucesso!</div>
                 </div>
             </div>
 
         </form>
     </div>
     <br />
+
+    <script>
+
+    $("#registroCadastro").on("click", function(){
+        var x = document.getElementById("snackbar");
+
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    });
+    </script>
+
     <!-- footer -->
     <div id="reusofooter">
 
