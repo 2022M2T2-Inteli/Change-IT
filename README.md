@@ -111,7 +111,7 @@ Windows:
 
 1.   No modo administrador, abra o "prompt de comando" ou o "terminal"
 2.   abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
-
+<!-- 
 ```sh
 npm install
 ``` 
@@ -132,7 +132,7 @@ npm start
 <br>
 Agora você pode acessar a aplicação através do link http://localhost:1234/
 O servidor está online
-
+ -->
 HTML:
 
 Não há instalação! Apenas executável!
