@@ -94,6 +94,9 @@ Visual Studio Code e GitHub:
 4.   Criar outra pasta chamada "repositorio_grupo_5" dentro da mesma.
 5.   No GitHub Web, acessar e clonar o repositorio: https://github.com/2022M2T2/Projeto5, na pasta "repositorio_grupo_5
 6.   Abra o VSCode e abra a pasta clonada
+7.   Pressione as teclas "ctrl + SHIFT + ' ", para abrir um novo terminal
+8.   Neste terminal navegue até a pasta "src/backend", utilizando o comando:
+     Utilizando o comando "CD", navegue até a pasta "src/backend"
      
 NODE.js
      
@@ -102,8 +105,14 @@ NODE.js
 3.   Abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
      
 ```sh
-npm install
+npm install -g node
 ``` 
+<br>
+(Isso instalara o node.js no seu repositoro)
+<br>
+*Passo 4 serve apenas, caso queira testar se o node.js foi instalado corretamente*
+<br>
+4.   Dentro do terminal, na pasta "src/backend" 
 
 
 
