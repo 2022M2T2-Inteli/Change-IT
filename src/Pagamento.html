@@ -69,13 +69,15 @@
                 <p style="font-size: 36px">Contribua da forma que puder!</p>
                 <div class="col-lg-12 col-md-6 col-xs-12 text-center">
                     <br>
-                    <button onclick="" class="copyButton"  id="buttonPix" class="btn btn-light px-5 py-2 primary-btn botaoquero"
+                    <button class="copyButton"  id="buttonPix" class="btn btn-light px-5 py-2 primary-btn botaoquero"
 					style="background-color: #FEEF10;color: black; border-radius: 30px; border: none;">Copiar Pix</button>
-                        <div id="Copy" name="copy">
-                            62.180.252/0001-05
-                        </div>
                     <br>
                     <br>
+                    <!-- Botão para abrir o Snackbar -->
+                    <!-- <button onclick="myFunction()">Show Snackbar</button> -->
+                    <!-- O Toast que aparece -->
+                    <div id="snackbar">Código copiado</div>
+
                     <p style="font-size: 24px; font-weight: bold;">Chave Pix:</p>
                     <p style="font-size: 24px;">CNPJ 62.180.252/0001-05</p>
                     <img src="img/Outras fotos/pix.png" class="pull-right" alt="ChavePix" /><br>
@@ -99,10 +101,14 @@
         $(function(){
             $("#buttonPix").on("click", function(){
             navigator.clipboard.writeText("62180252000105");
+            
+            var x = document.getElementById("snackbar");
+
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
       });
  });
             
-
     </script>
 
     <!-- inicio código footer (rodapé) -->
