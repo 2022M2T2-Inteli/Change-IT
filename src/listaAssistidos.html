@@ -667,8 +667,9 @@
                                 </div>
 
                                 <div class="col-auto">
-                                    <button id="registroAssistido" type="submit" class="btn btn-primary bnt">Enviar</button>
-                                        <div id="snackbar">Registro enviado com sucesso!</div>
+                                    <button id="registroAssistido" type="submit"
+                                        class="btn btn-primary bnt">Enviar</button>
+                                    <div id="snackbar">Registro enviado com sucesso!</div>
                                 </div>
                             </div>
 
@@ -686,15 +687,15 @@
         <!-- Fim do código do modal para o cadastro de assistidos -->
 
 
-<!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
-        
-<div class="container-fluid">
-    <a href="AcessoRestrito.html">
-        <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
-    </a>
-</div>
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
 
-<!-- Código para a página com a lista de assistidos -->
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
+
+        <!-- Código para a página com a lista de assistidos -->
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
                 <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
@@ -732,7 +733,6 @@
                                     <th class="fs-6">Nome</th>
                                     <th class="fs-6">Apelido</th>
                                     <th class="fs-6">Documento</th>
-                                    <th class="fs-6 d-none d-md-table-cell">Obs.</th>
                                     <th class="fs-6">Data</th>
                                 </tr>
                             </thead>
@@ -749,16 +749,16 @@
 
         </div>
 
-<script>
+        <script>
 
-    $("#registroAssistido").on("click", function(){
-        var x = document.getElementById("snackbar");
-        
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    });
+            $("#registroAssistido").on("click", function () {
+                var x = document.getElementById("snackbar");
 
-</script>
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            });
+
+        </script>
 
 
         <!-- Fim do código html e css da lista do site -->
@@ -799,7 +799,6 @@
                             tr += `<th scope="row"> ${element.nome_completo} </th>`;
                             tr += `<td scope="row"> ${element.clamado} </td>`
                             tr += `<td scope="row"> ${element.possui_documentos} </td>`
-                            tr += `<td scope="row"> ${element.observacao} </td>`
                             tr += `<td scope="row"> ${element.data} </td>`
                             tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
                             tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
