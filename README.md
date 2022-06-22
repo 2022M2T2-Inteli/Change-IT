@@ -47,6 +47,8 @@ May the force be with you! -->
      Heroku: Plataforma de nuvem que faz o deploy das aplicações do backend
      Br modelo: Aplicação para criação  organização conceitual de tabelas
      Ajax: Tecnica de comunição do "Backend" com o "Frontend" de forma assincrona
+     
+     
 ## 🛠 Estrutura de pastas
  
 -Projeto5<br>
@@ -105,14 +107,20 @@ NODE.js
 3.   Abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
      
 ```sh
-npm install -g node
+npm install -g node.js
 ``` 
 <br>
 (Isso instalara o node.js no seu repositoro)
 <br>
-*Passo 4 serve apenas, caso queira testar se o node.js foi instalado corretamente*
+
 <br>
-4.   Dentro do terminal, na pasta "src/backend" 
+4.   Dentro do terminal, na pasta "src/backend" digite o comando
+     (Passo 4 serve apenas, caso queira testar se o node.js foi instalado corretamente)
+     
+```sh
+node -v
+```      
+(A sua resposta 
 
 
 
@@ -143,14 +151,10 @@ Agora você pode acessar a aplicação através do link http://localhost:1234/
 O servidor está online
  -->
 HTML:
-
-Não há instalação! Apenas executável!
-Encontre o  na pasta executáveis e execute-o como qualquer outro programa.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```     
-NODE.js
+     <br>
+Não executavel
+     <br>
+<!-- NODE.js
      
 1.   Baixar o node.js: https://nodejs.org/pt-br/ (versão 16.15.1 LTS)
 2.   No Visual Studio Code. abra o "prompt de comando" ou o "terminal"
@@ -165,7 +169,7 @@ npm install
 ```sh
 npm start
 ``` 
-<br>
+<br> -->
 Agora você pode acessar a aplicação através do link http://localhost:1234/
 O servidor está online
 
