@@ -68,13 +68,6 @@
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <label>Insira seu email:
-                                        <input type="text" class="form-control" placeholder="Email"
-                                            aria-label="Username" aria-describedby="basic-addon1" name="emailColab">
-                                    </label>
-                                </div>
-
-                                <div class="input-group mb-3">
                                     <label>Endereço completo:
                                         <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
                                             aria-describedby="basic-addon1" name="enderecoColab">
@@ -95,7 +88,8 @@
                                     </fieldset>
                                 </div>
                                 <div class="col-auto">
-                                    <button id="registroColaboradores" type="submit" class="btn btn-primary bnt">Enviar</button>
+                                    <button id="registroColaboradores" type="submit" class="btn btn-primary bnt"
+                                        data-bs-dismiss="modal">Enviar</button>
                                     <div id="snackbar">Registro enviado com sucesso!</div>
                                 </div>
 
@@ -118,13 +112,13 @@
         <h1 style="text-align:center">Controle de Colaboradores</h1>
         <br>
 
-<!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
-        
-<div class="container-fluid">
-    <a href="AcessoRestrito.html">
-        <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
-    </a>
-</div>
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
     </header>
 
 
@@ -201,14 +195,14 @@
     </div>
 
     <script>
-        $("#registroColaboradores").on("click", function(){
+        $("#registroColaboradores").on("click", function () {
             var x = document.getElementById("snackbar");
-                    
+
             x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
         });
-            
+
     </script>
 
     <script>
@@ -226,7 +220,7 @@
 
         //método GET para puxar informações da tabela no banco de dados 
         var colaboradores = {
-            
+
             list() {
                 $.ajax({
                     url: 'http://127.0.0.1:3022/readColaborador',
