@@ -24,13 +24,13 @@
         <!-- Fim da NavBar -->
         <!-- Início do código do início do site -->
 
-<!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
-        
-<div class="container-fluid">
-    <a href="AcessoRestrito.html">
-        <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
-    </a>
-</div>
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
 
         <!-- Código do Modal para os doacoes de insumos-->
         <div class="modal fade" id="modalAddDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -122,7 +122,8 @@
                                 </fieldset>
                             </div>
                             <div class="col-auto">
-                                <button id="registroDoacoes" type="submit" class="btn btn-primary bnt">Enviar</button>
+                                <button id="registroDoacoes" type="submit" class="btn btn-primary bnt"
+                                    data-bs-dismiss="modal">Enviar</button>
                                 <div id="snackbar">Registro enviado com sucesso!</div>
                             </div>
 
@@ -233,16 +234,16 @@
 
         </div>
 
-<script>
-    $("#registroDoacoes").on("click", function(){
-        var x = document.getElementById("snackbar");
-                
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        <script>
+            $("#registroDoacoes").on("click", function () {
+                var x = document.getElementById("snackbar");
 
-    });
-        
-</script>
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+            });
+
+        </script>
 
         <script>
             $(document).ready(function () {
