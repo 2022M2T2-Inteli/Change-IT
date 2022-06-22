@@ -203,8 +203,16 @@
 						}
 
 					}
+						//fazer rodar so quando chega na parte
+					$(document).ready(function(){
+						$(window).scroll(function(){
+							console.log($(document).scrollTop());
+							if($(document).scrollTop() > 1200) {
+								animate();
+							}
+						})
+					})
 
-					animate();
 				});
 			</script>
 			<div class="text-end">
@@ -425,7 +433,7 @@
 				</div>
 				<div>
 					<center>
-					<br>
+					<br><br>
 					<h2>Acompanhe nosso feed do Instagram!</h2>
 					</center>
 					<br><br>
