@@ -104,7 +104,10 @@
                     </fieldset>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                    <a href="Home.html">
+                        <button type="submit" id="registroInsumos" class="btn btn-primary bnt">Enviar</button>
+                        <div id="snackbar">Registro enviado com sucesso!</div>
+                    </a>
                 </div>
                 <!-- Fim do formulário para doar insumos -->
             </div>
@@ -114,6 +117,18 @@
 
     <!-- footer -->
     <div id="reusofooter">
+
+
+        <script>
+
+            $("#registroInsumos").on("click", function () {
+                var x = document.getElementById("snackbar");
+
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            });
+
+        </script>
 
     </div>
     <script>
