@@ -122,13 +122,13 @@
         <h1 style="text-align:center"> Controle de Doações Monetárias </h1>
         <br>
 
-<!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
-        
-<div class="container-fluid">
-    <a href="AcessoRestrito.html">
-        <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
-    </a>
-</div>
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
 
         <!-- Modal -->
 
@@ -196,14 +196,14 @@
     </div>
 
     <script>
-        $("#registroMonetario").on("click", function(){
+        $("#registroMonetario").on("click", function () {
             var x = document.getElementById("snackbar");
-                    
+
             x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
         });
-            
+
     </script>
 
     <script>
@@ -233,7 +233,7 @@
                             tr += `<th scope="row"> ${element.Nome} </th>`;
                             tr += `<td scope="row"> ${element.Valor} </td>`
                             tr += `<td scope="row"> ${element.Data} </td>`
-                            tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idMonetario}')"> Excluir </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="doacaoMon.delete('${element.idMonetario}')"> Excluir </td>`
                             tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idMonetario}" onclick="doacoesMon.list2('${element.idMonetario}')"> Visualizar </td>`
                             tr += `</tr>`
                         });
@@ -277,17 +277,17 @@
 
         };
         // objeto que faz as outras ações
-        var assistido = {
+        var doacaoMon = {
 
-            delete(idCadastro) {
+            delete(idMonetario) {
 
                 if (confirm(`Confirma a exclusão?`)) {
                     $.ajax({
                         type: 'POST',
-                        url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
-                        data: { idCadastro: idCadastro },
+                        url: 'http://127.0.0.1:3022/deleteMonetario',
+                        data: { idMonetario: idMonetario },
                     }).done(function () {
-                        assistidos.list();
+                        doacoesMon.list();
                     }).fail(function (msg) {
                         console.log('FAIL');
                     });

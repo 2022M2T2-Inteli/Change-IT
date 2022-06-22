@@ -170,9 +170,15 @@ app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da f
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
+    var Nome = req.body.Nome;
+    console.log(req.body.Anonimo)
+    if (req.body.Anonimo == 'Sim') {
+        Nome = 'Anônimo'
+    };
+
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
 
-    var sql = `INSERT INTO Monetario (Data, Anonimo, Nome, Valor, Observacoes) VALUES ('${req.body.Data}', '${req.body.Anonimo}', '${req.body.Nome}', '${req.body.Valor}', '${req.body.Observacoes}')`;
+    var sql = `INSERT INTO Monetario (Data, Anonimo, Nome, Valor, Observacoes) VALUES ('${req.body.Data}', '${req.body.Anonimo}', '${Nome}', '${req.body.Valor}', '${req.body.Observacoes}')`;
 
     db.run(sql, [], (err, rows) => {
         if (err) {
@@ -182,6 +188,18 @@ app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da f
     });
     db.close(); // Fecha o banco
 })
+
+app.post("/deleteMonetario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
+    sql = "DELETE FROM Monetario WHERE idMonetario = '" + req.body.idMonetario + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            res.status(500).send(err.message);
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
 
 /*
 ========================================================================================
