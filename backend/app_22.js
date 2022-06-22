@@ -49,6 +49,7 @@ module.exports = db // exporta o bd
 
 // Endpoints relacionados aos assistidos/atendidos
 // Por mim isso poderia ser apagado, essa tabela nem deveria existir também!
+/*
 app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
     const nameAssistido = req.body.nome
     const nameSocialAssistido = req.body.NomeSocial
@@ -77,7 +78,8 @@ app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos d
 
     db.run(sql);
     res.end();
-})
+}) 
+*/
 
 /*
 ========================================================================================
@@ -357,6 +359,23 @@ app.post('/deleteColaborador', (req, res) => {
 //                                   PENDENTE                                         //
 ========================================================================================
 */
+
+app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Atividade ORDER BY Data COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+    
+});
+
 app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
     const idAssistido = req.body.idAssistido
     const nome = req.body.nome
@@ -374,25 +393,6 @@ app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colab
     // var db = new sqlite3.Database(DBSOURCE);
     // db.run(sql, []);
     // db.close();
-});
-
-app.put("/updateAtividade", (req, res) => { //Método Put, atualzia os campos dentro do banco de dados
-    db.run(atualizar, ["acorda", "pedrinho", "campeonato"]);
-});
-
-app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Atividade ORDER BY idAtividade COLLATE NOCASE';
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        res.json(rows);
-    });
-    db.close(); // Fecha o banco
 });
 
 
