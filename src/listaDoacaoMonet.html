@@ -100,7 +100,8 @@
                                 </fieldset>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                                <button id="registroMonetario" type="submit" class="btn btn-primary bnt">Enviar</button>
+                                <div id="snackbar">Registro enviado com sucesso!</div>
                             </div>
                         </form>
                     </div>
@@ -193,6 +194,17 @@
     <div id="reusofooter">
 
     </div>
+
+    <script>
+        $("#registroMonetario").on("click", function(){
+            var x = document.getElementById("snackbar");
+                    
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    
+        });
+            
+    </script>
 
     <script>
         $(document).ready(function () {
