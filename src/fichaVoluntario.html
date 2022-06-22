@@ -22,7 +22,8 @@
 
     <div>
         <!-- Início do formulário para se voluntariar  -->
-        <form action="/registrarVoluntario" name="valform" method="POST">
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/registrarVoluntario" method="POST" target="iframe">
 
             <div class="container row-aling-itens-start formulario">
                 <div class="input-group mb-3">
@@ -127,7 +128,8 @@
                     </fieldset>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary bnt">Enviar</button>
+                    <button id="registroVoluntario1" type="submit" class="btn btn-primary bnt">Enviar</button>
+                        <div id="snackbar">Registro enviado com sucesso!</div>
                 </div>
                 <!-- Fim do formulário para se voluntariar  -->
             </div>
@@ -137,6 +139,17 @@
         <!-- inicio código footer (rodapé) -->
         <div id="reusofooter">
         </div>
+
+        <script>
+
+            $("#registroVoluntario1").on("click", function () {
+                var x = document.getElementById("snackbar");
+
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            });
+
+        </script>
 
         <script>
             $(document).ready(function () {
