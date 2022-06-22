@@ -373,7 +373,7 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
         res.json(rows);
     });
     db.close(); // Fecha o banco
-    
+
 });
 
 app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
@@ -530,8 +530,12 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     };
 
     sql = "INSERT INTO tbCadastramento (data, nome_completo, clamado, possui_documentos, nascimento, observacao, marquises_viadutos, predios_pri_pub, parques, estacao, rodovias, areas_internas, galerias, lugares_abandonados, outros_locais, albergue, domiciliar_particular,d_rua, d_albergue, d_domicilio, d_outro, tempo_de_rua, motivos_morar_rua, quanto_tempo_mora_na_cidade, vive_com_sua_familia, contato_com_parentes, seis_meses_atv_comunitaria, seis_meses_atendido_nos_lugares_abaixo, emprego_carteira_assinada, renda, recebeu_beneficio, qual, encam_dt_1, encam_ser_1, encam_dt_2, encam_ser_2, encam_dt_3, encam_ser_3, encam_dt_4, encam_ser_4, encam_dt_5, encam_ser_5) VALUES ('" + dt + "','" + nomec + "','" + nomesocialac + "','" + documento + "','" + datanasc + "','" + obs + "','" + viadutomarquise + "','" + predio + "','" + parque + "','" + estacao + "','" + margem + "','" + construcoes + "','" + galeria + "','" + abandonado + "','" + outro_locais + "','" + albergue + "','" + domicilios + "','" + r + "','" + a + "','" + d + "','" + o + "','" + tempo + "','" + motivo + "','" + tempo_mora + "','" + familia + "','" + contatofora + "','" + freq + "','" + atend + "','" + carteiras + "','" + ganhou + "','" + benef + "','" + qual + "','" + dt1 + "','" + servico1 + "','" + dt2 + "','" + servico2 + "','" + dt3 + "','" + servico3 + "','" + dt4 + "','" + servico4 + "','" + dt5 + "','" + servico5 + "')";
-    db.run(sql, []);
-    res.end();
+    db.run(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
 });
 
 
