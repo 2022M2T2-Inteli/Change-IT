@@ -702,8 +702,7 @@
                                 <!-- Código referente ao "Snackbar" que aparece como confirmação de algum tipo de ação no site -->
                                 <div class="col-auto">
                                     <button id="registroCadastro" style="background-color: blue;" type="submit"
-                                        class="btn btn-primary bnt">Enviar</button>
-                                    <div id="snackbar">Registro enviado com sucesso!</div>
+                                        class="btn btn-primary bnt" data-bs-dismiss="modal">Enviar</button>
                                 </div>
                             </div>
 
@@ -717,6 +716,7 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar">Registro enviado com sucesso!</div>
 
         <!-- Fim do código do modal para o cadastro de assistidos -->
 
@@ -787,7 +787,7 @@
 
         <script>
 
-            $("#registroAssistido").on("click", function () {
+            $("#registroCadastro").on("click", function () {
                 var x = document.getElementById("snackbar");
 
                 x.className = "show";

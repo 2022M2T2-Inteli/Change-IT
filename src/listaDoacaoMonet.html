@@ -117,6 +117,8 @@
 
         <!-- Fim do código do modal para o cadastro de Doação Monetária -->
 
+        <div id="snackbar">Registro enviado com sucesso!</div>
+
 
         <!-- Início do código do início do site -->
 
@@ -218,6 +220,13 @@
         $(document).ready(() => {
             doacoesMon.list();
         });
+
+        function list20() {
+            setTimeout(function(){
+                doacoesMon.list
+            }, 400);
+
+        }
 
         // objeto que faz o get
         var doacoesMon = {
