@@ -365,7 +365,8 @@ app.get("/readServico", (req, res) => { //Método Get, pega todas as informaçõ
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Servico ORDER BY Data COLLATE NOCASE';
+    var sql = 'SELECT * FROM Servico ORDER BY ' + req.body.ordem + ' COLLATE NOCASE';
+    console.log(req.body.ordem)
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;

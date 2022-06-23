@@ -19,6 +19,7 @@
     </div>
     <!-- Fim da NavBar -->
 
+    <!-- MODAIS -->
     <!-- Código dos Modais para o adicionar Serviços -->
     <!-- Este é o modal para adição de banhos -->
     <div class="modal fade" id="ModalAddBanho" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -136,8 +137,6 @@
 
 
   <br>
-  <!-- Modal -->
-
 
   <div class="container-fluid">
     <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
@@ -155,20 +154,22 @@
             </div>
           </div>
         </div>
+        <div class="input-group row col-md-6 offset-3">
+          <input type="search" class="form-control rounded" placeholder="Procurar..." aria-label="Search"
+            aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
+        </div>
         <div class="row">
           <div class="col-md-6">
-            <center><button id="addac" type="submit"
-                class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2" data-bs-toggle="modal"
-                data-bs-target="#ModalAddBanho">
-                Adicionar Banho
-              </button></center>
+            <button id="addac" type="submit" class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+              data-bs-toggle="modal" data-bs-target="#ModalAddBanho">
+              Adicionar Banho
+            </button>
           </div>
           <div class="col-md-6">
-            <center><button id="addac" type="submit"
-                class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2" data-bs-toggle="modal"
-                data-bs-target="#ModalAddLanche">
-                Adicionar Lanche
-              </button></center>
+            <button id="addac" type="submit" class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+              data-bs-toggle="modal" data-bs-target="#ModalAddLanche">
+              Adicionar Lanche
+            </button>
           </div>
         </div>
 
@@ -176,12 +177,12 @@
           <table class="table col-10" id="myTable">
             <thead>
               <tr>
-                <th class="fs-6">#</th>
-                <th class="fs-6">Serviço</th>
-                <th class="fs-6">Toalha</th>
-                <th class="fs-6">Lanche</th>
-                <th class="fs-6">Data</th>
-                <th class="fs-6">idAssistido</th>
+                <th class="fs-6" onclick="servicos.list('idServico')">#</th>
+                <th class="fs-6" onclick="servicos.list('Servico')">Serviço</th>
+                <th class="fs-6" onclick="servicos.list('idCadastro')">idAssistido</th>
+                <th class="fs-6" onclick="servicos.list('Toalha')">Toalha</th>
+                <th class="fs-6" onclick="servicos.list('Lanche')">Lanche</th>
+                <th class="fs-6" onclick="servicos.list('Data')">Data</th>
                 <th class="fs-6">Ação</th>
               </tr>
             </thead>
@@ -227,31 +228,32 @@
     <!-- script para o ajax (integração) -->
     <script>
       $(document).ready(() => {
-        servicos.list();
+        servicos.list('Data');
         servicos.list2();
       });
 
       function list20() {
-        setTimeout(function () { servicos.list() }, 500)
+        setTimeout(function () { servicos.list('Data') }, 500)
       }
       //método GET para puxar informações da tabela no banco de dados 
       var servicos = {
 
-        list() {
+        list(ordem) {
           // ajax que cria a tabela de serviços
           $.ajax({
             url: 'http://127.0.0.1:1234/readServico',
             type: 'GET',
+            data: { ordem: ordem },
             success: data => {
               var tr = '';
               data.forEach(element => {
                 tr += `<tr>`;
                 tr += `<th scope="row"> ${element.idServico} </th>`;
                 tr += `<th scope="row"> ${element.Servico} </th>`;
+                tr += `<td scope="row" onclick="assistidos.list2(${element.idCadastro})" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" style="background-color: green; color: white"> ${element.idCadastro} </th>`;
                 tr += `<td scope="row"> ${element.Toalha} </td>`;
                 tr += `<td scope="row"> ${element.Lanche} </td>`;
                 tr += `<td scope="row"> ${element.Data} </td>`;
-                tr += `<td scope="row" onclick="assistido.list2(${element.idCadastro})"> ${element.idCadastro} </td>`;
                 tr += `<td style="background-color: red; color: white" scope="row" onclick="servico.delete('${element.idServico}')"> Excluir </td>`;
                 tr += `</tr>`;
               });
@@ -305,7 +307,7 @@
               url: 'http://127.0.0.1:1234/deleteServico',
               data: { idServico: idServico },
             }).done(function () {
-              servicos.list();
+              servicos.list('Data');
             }).fail(function (msg) {
               console.log('FAIL');
             });
@@ -341,18 +343,18 @@
       //método para filtrar as informações dos servicos no banco de dados (filtro de pesquisa)
       function searchFilter() {
         var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("searchFilter");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
+        input = document.getElementById("searchFilter"); // serach box
+        filter = input.value.toUpperCase(); //
+        table = document.getElementById("myTable"); // tabela
+        tr = table.getElementsByTagName("tr"); // linha
+        for (i = 0; i < tr.length; i++) { // pra cada elemento na linha
+          td = tr[i].getElementsByTagName("td")[0]; // a coluna em negrito é pego
+          if (td) { //
+            txtValue = td.textContent || td.innerText; //
+            if (txtValue.toUpperCase().indexOf(filter) > -1) { //
+              tr[i].style.display = ""; // 
+            } else { // 
+              tr[i].style.display = "none"; // 
             }
           }
         }
