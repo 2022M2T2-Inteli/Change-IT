@@ -89,8 +89,8 @@
                                 </div>
                                 <div class="col-auto">
                                     <button id="registroColaboradores" type="submit" class="btn btn-primary bnt"
-                                        data-bs-dismiss="modal">Enviar</button>
-                                    <div id="snackbar">Registro enviado com sucesso!</div>
+                                        data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+                                    
                                 </div>
 
                             </div>
@@ -106,6 +106,8 @@
         </div>
 
         <!-- Fim do código do modal para o cadastro de colaboradores -->
+
+        <div id="snackbar">Registro enviado com sucesso!</div>
 
         <!-- Início do código do início do site -->
 
@@ -212,6 +214,13 @@
         $(document).ready(() => {
             colaboradores.list();
         });
+
+        function list20() {
+            setTimeout(function(){
+                colaboradores.list
+            }, 400);
+
+        }
 
         //método GET para puxar informações da tabela no banco de dados 
         var colaboradores = {
