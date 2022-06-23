@@ -157,8 +157,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <button id="registroVoluntarios" type="submit" class="btn btn-primary bnt"
-                                        data-bs-dismiss="modal">Enviar</button>
-                                    <div id="snackbar">Registro enviado com sucesso!</div>
+                                        data-bs-dismiss="modal" onclick="list20()">Enviar</button>
                                 </div>
                             </div>
                             <br>
@@ -172,6 +171,7 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar">Registro enviado com sucesso!</div>
 
         <!-- Fim do código do modal para o cadastro de voluntarios -->
 
@@ -267,6 +267,11 @@
         $(document).ready(() => {
             voluntarios.list();
         });
+
+        function list20() {
+            setTimeout(function () { voluntarios.list() }, 400)
+
+        }
 
         // objeto que faz o get
         var voluntarios = {
