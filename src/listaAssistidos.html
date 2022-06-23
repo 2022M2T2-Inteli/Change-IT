@@ -732,8 +732,8 @@
         <!-- Código para a página com a lista de assistidos -->
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
-                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-10"> Assistidos </p>
+                <div class="mb-2 justify-content">
+                    <h1 class="text-center"> Controle de Assistidos </h1>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -745,18 +745,19 @@
                     </div>
 
                     <div>
-                        <center><button id="addac" type="submit"
+                        <center><button id="addac" type="submit" class="botaoquero" style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 20px; width: 50%;"
                                 class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
                                 data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
                                 Adicionar Assistido
                             </button></center>
-
+                            <br>
                         <!-- Search box -->
                         <div class="input-group row col-md-6 offset-3">
-                            <input type="search" class="form-control rounded" placeholder="Procurar..."
+                            <input style="height: 30px;"type="search" class="form-control rounded" placeholder="Procurar por apelido..."
                                 aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
                                 id="searchFilter" />
                         </div>
+                        <br>
                     </div>
 
                     <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
@@ -834,9 +835,9 @@
                             tr += `<td scope="row"> ${element.clamado} </td>`
                             tr += `<td scope="row"> ${element.possui_documentos} </td>`
                             tr += `<td scope="row"> ${element.data} </td>`
-                            tr += `<td style="background-color: red; color: white" scope="row" onclick="assistido.delete('${element.idCadastro}')"> Excluir </td>`
-                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </td>`
-                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="assistido.update('${element.idCadastro}')"> Atualizar </td>`
+                            tr += `<td scope="row"><button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistido.delete('${element.idCadastro}')"> Excluir </button> </td>`
+                            tr += `<td scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}"><button style="background-color: green; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </button> </td>`
+                            tr += `<td scope="row"><button style="background-color: blue; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistido.update('${element.idCadastro}')"> Atualizar </button> </td>`
                             tr += `</tr>`
                         });
                         $('#main').html(tr);
