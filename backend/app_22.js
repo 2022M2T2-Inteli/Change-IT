@@ -47,48 +47,30 @@ module.exports = db // exporta o bd
 
 //get, post, put, delete methods
 
-// Endpoints relacionados aos assistidos/atendidos
-// Por mim isso poderia ser apagado, essa tabela nem deveria existir também!
-/*
-app.post("/registrarAssistido", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
-    const nameAssistido = req.body.nome
-    const nameSocialAssistido = req.body.NomeSocial
-    const local = req.body.local
-    const seratendido = req.body.Sim
-    const naoatendido = req.body.Nao
-    const temporua = req.body.rua
-    const motivo = req.body.motivo
-    const outromotivo = req.body.outros
-    const satendimento = req.body.simAtendido
-    const natendimento = req.body.naoAtendido
-    const observaçao = req.body.observacao
-    if (seratendido) {
-        if (satendimento) {
-            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
-        } else {
-            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + seratendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
-        }
-    } else {
-        if (satendimento) {
-            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + satendimento + "', '" + observaçao + "')";
-        } else {
-            sql = "INSERT INTO Assistido (Nome, Apelido, Endereco, ObservacaoEndereco, TempoRua, PrincipaisMotivos, OutrosMotivos, Atendido, Observacao) VALUES ('" + nameAssistido + "', '" + nameSocialAssistido + "', '" + local + "', '" + naoatendido + "', '" + temporua + "', '" + motivo + "', '" + outromotivo + "', '" + natendimento + "', '" + observaçao + "')";
-        }
-    }
-
-    db.run(sql);
-    res.end();
-}) 
-*/
-
 /*
 ========================================================================================
 //                  Endpoints relacionados à tabela Doacoes                           //
-//                                INCOMPLETO                                          //
+//                                COMPLETO                                            //
 ========================================================================================
 */
 
-// Registra um insumo na tabela Doacoes no banco de dados
+// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaDoacoes.html")
+app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Doacoes ORDER BY idDoacoes COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close();
+});
+
+// CREATE - Registra uma nova doação de insumo na tabela Doacoes
 app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
 
     const datainsumos = req.body.dataInsumos
@@ -112,21 +94,6 @@ app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da 
     db.close(); // Fecha o banco
 });
 
-// Isso permite receber os insumos em uma tabela ordenada pelo id
-app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Doacoes ORDER BY idDoacoes COLLATE NOCASE';
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        res.json(rows);
-    });
-    db.close();
-});
 
 // Deleta o registro de um insumo na tabela Doacoes pelo id, isso serve para casos em que um insumo foi registrado errado ou não é correto
 app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
@@ -144,15 +111,16 @@ app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário 
     db.close(); // Fecha o banco
 });
 
+// Não julgamos necessário que haja um UPDATE para as doações de insumos, tendo em vista que não há informações relevantes que não possam ser trocadas usando um DELETE + CREATE
 
 /*
 ========================================================================================
 //                  Endpoints relacionados à tabela Monetario                         //
-//                                   PENDENTE                                         //
+//                                   COMPLETO                                         //
 ========================================================================================
 */
 
-// Isso permite receber os insumos em uma tabela ordenada pelo id
+// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaDoacoesMon.html")
 app.get("/readMonetario", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -168,6 +136,7 @@ app.get("/readMonetario", (req, res) => {
     db.close();
 });
 
+// CREATE - Registra uma nova transferência bancária com as informações do doador na tabela DoacoesMon
 app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -191,6 +160,7 @@ app.post("/insertMonetario", (req, res) => { //Método Post, pega os campos da f
     db.close(); // Fecha o banco
 })
 
+// DELETE -Deleta o registro de uma doação financeira se necessário
 app.post("/deleteMonetario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     sql = "DELETE FROM Monetario WHERE idMonetario = '" + req.body.idMonetario + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -203,14 +173,29 @@ app.post("/deleteMonetario", (req, res) => { //Método Delete, deleta um usuári
     db.close(); // Fecha o banco
 });
 
+// Não julgamos necessário que haja um UPDATE para as doações monetárias, tendo em vista que não há informações relevantes que não possam ser trocadas usando um DELETE + CREATE
+
 /*
 ========================================================================================
 //                  Endpoints relacionados à tabela Voluntario                        //
-//                                   PENDENTE                                         //
+//                                   COMPLETO                                         //
 ========================================================================================
 */
 
-// Registra um voluntário na tabela
+// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaVoluntários.html")
+app.get('/readVoluntario', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Voluntario ORDER BY Nome COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+});
+
+// CREATE - Registra um novo voluntário na tabela de voluntários
 app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos da ficha de cadastro do Voluntário e envia para o banco de dados
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -227,19 +212,7 @@ app.post("/registrarVoluntario", (req, res) => { //Método Post, pega os campos 
     db.close(); // Fecha o banco
 })
 
-// Torna possível receber o voluntário em uma lista ordenada pelo Nome
-app.get('/readVoluntario', (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Voluntario ORDER BY Nome COLLATE NOCASE';
-    db.all(sql, [], (err, rows) => {
-        res.json(rows);
-    });
-    db.close(); // Fecha o banco
-});
-
+// DELETE - Deleta o registro de um voluntário se necessário
 app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuário do banco de dados, por exemplo
     sql = "DELETE FROM Voluntario WHERE idVoluntario = '" + req.body.idVoluntario + "'";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -253,16 +226,17 @@ app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuár
 });
 
 
-// voluntário pendente
+// Não julgamos necessário que haja um UPDATE para os voluntários, tendo em vista que eles podem fazer uma nova requisição de voluntariado
 
 
 /*
 ========================================================================================
 //                  Endpoints relacionados à tabela Colaborador                       //
-//                                   PENDENTE                                         //
+//                                 1 PENDÊNCIA                                        //
 ========================================================================================
 */
 
+// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaColaboradores.html")
 app.get('/readColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -278,6 +252,7 @@ app.get('/readColaborador', (req, res) => {
     db.close(); // Fecha o banco
 });
 
+// CREATE - Registra um novo colaborador na tabela de colaboradores e cria seu email e senha na tabela de administração para ser possível efetuar o login na página "Login.html"
 app.post("/registrarColaboradores", (req, res) => { //Método de inserir dados do colaborador
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -311,7 +286,8 @@ app.post("/registrarColaboradores", (req, res) => { //Método de inserir dados d
     db.close(); // Fecha o banco
 });
 
-app.post('/updateColaborador', (req, res) => {
+// UPDATE - Pendente, deve ser possível alterar algumas informações dos colaboradores, mas esse método está pendente!
+/* app.post('/updateColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -336,8 +312,10 @@ app.post('/updateColaborador', (req, res) => {
         res.end();
     });
     db.close(); // Fecha o banco
-});
+}); 
+*/
 
+// DELETE - Deleta um colaborador se necessário (para o UPDATE não fazer tanta falta)
 app.post('/deleteColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -356,11 +334,11 @@ app.post('/deleteColaborador', (req, res) => {
 /*
 ========================================================================================
 //                  Endpoints relacionados à tabela Servico                           //
-//                                   PENDENTE                                         //
+//                                   COMPLETO                                         //
 ========================================================================================
 */
 
-app.get("/readServico", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+app.get("/readServico", (req, res) => { //  retorna as informações dos serviços, tornando possível exibí-las quando necessário
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -375,7 +353,7 @@ app.get("/readServico", (req, res) => { //Método Get, pega todas as informaçõ
     db.close(); // Fecha o banco
 
 });
-app.get("/readToalha", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+app.get("/readToalha", (req, res) => { //  retorna as informações das toalhas, tornando possível exibí-las quando necessário
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -391,7 +369,8 @@ app.get("/readToalha", (req, res) => { //Método Get, pega todas as informaçõe
 
 });
 
-app.post("/insertServico", (req, res) => { //Método de inserir dados do colaborador
+//Método de inserir dados do serviço utilizado
+app.post("/insertServico", (req, res) => { 
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -413,6 +392,7 @@ app.post("/insertServico", (req, res) => { //Método de inserir dados do colabor
     db.close(); // Fecha o banco
 });
 
+// Deleta um serviço
 app.post('/deleteServico', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -430,35 +410,9 @@ app.post('/deleteServico', (req, res) => {
 
 
 
-
-app.post("/Educadores", (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    var db = new sqlite3.Database(DBSOURCE);
-    sql = "INSERT INTO Educadores (Nome, Motivo, Idade, Documento, Email, Observações) VALUES ('" + username + "', '" + motivo + "', '" + idade + "', '" + doc + "', '" + email + "', '" + obs + "')";
-    db.run(sql, []);
-    res.end();
-});
-app.get("/readEducadores", (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    var db = new sqlite3.Database(DBSOURCE);
-    var sql = 'SELECT * FROM Educador';
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        res.json(rows);
-    });
-    db.close();
-});
-
-//Api Ficha Cadastro
-
 /*
 ========================================================================================
-//                  Endpoints relacionados à tabela assistidos                        //
+//                 Endpoints relacionados à tabela rbCadastramento                    //
 //                                 INCOMPLETO                                         //
 ========================================================================================
 */
@@ -574,7 +528,7 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
     });
 });
 
-
+// Endpoint necessário para a confirmação do Login
 app.post("/login", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
