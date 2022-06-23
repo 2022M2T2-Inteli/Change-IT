@@ -137,51 +137,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="modal fade" id="modalVisDoacaoInsumos" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog vis">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Doação de insumo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" id="clarinhalinda">
-
-                            <div class="col-sm-4">
-                                Data
-                                Anonimo
-                                Nome
-
-                            </div>
-
-                            <div class="col-sm-4">
-                                CPF
-                                NomeProduto
-
-                            </div>
-                            <div class="col-sm-4">
-                                Email
-                                Ajuda
-                                Observações
-                                idDoacoes
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Fim do código do modal para as doacoes de insumos -->
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
-                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-                    <p class="arvo fs-2 text-center my-2 col-30"> Controle doações de insumos </p>
+                <div class="mb-2 justify-content">
+                    <h1 class="text-center"> Controle de insumos </h1>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -195,8 +155,8 @@
                 <div>
                     <center>
                         <button id="addinsumo" type="submit"
-                            class="col-md-12 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
-                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos"> Adicionar Insumo </button>
+                            class="botaoquero col-md-12 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos" style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 20px; width: 100%; color: black;"> Adicionar Insumo </button>
                     </center>
 
                 </div>
@@ -281,7 +241,7 @@
                                 tr += `<td scope = "row"> ${element.Email} </td>`
                                 tr += `<td scope = "row"> ${element.Ajuda} </td>`
                                 tr += `<td scope = "row"> ${element.Observacoes} </td>`
-                                tr += `<td style="background-color: red; color: white" scope = "row" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </td>`
+                                tr += `<td scope="row"><button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </button> </td>`
                                 // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
                                 // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
                                 tr += `</tr>`
