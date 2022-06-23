@@ -823,7 +823,7 @@
 
             list() {
                 $.ajax({
-                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                    url: 'http://127.0.0.1:1234/readCadastroAssistido',
                     type: 'GET',
                     success: data => {
                         var tr = '';
@@ -847,7 +847,7 @@
 
             list2(id) {
                 $.ajax({
-                    url: 'http://127.0.0.1:3022/readCadastroAssistido',
+                    url: 'http://127.0.0.1:1234/readCadastroAssistido',
                     type: 'GET',
                     success: data => {
                         console.log("entrei no success");
@@ -918,7 +918,7 @@
                 if (confirm(`Confirma a exclusão?`)) {
                     $.ajax({
                         type: 'POST',
-                        url: 'http://127.0.0.1:3022/deleteCadastroAssistido',
+                        url: 'http://127.0.0.1:1234/deleteCadastroAssistido',
                         data: { idCadastro: idCadastro },
                     }).done(function () {
                         assistidos.list();

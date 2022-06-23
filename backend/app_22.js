@@ -396,6 +396,7 @@ app.post("/insertServico", (req, res) => { //Método de inserir dados do colabor
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     if (req.body.servico == "Banho") {
+        console.log(req.body.idCadastro);
         var sql = `INSERT INTO Servico (Servico, Toalha, Lanche, idCadastro, Data) VALUES ('Banho', '${req.body.idToalha}', '-', '${req.body.idCadastro}', '${req.body.Data}')`;
     }
     if (req.body.servico == "Lanche") {
