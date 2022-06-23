@@ -81,7 +81,27 @@ May the force be with you! -->
 <b>src</b>: Nesta pasta irá todo o código fonte do jogo/sistema, pronto para para ser baixado e modificado. -->
 
 ## 🛠 Instalação
-Instruções (passo-a-passo) para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para o configuração do ambiente de desenvolvimento e execução da aplicação web. 
+
+
+## 📈 Exemplo de uso
+
+<!-- Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado.
+
+Adicione blocos de códigos e, se necessário, screenshots.
+
+Este modelo pode ser copiado e utilizado à vontade. -->
+
+     
+     
+Home:
+     
+Fichas de cadastro:
+Login:
+Area restrita:
+
+## 💻 Configuração para Desenvolvimento
+     
+ Instruções (passo-a-passo) para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para o configuração do ambiente de desenvolvimento.
 <br>
 
 Para abrir este projeto você necessita das seguintes ferramentas:
@@ -120,9 +140,7 @@ npm install -g node.js
 ```sh
 node -v
 ```      
-(A sua resposta 
-
-
+(A sua resposta deve ser a versão atual do node)
 
 Windows:
 
@@ -140,66 +158,19 @@ npm install
 npm start
 ``` 
 <br>
-(Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto.)
-     <br>
-5.   Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
-```sh
-npm start
-``` 
-<br>
-Agora você pode acessar a aplicação através do link http://localhost:1234/
+
+Agora você pode acessar a aplicação através do link http://127.0.0.1:3022/
 O servidor está online
  -->
 HTML:
      <br>
-Não executavel
+     Não é nescessario, pois cumprir os passos anteriores e acessar o <a href="http://127.0.0.1:3022/">link</a> ja te dara acesso ao HTML
      <br>
-<!-- NODE.js
-     
-1.   Baixar o node.js: https://nodejs.org/pt-br/ (versão 16.15.1 LTS)
-2.   No Visual Studio Code. abra o "prompt de comando" ou o "terminal"
-4.   abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
 
-```sh
-npm install
-``` 
-(Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto.)
-     <br>
-5.   Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
-```sh
-npm start
-``` 
-<br> -->
-Agora você pode acessar a aplicação através do link http://localhost:1234/
-O servidor está online
-
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
-
-## 📈 Exemplo de uso
-
-<!-- Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado.
-
-Adicione blocos de códigos e, se necessário, screenshots.
-
-Este modelo pode ser copiado e utilizado à vontade. -->
-
-Através da cópia/clone/ download do repositório, altere os dados do readme.md e carregue os arquivos de seu projeto.
-
-## 💻 Configuração para Desenvolvimento
 
 Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
 
-Para abrir este projeto você necessita das seguintes ferramentas:
 
--<a href="https://godotengine.org/download">GODOT</a>
-
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
 
 ## 🗃 Histórico de lançamentos
 
