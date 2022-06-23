@@ -355,17 +355,17 @@ app.post('/deleteColaborador', (req, res) => {
 
 /*
 ========================================================================================
-//                  Endpoints relacionados à tabela Atividade                         //
+//                  Endpoints relacionados à tabela Servico                           //
 //                                   PENDENTE                                         //
 ========================================================================================
 */
 
-app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+app.get("/readServico", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Atividade ORDER BY Data COLLATE NOCASE';
+    var sql = 'SELECT * FROM Servico ORDER BY Data COLLATE NOCASE';
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
@@ -391,16 +391,15 @@ app.get("/readToalha", (req, res) => { //Método Get, pega todas as informaçõe
 
 });
 
-
-app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
+app.post("/insertServico", (req, res) => { //Método de inserir dados do colaborador
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
     if (req.body.servico == "Banho") {
-        var sql = `INSERT INTO Servico (Servico, Tolha, Lanche, Data) VALUES ('Banho', '${req.body.idToalha}', '--', '${req.body.DataBanho})`;
+        var sql = `INSERT INTO Servico (Servico, Toalha, Lanche, idCadastro, Data) VALUES ('Banho', '${req.body.idToalha}', '-', '${req.body.idCadastro}', '${req.body.Data}')`;
     }
     if (req.body.servico == "Lanche") {
-        var sql = `INSERT INTO Servico (Servico, Toalha, Lanche, Data) VALUES ('Lanche', '--', '${req.body.Lanche}', '${req.body.DataLanche}')`
+        var sql = `INSERT INTO Servico (Servico, Toalha, Lanche, idCadastro, Data) VALUES ('Lanche', '-', '${req.body.Lanche}', '${req.body.idCadastro}', '${req.body.Data}')`
     }
 
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
@@ -412,6 +411,23 @@ app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colab
     });
     db.close(); // Fecha o banco
 });
+
+app.post('/deleteServico', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    sql = "DELETE FROM Servico WHERE idServico = '" + req.body.idServico + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
+
+
 
 
 app.post("/Educadores", (req, res) => {

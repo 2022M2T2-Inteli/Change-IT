@@ -19,91 +19,105 @@
     </div>
     <!-- Fim da NavBar -->
 
-    <!-- Código do Modal para o adicionar Serviços -->
-
-    <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
-    <div class="modal fade" id="modaAddServico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Código dos Modais para o adicionar Serviços -->
+    <!-- Este é o modal para adição de banhos -->
+    <div class="modal fade" id="ModalAddBanho" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <!-- header com botão de fechar (um xizinho) -->
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adicionar Serviço</h5>
+            <h5 class="modal-title">Adicionar Banho</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+          <form action="/insertServico" method="POST" target="iframe">
+            <div class="modal-body">
 
-            <!-- formulário para adicionar um voluntario -->
-            <iframe name="iframe" id="iframe" style="display:none;"></iframe>
-            <form action="/registrarServico" method="POST" target="iframe">
-              <div class="container row-aling-itens-start formulario">
-                <div class="input-group mb-3">
-                  <label>Nome Completo:
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                      aria-describedby="basic-addon1" name="NomeColab">
-                  </label>
+              <div class="container col-12 align-items-center mb-2">
 
-                </div>
+                <label>Toalha utilizada:</label>
+                <select name="idToalha" id="mainBanho" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
+                  required>
+                </select>
 
-                <div class="input-group mb-3">
-                  <label>Como colabora ("função"):
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                      aria-describedby="basic-addon1" name="TipoColab">
-                  </label>
+                <br />
 
-                </div>
+                <label>Quem tomou o banho:</label>
+                <select name="nome_completo" id="mainAssistido"
+                  class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
+                </select>
 
-                <div class="input-group mb-3">
-                  <label>Idade:
-                    <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
-                      aria-describedby="basic-addon1" name="IdadeColab">
-                  </label>
-                </div>
+                <br />
 
-                <div class="input-group mb-3">
-                  <label>Documento (CPF):
-                    <input type="text" class="form-control" placeholder="CPF" aria-label="Username"
-                      aria-describedby="basic-addon1" name="CPFColab">
-                  </label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <label>Endereço completo:
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                      aria-describedby="basic-addon1" name="enderecoColab">
-                  </label>
-
-                </div>
-                <br>
-
-                <div class="observacao">
-                  <fieldset>
-                    <div class="input-group">
-                      <span class="input-group-text">Observações</span>
-                      <textarea class="form-control" aria-label="With textarea" name="ObsColab"></textarea>
-                    </div>
-                    <br>
-
-                  </fieldset>
-                </div>
-                <div class="col-auto">
-                  <button id="registroServicos" type="submit" class="btn btn-primary bnt"
-                    data-bs-dismiss="modal">Enviar</button>
-                  <div id="snackbar">Registro enviado com sucesso!</div>
-                </div>
-
+                <label>Data do banho:</label>
+                <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
+                  aria-label="Username" name="Data" aria-describedby="basic-addon1">
               </div>
-            </form>
 
-          </div>
+              <input type="hidden" name="servico" value="Banho">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <div class="col-auto">
+                <button id="registroCadastro" style="background-color: blue;" type="submit" class="btn btn-primary bnt"
+                  data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+                <div id="snackbar">Registro enviado com sucesso!</div>
+              </div>
+            </div>
+          </form>
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- Fim do código do modal para o cadastro de Servicos -->
+    <!-- Este é o modal para adição de lanches -->
+    <div class="modal fade" id="ModalAddLanche" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Adicionar Lanche</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+          <form action="/insertServico" method="POST" target="iframe">
+            <div class="modal-body">
+
+              <div class="container col-12 align-items-center mb-2">
+
+                <label>Lanche:</label>
+                <input type="text" name="Lanche" value="HotDog" style="width: 100%;">
+
+                <br />
+
+                <label>Quem recebeu o lanche:</label>
+                <select name="nome_completo" id="mainAssistido2"
+                  class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
+                </select>
+
+                <br />
+
+                <label>Data de entrega do lanche:</label>
+                <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
+                  aria-label="Username" name="Data" aria-describedby="basic-addon1">
+              </div>
+
+              <input type="hidden" name="servico" value="Lanche">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <div class="col-auto">
+                <button id="registroCadastro" style="background-color: blue;" type="submit" class="btn btn-primary bnt"
+                  data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+                <div id="snackbar">Registro enviado com sucesso!</div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Fim dos códigos dos modais para o cadastro de Servicos -->
 
     <!-- Início do código do início do site -->
 
@@ -123,42 +137,7 @@
 
   <br>
   <!-- Modal -->
-  <div class="modal fade" id="ModalAddBanho" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Adicionar Banho</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="/insertAtividade" method="POST">
-            <div class="container col-12 align-items-center mb-2">
 
-              <label>Toalha utilizada:</label>
-              <select name="type" id="mainBanho" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
-              </select>
-
-              <br />
-
-              <label>Quem tomou o banho:</label>
-              <select name="type" id="mainAssistido" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
-              </select>
-
-              <br />
-
-              <label>Data do banho:</label>
-              <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
-                aria-label="Username" name="data5" aria-describedby="basic-addon1">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary" onclick="insertService()">Salvar Mudança</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
@@ -193,19 +172,22 @@
           </div>
         </div>
 
-        <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+        <div class="m-2 col-12 col-md-11 mx-auto fs-6 d-flex align-items-center justify-content-center">
           <table class="table col-10" id="myTable">
             <thead>
               <tr>
+                <th class="fs-6">#</th>
                 <th class="fs-6">Serviço</th>
+                <th class="fs-6">Toalha</th>
+                <th class="fs-6">Lanche</th>
                 <th class="fs-6">Data</th>
-                <th class="fs-6 d-none d-md-table-cell">Obs.</th>
-                <th class="fs-6">Assistido</th>
-                <th class="fs-6">Número Toalha</th>
+                <th class="fs-6">idAssistido</th>
+                <th class="fs-6">Ação</th>
               </tr>
             </thead>
 
-            <tbody id="resultado">
+            <tbody id="main">
+
             </tbody>
           </table>
         </div>
@@ -246,8 +228,12 @@
     <script>
       $(document).ready(() => {
         servicos.list();
+        servicos.list2();
       });
 
+      function list20() {
+        setTimeout(function () { servicos.list() }, 500)
+      }
       //método GET para puxar informações da tabela no banco de dados 
       var servicos = {
 
@@ -261,19 +247,21 @@
               data.forEach(element => {
                 tr += `<tr>`;
                 tr += `<th scope="row"> ${element.idServico} </th>`;
-                tr += `<th scope="row"> ${element.TipoServico} </th>`;
-                tr += `<td scope="row"> ${element.Toalha} </td>`
-                tr += `<td scope="row"> ${element.Lanche} </td>`
-                tr += `<td scope="row"> ${element.idAssistido} </td>`
-                tr += `<td style="background-color: red; color: white" scope="row" onclick="servico.delete('${element.CPF}')"> Excluir </td>`
-                tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" onclick="servicos.list2('${element.CPF}')"> Visualizar </td>`
-                tr += `<td style="background-color: blue; color: white" scope="row" onclick="servico.update('${element.CPF}')"> Atualizar </td>`
-                tr += `</tr>`
+                tr += `<th scope="row"> ${element.Servico} </th>`;
+                tr += `<td scope="row"> ${element.Toalha} </td>`;
+                tr += `<td scope="row"> ${element.Lanche} </td>`;
+                tr += `<td scope="row"> ${element.Data} </td>`;
+                tr += `<td scope="row"> ${element.idCadastro} </td>`;
+                tr += `<td style="background-color: red; color: white" scope="row" onclick="servico.delete('${element.idServico}')"> Excluir </td>`;
+                tr += `</tr>`;
               });
               $('#main').html(tr);
             }
           });
 
+        },
+
+        list2() {
           // ajax que cria as toalhas no dropdown do modal do adicionar banho
           $.ajax({
             url: 'http://127.0.0.1:1234/readToalha',
@@ -281,43 +269,26 @@
             success: data => {
               var modalBanho = '';
               data.forEach(element => {
-                modalBanho += `<option value="${element.idToalha}" name="${element.idToalha}">Toalha ${element.idToalha}</option>`;
+                modalBanho += `<option value="${element.idToalha}" name="idToalha">Toalha ${element.idToalha}</option>`;
               });
-              $('#mainBanho').append(modalBanho)
+              $('#mainBanho').append(modalBanho);
             }
           });
 
-          // ajax que cria os assistidos no dropdown do modal do adicionar banho
-          $.ajax({
-            url: 'http://127.0.0.1:1234/read'
-          })
-
-        },
-
-
-        list2(id) {
+          // ajax que cria os assistidos no dropdown do modal do adicionar banho e no adicionar lanche
           $.ajax({
             url: 'http://127.0.0.1:1234/readCadastroAssistido',
             type: 'GET',
             success: data => {
-              console.log("entrei no success");
+              var modalAssistido = '';
               data.forEach(element => {
-                console.log("entrei no forEach do elemento" + id);
-                const modal = document.createElement("div");
-                modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                                             <div class="modal-dialog">                                                                       <div class="modal-content">                                                                     <div class="modal-header">                                                                        <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close"data-bs-dismiss="modal" aria-label="Close"></button>                </div> 
-                <div class="modal-body"> <div class="row"> 
-                <div class="modal-foorter"> 
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
-
-                if (element.idCadastro == id) {
-                  document.body.appendChild(modal);
-                  $('#myModal' + id).modal();
-                }
-
+                modalAssistido += `<option value="${element.idCadastro}" name="idCadastro"> ${element.nome_completo} #${element.idCadastro} </option>`;
               });
-              // $('#stefano').html(dive);
+              $('#mainAssistido').append(modalAssistido); // adiciona no dropdown do modal do banho
+              $('#mainAssistido2').append(modalAssistido); // adiciona no dropdown do modal do lacnhe
             }
           });
+
         }
 
       };
@@ -326,13 +297,13 @@
       //método para deletar as informações dos servicos no banco de dados 
       var servico = {
 
-        delete(CPFColab) {
+        delete(idServico) {
 
           if (confirm(`Confirma a exclusão?`)) {
             $.ajax({
               type: 'POST',
               url: 'http://127.0.0.1:1234/deleteServico',
-              data: { CPFColab: CPFColab },
+              data: { idServico: idServico },
             }).done(function () {
               servicos.list();
             }).fail(function (msg) {
