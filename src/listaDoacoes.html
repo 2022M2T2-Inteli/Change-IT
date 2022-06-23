@@ -42,92 +42,91 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/registrarInsumos" method="POST" target="iframe">
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Data:
+                                        <input type="date" name="dataInsumos" class="form-control" placeholder="D/M/A"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
 
-                        <form action="/registrarInsumos" method="POST"></form>
-                        <div class="container row-aling-itens-start formulario">
-                            <div class="input-group mb-3">
-                                <label>Data:
-                                    <input type="date" name="dataInsumos" class="form-control" placeholder="D/M/A"
-                                        aria-label="Username" aria-describedby="basic-addon1">
-                                </label>
-
-                            </div>
-                            <label> Gostaria de permanecer anônimo(a) ?
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
-                                        name="SimAnonimo">
-                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
-                                        name="NaoAnonimo">
-                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                </div>
-                            </label>
-                            <div class="input-group mb-3">
-                                <label>Nome Completo:
-                                    <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="nomeInsumos">
-                                </label>
-
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <label>CPF (somente números):
-                                    <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="CPFInsumos">
-                                </label>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <label>Produto a ser doado:
-                                    <input type="text" class="form-control" placeholder="Forma de ajuda"
-                                        aria-label="Username" aria-describedby="basic-addon1" name="NomeProduto">
-                                </label>
-                                <br>
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <label>Insira seu email:
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="emailInsumo">
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <label> Necessita de ajuda para realizar a entrega?
+                                <label> Gostaria de permanecer anônimo(a) ?
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="inlineRadio1" value="Sim"
-                                            name="SimAjuda">
+                                            name="SimAnonimo">
                                         <label class="form-check-label" for="inlineRadio1">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="inlineRadio2" value="Não"
-                                            name="NaoAjuda">
+                                            name="NaoAnonimo">
                                         <label class="form-check-label" for="inlineRadio2">Não</label>
                                     </div>
                                 </label>
-                            </div>
-                            <br>
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo:
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="nomeInsumos">
+                                    </label>
 
-                            <div class="observacao">
-                                <fieldset>
-                                    <div class="input-group">
-                                        <span class="input-group-text">Observações</span>
-                                        <textarea class="form-control" aria-label="With textarea"
-                                            name="ObsInsumos"></textarea>
-                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>CPF (somente números):
+                                        <input type="text" class="form-control" placeholder="RG/CPF"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="CPFInsumos">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Produto a ser doado:
+                                        <input type="text" class="form-control" placeholder="Forma de ajuda"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="NomeProduto">
+                                    </label>
                                     <br>
+                                </div>
 
-                                </fieldset>
-                            </div>
-                            <div class="col-auto">
-                                <button id="registroDoacoes" type="submit" class="btn btn-primary bnt"
-                                    data-bs-dismiss="modal">Enviar</button>
-                                <div id="snackbar">Registro enviado com sucesso!</div>
-                            </div>
+                                <div class="input-group mb-3">
+                                    <label>Insira seu email:
+                                        <input type="text" class="form-control" placeholder="Email"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="emailInsumo">
+                                    </label>
+                                </div>
 
-                        </div>
+                                <div class="form-check">
+                                    <label> Necessita de ajuda para realizar a entrega?
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineRadio1"
+                                                value="Sim" name="SimAjuda">
+                                            <label class="form-check-label" for="inlineRadio1">Sim</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineRadio2"
+                                                value="Não" name="NaoAjuda">
+                                            <label class="form-check-label" for="inlineRadio2">Não</label>
+                                        </div>
+                                    </label>
+                                </div>
+                                <br>
+
+                                <div class="observacao">
+                                    <fieldset>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Observações</span>
+                                            <textarea class="form-control" aria-label="With textarea"
+                                                name="ObsInsumos"></textarea>
+                                        </div>
+                                        <br>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-auto">
+                                    <button id="registroDoacoes" type="submit" class="btn btn-primary bnt"
+                                        data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+                                </div>
+
+                            </div>
                         </form>
 
                     </div>
@@ -137,6 +136,7 @@
                 </div>
             </div>
         </div>
+        <div id="snackbar">Registro enviado com sucesso!</div>
         <!-- Fim do código do modal para as doacoes de insumos -->
         <div class="container-fluid">
             <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
@@ -156,7 +156,9 @@
                     <center>
                         <button id="addinsumo" type="submit"
                             class="botaoquero col-md-12 border col-sm-12 mx-auto form-control my-2 btn btn-dark mt-2"
-                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos" style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 20px; width: 100%; color: black;"> Adicionar Insumo </button>
+                            data-bs-toggle="modal" data-bs-target="#modalAddDoacaoInsumos"
+                            style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 20px; width: 100%; color: black;">
+                            Adicionar Insumo </button>
                     </center>
 
                 </div>
@@ -166,7 +168,7 @@
                         <thead>
                             <tr>
                                 <th class="fs-6">id</th>
-                                <th class="fs-6"> Data</th>
+                                <th class="fs-6">Data</th>
                                 <th class="fs-6">Anonimo</th>
                                 <th class="fs-6">Nome</th>
                                 <th class="fs-6">CPF</th>
@@ -222,6 +224,10 @@
                 doacao.list();
             });
 
+            function list20() {
+                setTimeout(function () { doacao.list('Data') }, 400)
+            }
+
             var doacao = {
 
                 list() {
@@ -242,35 +248,9 @@
                                 tr += `<td scope = "row"> ${element.Ajuda} </td>`
                                 tr += `<td scope = "row"> ${element.Observacoes} </td>`
                                 tr += `<td scope="row"><button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="doacoes.delete('${element.idDoacoes}')"> Excluir </button> </td>`
-                                // tr += `<td style="background-color: green; color: white" scope = "row" onclick="doacoes.vis('${element.idDoacoes}')"> Visualizar </td>`
-                                // tr += `<td style="background-color: blue; color: white" scope = "row" onclick="doacoes.update('${element.idDoacoes}')"> Atualizar </td>`
                                 tr += `</tr>`
                             });
-                            // tx += '<div class="insert" onclick="doacoes.insert();">Inserir</div>';
-                            // data.forEach(element => {
-                            //     tx += '<div class="user">';
-                            //     tx += `<div style="display: inline-block;"> ${element.Data} | ${element.Anonimo} | ${element.Nome} | ${element.CPF} | ${element.NomeProduto} | ${element.Email} | ${element.Ajuda} | ${element.Observacoes} | ${element.idDoacoes}`;
-                            //     tx += '<div class="actions">';
-                            //     tx += '<div class="action" onclick="doacoes.update(' + element.NomeProduto + '\'' + element.Data + '\'' + element.Tipo + '\'' + element.Observaçõs + '\')">Editar</div>';
-                            //     tx += '<div class="action" onclick="doacoes.delete(' + element.idDoacoes + ')">Excluir</div></div></div></div>';
-                            // });
                             $('#main').html(tr);
-                            // main.appendChild(tx);
-                        }
-                    });
-                },
-
-
-                list2() {
-                    $.ajax({
-                        url: 'http://127.0.0.1:1234/readInsumos',
-                        type: 'GET',
-                        success: data => {
-                            data.forEach(element => {
-                                var modal = '';
-                                modal += `<div `
-                            });
-                            $('#clarinhalinda').html(dive);
                         }
                     });
                 }
@@ -280,60 +260,6 @@
 
             // objeto que faz as outras ações
             var doacoes = {
-
-
-                // CODIGO ANTIGO
-                // insert() {
-                //     var NomeProdutoDoacao = prompt('Digite o nome do produto:');
-                //     var idDoacaoDoacao = prompt('Digite o id da doação:');
-                //     var DataDoacao = prompt('Digite a data da doação:');
-                //     var TipoDoacao = prompt('Digite o tipo da doação:');
-                //     var ObservacoesDoacao = prompt('Digite uma observação sobre a doação:');
-
-                //     if (idDoacaoDoacao) {
-                //         console.log("passei pelo if pq existe id da doação")
-                //         $.ajax({
-                //             type: 'POST',
-                //             url: api + '/registrarInsumos',
-                //             data: {
-                //                 NomeProdutoDoacao: `${NomeProdutoDoacao}`,
-                //                 idDoacaoDoacao: `${idDoacaoDoacao}`,
-                //                 DataDoacao: `${DataDoacao}`,
-                //                 TipoDoacao: `${TipoDoacao}`,
-                //                 ObservacoesDoacao: `${ObservacoesDoacao}`,
-                //             },
-                //         }).done(function () {
-                //             doacoes.list();
-                //             console.log("Chamei o doacoes.list dps do insert");
-                //         }).fail(function (msg) {
-                //             console.log("deu ruim aqui");
-                //         });
-                //         console.log("será que rodou o ajax?")
-                //     }
-                // },
-
-                // update(idDoacaoDoacao, oldTitle) {
-
-                //     var NomeProdutoDoacao = prompt('Digite o novo nome:', oldTitle);
-                //     if (NomeProdutoDoacao) {
-                //         if (NomeProdutoDoacao.trim() != '') {
-                //             $.ajax({
-                //                 type: 'POST',
-                //                 url: api + '/updateInsumos',
-                //                 data: {
-                //                     NomeProdutoDoacao: NomeProdutoDoacao,
-                //                     idDoacaoDoacao: idDoacaoDoacao
-                //                 },
-                //             }).done(function () {
-                //                 doacoes.list();
-                //             }).fail(function (msg) {
-                //                 //console.log('FAIL');
-                //             }).always(function (msg) {
-                //                 //console.log('ALWAYS');
-                //             });
-                //         }
-                //     }
-                // },
 
                 delete(idDoacoes) {
 
