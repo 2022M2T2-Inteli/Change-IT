@@ -1,7 +1,7 @@
 const express = require('express'); // framework express
 const app = express(); // app faz o manuseio do express
 const hostname = '127.0.0.1'; // endereço
-const port = 3022; // porta do site
+const port = 1234; // porta do site
 var md5 = require('md5') // recebe o módulo do md5 (criptografia)
 var sqlite3 = require('sqlite3').verbose(); // import de todos os módulos necessários
 var http = require('http');
@@ -375,24 +375,42 @@ app.get("/readAtividade", (req, res) => { //Método Get, pega todas as informaç
     db.close(); // Fecha o banco
 
 });
+app.get("/readToalha", (req, res) => { //Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornando possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
-app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
-    const idAssistido = req.body.idAssistido
-    const nome = req.body.nome
-    const tipo = req.body.tipo
-    const
-        sql = "INSERT INTO Atividade (idAssistido, Nome, Tipo) VALUES ('" + idAssistido + "', '" + nome + "', '" + tipo + "')";
     var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, []);
+    var sql = 'SELECT * FROM Toalha ORDER BY idToalha COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
     db.close(); // Fecha o banco
 
+});
 
-    // const idAssistido = req.body.idAssistido
-    // const tipo = req.body.tipo
-    // sql = "INSERT INTO Atividade SET idAssistido = '" + idAssistido + "' SET Tipo = '" + tipo + "'WHERE id = " + req.body.id;
-    // var db = new sqlite3.Database(DBSOURCE);
-    // db.run(sql, []);
-    // db.close();
+
+app.post("/insertAtividade", (req, res) => { //Método de inserir dados do colaborador
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    if (req.body.servico == "Banho") {
+        var sql = `INSERT INTO Servico (Servico, Tolha, Lanche, Data) VALUES ('Banho', '${req.body.idToalha}', '--', '${req.body.DataBanho})`;
+    }
+    if (req.body.servico == "Lanche") {
+        var sql = `INSERT INTO Servico (Servico, Toalha, Lanche, Data) VALUES ('Lanche', '--', '${req.body.Lanche}', '${req.body.DataLanche}')`
+    }
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
 });
 
 

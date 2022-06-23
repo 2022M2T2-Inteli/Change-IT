@@ -266,7 +266,7 @@
 
                 list() {
                     $.ajax({
-                        url: 'http://127.0.0.1:3022/readInsumos',
+                        url: 'http://127.0.0.1:1234/readInsumos',
                         type: 'GET',
                         success: data => {
                             var tr = '';
@@ -303,7 +303,7 @@
 
                 list2() {
                     $.ajax({
-                        url: 'http://127.0.0.1:3022/readInsumos',
+                        url: 'http://127.0.0.1:1234/readInsumos',
                         type: 'GET',
                         success: data => {
                             data.forEach(element => {
@@ -380,7 +380,7 @@
                     if (confirm('Confirma a exclusão?')) {
                         $.ajax({
                             type: 'POST',
-                            url: 'http://127.0.0.1:3022/deleteInsumos',
+                            url: 'http://127.0.0.1:1234/deleteInsumos',
                             data: { idDoacoes: idDoacoes },
                         }).done(function () {
                             doacao.list();

@@ -273,7 +273,7 @@
 
             list() {
                 $.ajax({
-                    url: 'http://127.0.0.1:3022/readVoluntario',
+                    url: 'http://127.0.0.1:1234/readVoluntario',
                     type: 'GET',
                     success: data => {
                         var tr = '';
@@ -297,7 +297,7 @@
 
             list2(id) {
                 $.ajax({
-                    url: 'http://127.0.0.1:3022/readVoluntario ',
+                    url: 'http://127.0.0.1:1234/readVoluntario ',
                     type: 'GET',
                     success: data => {
                         console.log("entrei no success");
@@ -340,7 +340,7 @@
                 if (confirm(`Confirma a exclusão?`)) {
                     $.ajax({
                         type: 'POST',
-                        url: 'http://127.0.0.1:3022/deleteVoluntario',
+                        url: 'http://127.0.0.1:1234/deleteVoluntario',
                         data: { idVoluntario: idVoluntario },
                     }).done(function () {
                         voluntarios.list();

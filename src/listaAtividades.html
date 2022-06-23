@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-  <title>Atividades</title>
+  <title>Serviços</title>
   <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -19,22 +19,22 @@
     </div>
     <!-- Fim da NavBar -->
 
-    <!-- Código do Modal para o adicionar Atividades -->
+    <!-- Código do Modal para o adicionar Serviços -->
 
     <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
-    <div class="modal fade" id="modaAddAtividade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modaAddServico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <!-- header com botão de fechar (um xizinho) -->
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adicionar Atividade</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Adicionar Serviço</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
 
             <!-- formulário para adicionar um voluntario -->
             <iframe name="iframe" id="iframe" style="display:none;"></iframe>
-            <form action="/registrarAtividade" method="POST" target="iframe">
+            <form action="/registrarServico" method="POST" target="iframe">
               <div class="container row-aling-itens-start formulario">
                 <div class="input-group mb-3">
                   <label>Nome Completo:
@@ -86,7 +86,7 @@
                   </fieldset>
                 </div>
                 <div class="col-auto">
-                  <button id="registroAtividades" type="submit" class="btn btn-primary bnt"
+                  <button id="registroServicos" type="submit" class="btn btn-primary bnt"
                     data-bs-dismiss="modal">Enviar</button>
                   <div id="snackbar">Registro enviado com sucesso!</div>
                 </div>
@@ -103,11 +103,11 @@
       </div>
     </div>
 
-    <!-- Fim do código do modal para o cadastro de Atividades -->
+    <!-- Fim do código do modal para o cadastro de Servicos -->
 
     <!-- Início do código do início do site -->
 
-    <h1 style="text-align:center">Controle de Atividades</h1>
+    <h1 style="text-align:center">Controle de Serviços</h1>
     <br>
 
     <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
@@ -122,168 +122,247 @@
 
 
   <br>
-  <div class="d-flex justify-content-center">
-    <div class="formulariopesq justify-itens">
-      <div class="container-fluid">
-        <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
-          <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
-            <p class="arvo fs-2 text-center my-2 col-10"> Atividades </p>
+  <!-- Modal -->
+  <div class="modal fade" id="ModalAddBanho" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Banho</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/insertAtividade" method="POST">
+            <div class="container col-12 align-items-center mb-2">
+
+              <label>Toalha utilizada:</label>
+              <select name="type" id="mainBanho" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
+              </select>
+
+              <br />
+
+              <label>Quem tomou o banho:</label>
+              <select name="type" id="mainAssistido" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2" required>
+              </select>
+
+              <br />
+
+              <label>Data do banho:</label>
+              <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
+                aria-label="Username" name="data5" aria-describedby="basic-addon1">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" onclick="insertService()">Salvar Mudança</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+      <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+        <p class="arvo fs-2 text-center my-2 col-10">
+          Serviços
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="col-12 d-flex justify-content-around">
+          <div class="col-5">
+            <div class="input-group mb-3">
+
+            </div>
           </div>
-
-          <div class="col-12 col-md-6">
-            <div class="col-12 d-flex justify-content-around">
-              <div class="col-5">
-                <div class="input-group mb-3">
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <center><button id="addac" type="submit"
-                  class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2" data-bs-toggle="modal"
-                  data-bs-target="#modalAddAtividade">
-                  Adicionar Atividade
-                </button></center>
-
-              <!-- Search box -->
-              <div class="input-group row col-md-6 offset-3">
-                <input type="search" class="form-control rounded" placeholder="Procurar..." aria-label="Search"
-                  aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
-              </div>
-            </div>
-
-            <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
-              <table class="table col-12" id="myTable">
-                <thead>
-                  <tr>
-                    <th class="fs-6"> # </th>
-                    <th class="fs-6">Tipo</th>
-                    <th class="fs-6">Toalha</th>
-                    <th class="fs-6">Lanche</th>
-                    <th class="fs-6">idAssistido</th>
-                    <th class="fs-6"></th>
-                    <th class="fs-6">Ações</th>
-                    <th class="fs-6"></th>
-                  </tr>
-                </thead>
-
-                <tbody id="main" class="listaLinhas">
-
-                </tbody>
-
-              </table>
-            </div>
-
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <center><button id="addac" type="submit"
+                class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2" data-bs-toggle="modal"
+                data-bs-target="#ModalAddBanho">
+                Adicionar Banho
+              </button></center>
+          </div>
+          <div class="col-md-6">
+            <center><button id="addac" type="submit"
+                class="border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2" data-bs-toggle="modal"
+                data-bs-target="#ModalAddLanche">
+                Adicionar Lanche
+              </button></center>
           </div>
         </div>
 
+        <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+          <table class="table col-10" id="myTable">
+            <thead>
+              <tr>
+                <th class="fs-6">Serviço</th>
+                <th class="fs-6">Data</th>
+                <th class="fs-6 d-none d-md-table-cell">Obs.</th>
+                <th class="fs-6">Assistido</th>
+                <th class="fs-6">Número Toalha</th>
+              </tr>
+            </thead>
+
+            <tbody id="resultado">
+            </tbody>
+          </table>
+        </div>
+
       </div>
+    </div>
+    <br>
+
+    <!-- Fim do código do início do site -->
+
+
+    <div id="reusofooter">
 
     </div>
-  </div>
-  <br>
 
-  <!-- Fim do código do início do site -->
+    <!-- Script para o toast do botão enviar -->
+    <script>
+      $("#registroServicos").on("click", function () {
+        var x = document.getElementById("snackbar");
 
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 
-  <div id="reusofooter">
+      });
 
-  </div>
+    </script>
 
-  <script>
-    $("#registroAtividades").on("click", function () {
-      var x = document.getElementById("snackbar");
+    <!-- script para o reuso -->
+    <script>
+      $(document).ready(function () {
+        $("#reusohead").load("reuso/head.html");
+        $("#reusonavbar").load("reuso/navbar.html");
+        $("#reusofooter").load("reuso/footer.html");
+      })
+    </script>
 
-      x.className = "show";
-      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    <!-- script para o ajax (integração) -->
+    <script>
+      $(document).ready(() => {
+        servicos.list();
+      });
 
-    });
+      //método GET para puxar informações da tabela no banco de dados 
+      var servicos = {
 
-  </script>
-
-  <script>
-    $(document).ready(function () {
-      $("#reusohead").load("reuso/head.html");
-      $("#reusonavbar").load("reuso/navbar.html");
-      $("#reusofooter").load("reuso/footer.html");
-    })
-  </script>
-
-  <script>
-    $(document).ready(() => {
-      atividades.list();
-    });
-
-    //método GET para puxar informações da tabela no banco de dados 
-    var atividades = {
-
-      list() {
-        $.ajax({
-          url: 'http://127.0.0.1:3022/readAtividade',
-          type: 'GET',
-          success: data => {
-            var tr = '';
-            data.forEach(element => {
-              tr += `<tr>`;
-              tr += `<th scope="row"> ${element.idAtividade} </th>`;
-              tr += `<th scope="row"> ${element.TipoAtividade} </th>`;
-              tr += `<td scope="row"> ${element.Toalha} </td>`
-              tr += `<td scope="row"> ${element.Lanche} </td>`
-              tr += `<td scope="row"> ${element.Data} </td>`
-              tr += `<td style="background-color: red; color: white" scope="row" onclick="atividade.delete('${element.CPF}')"> Excluir </td>`
-              tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" onclick="atividades.list2('${element.CPF}')"> Visualizar </td>`
-              tr += `<td style="background-color: blue; color: white" scope="row" onclick="atividade.update('${element.CPF}')"> Atualizar </td>`
-              tr += `</tr>`
-            });
-            $('#main').html(tr);
-          }
-        });
-
-
-      }
-
-    };
-
-    //método para deletar as informações dos atividades no banco de dados 
-    var atividade = {
-
-      delete(CPFColab) {
-
-        if (confirm(`Confirma a exclusão?`)) {
+        list() {
+          // ajax que cria a tabela de serviços
           $.ajax({
-            type: 'POST',
-            url: 'http://127.0.0.1:3022/deleteAtividade',
-            data: { CPFColab: CPFColab },
-          }).done(function () {
-            atividades.list();
-          }).fail(function (msg) {
-            console.log('FAIL');
+            url: 'http://127.0.0.1:1234/readServico',
+            type: 'GET',
+            success: data => {
+              var tr = '';
+              data.forEach(element => {
+                tr += `<tr>`;
+                tr += `<th scope="row"> ${element.idServico} </th>`;
+                tr += `<th scope="row"> ${element.TipoServico} </th>`;
+                tr += `<td scope="row"> ${element.Toalha} </td>`
+                tr += `<td scope="row"> ${element.Lanche} </td>`
+                tr += `<td scope="row"> ${element.idAssistido} </td>`
+                tr += `<td style="background-color: red; color: white" scope="row" onclick="servico.delete('${element.CPF}')"> Excluir </td>`
+                tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" onclick="servicos.list2('${element.CPF}')"> Visualizar </td>`
+                tr += `<td style="background-color: blue; color: white" scope="row" onclick="servico.update('${element.CPF}')"> Atualizar </td>`
+                tr += `</tr>`
+              });
+              $('#main').html(tr);
+            }
+          });
+
+          // ajax que cria as toalhas no dropdown do modal do adicionar banho
+          $.ajax({
+            url: 'http://127.0.0.1:1234/readToalha',
+            type: 'GET',
+            success: data => {
+              var modalBanho = '';
+              data.forEach(element => {
+                modalBanho += `<option value="${element.idToalha}" name="${element.idToalha}">Toalha ${element.idToalha}</option>`;
+              });
+              $('#mainBanho').append(modalBanho)
+            }
+          });
+
+          // ajax que cria os assistidos no dropdown do modal do adicionar banho
+          $.ajax({
+            url: 'http://127.0.0.1:1234/read'
+          })
+
+        },
+
+
+        list2(id) {
+          $.ajax({
+            url: 'http://127.0.0.1:1234/readCadastroAssistido',
+            type: 'GET',
+            success: data => {
+              console.log("entrei no success");
+              data.forEach(element => {
+                console.log("entrei no forEach do elemento" + id);
+                const modal = document.createElement("div");
+                modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">                                             <div class="modal-dialog">                                                                       <div class="modal-content">                                                                     <div class="modal-header">                                                                        <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close"data-bs-dismiss="modal" aria-label="Close"></button>                </div> 
+                <div class="modal-body"> <div class="row"> 
+                <div class="modal-foorter"> 
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                if (element.idCadastro == id) {
+                  document.body.appendChild(modal);
+                  $('#myModal' + id).modal();
+                }
+
+              });
+              // $('#stefano').html(dive);
+            }
           });
         }
-      }
 
-    };
+      };
 
-    //método para filtrar as informações dos atividades no banco de dados (filtro de pesquisa)
-    function searchFilter() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("searchFilter");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
+
+      //método para deletar as informações dos servicos no banco de dados 
+      var servico = {
+
+        delete(CPFColab) {
+
+          if (confirm(`Confirma a exclusão?`)) {
+            $.ajax({
+              type: 'POST',
+              url: 'http://127.0.0.1:1234/deleteServico',
+              data: { CPFColab: CPFColab },
+            }).done(function () {
+              servicos.list();
+            }).fail(function (msg) {
+              console.log('FAIL');
+            });
+          }
+        }
+
+      };
+
+      //método para filtrar as informações dos servicos no banco de dados (filtro de pesquisa)
+      function searchFilter() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchFilter");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
           }
         }
       }
-    }
-  </script>
+    </script>
 </body>
 
 </html>
