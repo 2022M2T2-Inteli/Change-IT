@@ -90,7 +90,7 @@
                                 <div class="col-auto">
                                     <button id="registroColaboradores" type="submit" class="btn btn-primary bnt"
                                         data-bs-dismiss="modal" onclick="list20()">Enviar</button>
-                                    
+
                                 </div>
 
                             </div>
@@ -216,7 +216,7 @@
         });
 
         function list20() {
-            setTimeout(function(){
+            setTimeout(function () {
                 colaboradores.list
             }, 400);
 
@@ -238,9 +238,9 @@
                             tr += `<td scope="row"> ${element.Tipo} </td>`
                             tr += `<td scope="row"> ${element.Email} </td>`
                             tr += `<td scope="row"> ${element.PrimeiroAcesso} </td>`
-                            tr += `<td style="background-color: red; color: white" scope="row" onclick="colaborador.delete('${element.CPF}')"> Excluir </td>`
-                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" onclick="colaboradores.list2('${element.CPF}')"> Visualizar </td>`
-                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="colaborador.update('${element.CPF}')"> Atualizar </td>`
+                            tr += `<td scope="row"> <button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="colaborador.delete('${element.CPF}')"> Excluir </button> </td>`
+                            tr += `<td scope="row"> <button onclick="colaboradores.list2(${element.CPF})" style="background-color: green; color: white; border-radius:20px; border:none;" data-bs-toggle="modal" data-bs-target="#myModal${element.CPF}" style="background-color: green; color: white"> Visualizar </button> </th>`;
+                            tr += `<td scope="row"> <button onclick="colaborador.update(${element.CPF})" style="background-color: blue; color: white; border-radius:20px; border:none;"> Atualizar </button> </th>`;
                             tr += `</tr>`
                         });
                         $('#main').html(tr);
@@ -248,6 +248,26 @@
                 });
 
 
+            },
+
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readColaborador',
+                    type: 'GET',
+                    success: data => {
+                        data.forEach(element => {
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.CPF}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> <div class="modal-body"> <div class="row"> </div> </div></div> <div class="modal-foorter"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                            if (element.idCadastro == id) {
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
             }
 
         };
