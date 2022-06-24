@@ -54,7 +54,7 @@ module.exports = db // exporta o bd
 ========================================================================================
 */
 
-// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaDoacoes.html")
+// READ - Torna possível retornar os dados (elas são retornadas pelo AJAX na página "listaDoacoes.html")
 app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informações dentro do banco de dados e retorna elas, tornado possível exibí-las quando necessário
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -71,16 +71,7 @@ app.get("/readInsumos", (req, res) => { // Método Get, pega todas as informaç�
 });
 
 // CREATE - Registra uma nova doação de insumo na tabela Doacoes
-app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dados
-
-    const datainsumos = req.body.dataInsumos
-    const AnonimoInsumos = req.body.AnonimoIns
-    const nameInsumos = req.body.nomeInsumos
-    const documentoInsumos = req.body.CPFInsumos
-    const produtoInsumos = req.body.NomeProduto
-    const emailInsumos = req.body.emailInsumo
-    const AjudaEntrega = req.body.AjudaIns
-    const obsIns = req.body.ObsInsumos
+app.post("/registrarInsumos", (req, res) => { //Método Post, pega os campos da ficha de insumos e também envia para o banco de dado
 
     sql = `INSERT INTO Doacoes (Data, Anonimo, Nome, CPF, NomeProduto, Email, Ajuda, Observacoes) VALUES ('${req.body.dataInsumos}','${req.body.AnonimoIns}','${req.body.nomeInsumos}', '${req.body.CPFInsumos}', '${req.body.NomeProduto}', '${req.body.emailInsumo}', '${req.body.AjudaIns}', '${req.body.ObsInsumos}')`
 
@@ -120,7 +111,7 @@ app.post("/deleteInsumos", (req, res) => { //Método Delete, deleta um usuário 
 ========================================================================================
 */
 
-// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaDoacoesMon.html")
+// READ - Torna possível retornar os dados (elas são retornadas pelo AJAX na página "listaDoacoesMon.html")
 app.get("/readMonetario", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -182,7 +173,7 @@ app.post("/deleteMonetario", (req, res) => { //Método Delete, deleta um usuári
 ========================================================================================
 */
 
-// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaVoluntários.html")
+// READ - Torna possível retornar os dados (elas são retornadas pelo AJAX na página "listaVoluntários.html")
 app.get('/readVoluntario', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -236,7 +227,7 @@ app.post("/deleteVoluntario", (req, res) => { //Método Delete, deleta um usuár
 ========================================================================================
 */
 
-// READ - Torna possível retornar as informações (elas são retornadas pelo AJAX na página "listaColaboradores.html")
+// READ - Torna possível retornar os dados (elas são retornadas pelo AJAX na página "listaColaboradores.html")
 app.get('/readColaborador', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -338,7 +329,8 @@ app.post('/deleteColaborador', (req, res) => {
 ========================================================================================
 */
 
-app.get("/readServico", (req, res) => { //  retorna as informações dos serviços, tornando possível exibí-las quando necessário
+// READ - TOrna possível retornar os dados (elas são retornadas pelo AJAX na página "listaAtividades.html")
+app.get("/readServico", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -353,24 +345,9 @@ app.get("/readServico", (req, res) => { //  retorna as informações dos serviç
     db.close(); // Fecha o banco
 
 });
-app.get("/readToalha", (req, res) => { //  retorna as informações das toalhas, tornando possível exibí-las quando necessário
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    var sql = 'SELECT * FROM Toalha ORDER BY idToalha COLLATE NOCASE';
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            throw err;
-        }
-        res.json(rows);
-    });
-    db.close(); // Fecha o banco
-
-});
-
-//Método de inserir dados do serviço utilizado
-app.post("/insertServico", (req, res) => { 
+// CREATE - Registra um novo serviço na tabela de serviços, sendo esse serviço um Banho ou um Lanche
+app.post("/insertServico", (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 
@@ -392,7 +369,7 @@ app.post("/insertServico", (req, res) => {
     db.close(); // Fecha o banco
 });
 
-// Deleta um serviço
+// DELETE - Deleta o registro de um serviço se necessário
 app.post('/deleteServico', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
@@ -408,7 +385,62 @@ app.post('/deleteServico', (req, res) => {
     db.close(); // Fecha o banco
 });
 
+/*
+========================================================================================
+//                  Endpoints relacionados à tabela Toalha                            //
+//                                   COMPLETO                                         //
+========================================================================================
+*/
 
+// READ - Torna possível retornar os dados (elas são retornadas pelo AJAX na parte dos Banhos em "listaAtividades.html")
+app.get("/readToalha", (req, res) => { //  retorna as informações das toalhas, tornando possível exibí-las quando necessário
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    var sql = 'SELECT * FROM Toalha ORDER BY idToalha COLLATE NOCASE';
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+
+});
+
+// CREATE - Registra uma nova toalha (só o seu número)
+app.post("/insertToalha", (req, res) => { //Método de inserir dados do colaborador
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    sql = `INSERT INTO Toalha (NumToalha) VALUES ('${req.body.Numero_Toalha}')`;
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
+
+// DELETE - Deleta uma toalha do banco de dados
+app.post('/deleteToalha', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    sql = "DELETE FROM Toalha WHERE idToalha = '" + req.body.idToalha + "'";
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
 
 /*
 ========================================================================================
@@ -449,21 +481,6 @@ app.get("/readCadastroAssistido", (req, res) => {
 
     location.replace("../src/visualizarAssistido.html")
 }); */
-
-app.post("/deleteCadastroAssistido", (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    sql = "DELETE FROM tbCadastramento WHERE idCadastro = '" + req.body.idCadastro + "'";
-    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
-    db.run(sql, [], err => {
-        if (err) {
-            throw err;
-        }
-        res.end();
-    });
-    db.close(); // Fecha o banco
-});
 
 app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados
     res.statusCode = 200;
@@ -527,6 +544,23 @@ app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de
         res.json(rows);
     });
 });
+
+app.post("/deleteCadastroAssistido", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    sql = "DELETE FROM tbCadastramento WHERE idCadastro = '" + req.body.idCadastro + "'";
+    var db = new sqlite3.Database(DBSOURCE); // Abre o banco
+    db.run(sql, [], err => {
+        if (err) {
+            throw err;
+        }
+        res.end();
+    });
+    db.close(); // Fecha o banco
+});
+
+
 
 // Endpoint necessário para a confirmação do Login
 app.post("/login", (req, res) => {
