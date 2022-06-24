@@ -16,7 +16,7 @@ const { read } = require('fs');
 // var get = 'SELECT * FROM user'
 // var delet = "DELETE FROM user WHERE id= '" + req.body.id + "'";
 
-app.use(express.static("../src/")); // pega o diretório do front
+app.use(express.static("../frontend/")); // pega o diretório do front
 app.use(express.json()); // pega o diretório do node.js
 
 const DBSOURCE = "DatabaseOficial5.db" // responsável pela operação do bd
@@ -479,7 +479,7 @@ app.get("/readCadastroAssistido", (req, res) => {
     });
     db.close();
 
-    location.replace("../src/visualizarAssistido.html")
+    location.replace("../frontend/visualizarAssistido.html")
 }); */
 
 app.post("/cadastro", (req, res) => { //Método Post, pega os campos da ficha de assistidos e também envia para o banco de dados

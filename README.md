@@ -24,7 +24,7 @@ Uma aplicação WEB, proposta pelo Projeto Revirar com o objetivo de ajudar pess
 📜 O projeto consiste em uma aplicação web (Site), trazida através de uma parceria entre a ONG "Revirar" e o "Instituto De Tecnologia e liderança: Inteli".
 <br><br>
 <p align="center">
-<a href="https://github.com/2022M2T2/Projeto5/blob/main/src/img/Logos/logo.png"><img class="imgdeg" src="src\img\Logos\logo.png" alt="Book" style="max-width: 80%; max-height: 80%;" /></a>
+<a href="https://github.com/2022M2T2/Projeto5/blob/main/frontend/img/Logos/logo.png"><img class="imgdeg" src="src\img\Logos\logo.png" alt="Book" style="max-width: 80%; max-height: 80%;" /></a>
 
 
 💡 O projeto, tem como objetivo principal, ajudar pessoas em situação de rua. Através de uma plataforma que: facilite os processos de doações e voluntariar, organize informações, crie um registro permanente dos moradores de rua, promova e anuncie eventos, e  mais importante, permita que assistentes sociais sumpram e reconheçam as necessidades dos moradores de rua.
