@@ -1,202 +1,90 @@
-# Projeto5
-# Projeto revirar
+# Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
 <a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
+# Nome do projeto
+
 ## Change IT
 
-## Descrição
-Uma aplicação WEB, proposta pelo Projeto Revirar com o objetivo de ajudar pessoas em situação de rua
-
 ## Integrantes: 
--    Vinicius Fernandes
--    Alexandre Fonseca
--    Stefano Tinelli
--    Vitória Oliveira
--    Kil Teixeira
--    Ana Clara Müler
--    Lucas Henrique
+- <a href="https://www.linkedin.com/in/alexandrefonseca00/"> Alexandre Fonseca </a> 
+- <a href="https://www.linkedin.com/in/ana-clara-loureiro-muller-zaidan/"> Ana Clara Loureiro Müller Zaidan </a>
+- <a href="https://www.linkedin.com/in/lucas-henrique-sales-de-souza/"> Lucas Henrique Sales de Souza </a>
+- <a href="https://www.linkedin.com/in/kil-matheus-78257020a/"> Kil Matheus Gomes Teixeira </a> 
+- <a href="https://www.linkedin.com/in/victorbarq/"> Stefano Tinelli </a>
+- <a href="https://www.linkedin.com/in/vit%C3%B3ria-rodrigues-de-oliveira-bb955921b/"> Vitória Rodrigues de Oliveira </a> 
+- <a href="https://www.linkedin.com/in/vinicius-oliveira-fernandes-627b68168/"> Vinicius Oliveira Fernandes </a>
 
-## Descrição
+## 📝 Descrição
 
-📜 O projeto consiste em uma aplicação web (Site), trazida através de uma parceria entre a ONG "Revirar" e o "Instituto De Tecnologia e liderança: Inteli".
-<br><br>
-<p align="center">
-<a href="https://github.com/2022M2T2/Projeto5/blob/main/frontend/img/Logos/logo.png"><img class="imgdeg" src="src\img\Logos\logo.png" alt="Book" style="max-width: 80%; max-height: 80%;" /></a>
+O projeto desenvolvido nesse módulo envolveu uma aplicação web em parceria com a instituição Revirar, um dos projetos sociais da Fraternidade Irmã Amélia na zona Leste de São Paulo. O objetivo da aplicação web para o Revirar é aumentar a visibilidade e alcance da instituição Revirar, permitindo atrair mais doadores e voluntários que desejam fazer o bem para pessoas em vulnerabilidade social em situação de rua. Além disso, também visa facilitar, por meio da tecnologia, o dia a dia da organização devido à área restrita do site, a qual permite a visualização de listas de pessoas que fazem parte da ONG de alguma forma, desde voluntários e doadores até colaboradores e os próprios assistidos.
 
+## 📁 Estrutura de pastas
 
-💡 O projeto, tem como objetivo principal, ajudar pessoas em situação de rua. Através de uma plataforma que: facilite os processos de doações e voluntariar, organize informações, crie um registro permanente dos moradores de rua, promova e anuncie eventos, e  mais importante, permita que assistentes sociais sumpram e reconheçam as necessidades dos moradores de rua.
-<!-- <br><br>
-May the force be with you! -->
-<br><br>
+|--> documentos<br>
+  &emsp;| --> outros <br>
+  &emsp;| T2_G5_V1_Web_application_document.pdf<br>
+  &emsp;| T2_G5_V1_Web_application_document.docx<br>
+|--> imagens<br>
+|--> src<br>
+  &emsp;|--> Backend<br>
+  &emsp;|--> Frontend<br>
+| readme.md<br>
+| license.txt
 
-## Tecnologias e Como foram Utilizadas:
-     Visual Studio Code: Ferramenta principal de programação
-     Github: Ferramenta de organização e comprtilhação de arquivos e informações
-     DBbrowser: Ferramenta de navegação de banco de dados
-     Boostrap: Ferramenta de estilização, "framework" para estruturação
-     Postman: Ferramenta para r,egistrar e testar API e Endpoints
-     Figma: Ferramenta utilizada para contrução de conceito e "wireframe"
-     Html: Linguagem de programação utilizada para montar o "Frontend"
-     CSS: Linguagem de programação utilizada para estilizar o "Frontend"
-     Sqlite: Banco de dados
-     Node.js: Linguagem de programação utilizada para montar e estruturar ambos "Frontend" e "Backend"
-     Jquery: Biblioteca de "Java script" utilizada para dinamização
-     Heroku: Plataforma de nuvem que faz o deploy das aplicações do backend
-     Br modelo: Aplicação para criação  organização conceitual de tabelas
-     Ajax: Tecnica de comunição do "Backend" com o "Frontend" de forma assincrona
-     
-     
-## 🛠 Estrutura de pastas
- 
--Projeto5<br>
-|<br>
-|-->.vscode<br>
-  &emsp;|settings.json<br>
-|-->backend<br>
-  &emsp;|-->app_22.js<br>
-  &emsp;|-->DatabaseOficial5.db<br>
-  &emsp;|-->DatabaseOficial5.sqbpro<br>
-  &emsp;|-->package-lock.json<br>
-  &emsp;|-->package.json<br>
-|-->SRC<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
-|-->imagens<br>
-|-->src<br>
-|readme.md<br>
-|license.txt<br>
+Dentre os arquivos presentes na raiz do projeto, definem-se:
 
-<!-- Há também 4 pastas que seguem da seguinte forma:
+- <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
-<b>documentos</b>: Aqui estarão todos os documentos do projeto, mas principalmente o <b>GDD (Game Design Document)/Documentação do Sistema</b>. Há uma pasta <b>antigos</b> onde estarão todas as versões antigas da documentação.
+- <b>documentos</b>: aqui estarão todos os documentos do projeto. Há também uma pasta denominada <b>outros</b> onde estão presentes aqueles documentos complementares ao <b>web application document</b>.
 
-<b>executáveis</b>: Aqui estarão todos os executáveis do jogo, prontos para rodar. Há no mínimo 3 pastas, uma para binários <b>Windows</b>, uma para binários <b>android</b> e uma para a <b>Web/HTML</b>
+- <b>imagens</b>: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
 
-<b>imagens</b>: Algumas imagens do jogo/sistema e logos prontos para serem utilizados e visualizados.
+- <b>src</b>: nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas <b>backend</b> e <b>frontend</b> que contêm, respectivamente, o código do servidor e o código da página web).
 
-<b>src</b>: Nesta pasta irá todo o código fonte do jogo/sistema, pronto para para ser baixado e modificado. -->
+## 💻 Configuração para desenvolvimento
 
-## 🛠 Instalação
+Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
+1.  Baixar e instalar o node.js:  [https://nodejs.org/pt-br/](https://nodejs.org/pt-br/) (versão 16.15.1 LTS)
+2.  Clone o repositório em questão.
+3.  No modo administrador, abra o "prompt de comando" ou o "terminal" e, após,  abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
 
-## 📈 Exemplo de uso
-
-<!-- Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado.
-
-Adicione blocos de códigos e, se necessário, screenshots.
-
-Este modelo pode ser copiado e utilizado à vontade. -->
-
-     
-     
-Home:
-     
-Fichas de cadastro:
-Login:
-Area restrita:
-
-## 💻 Configuração para Desenvolvimento
-     
- Instruções (passo-a-passo) para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para o configuração do ambiente de desenvolvimento.
-<br>
-
-Para abrir este projeto você necessita das seguintes ferramentas:
-Visual Studio Code
-GitHub 
-node.js
-
-Visual Studio Code e GitHub:  
-1.   Criar uma conta e Baixar o GitHub Deskop: https://desktop.github.com/ 
-2.   Baixar o Visual Studio Code: https://code.visualstudio.com/download 
-3.   No seu computador, criar uma pasta para repositorios (Para facilitar a sua organização)
-4.   Criar outra pasta chamada "repositorio_grupo_5" dentro da mesma.
-5.   No GitHub Web, acessar e clonar o repositorio: https://github.com/2022M2T2/Projeto5, na pasta "repositorio_grupo_5
-6.   Abra o VSCode e abra a pasta clonada
-7.   Pressione as teclas "ctrl + SHIFT + ' ", para abrir um novo terminal
-8.   Neste terminal navegue até a pasta "src/backend", utilizando o comando:
-     Utilizando o comando "CD", navegue até a pasta "src/backend"
-     
-NODE.js
-     
-1.   Baixar o node.js: https://nodejs.org/pt-br/ (versão 16.15.1 LTS)
-2.   No Visual Studio Code. abra o "prompt de comando" ou o "terminal"
-3.   Abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
-     
-```sh
-npm install -g node.js
-``` 
-<br>
-(Isso instalara o node.js no seu repositoro)
-<br>
-
-<br>
-4.   Dentro do terminal, na pasta "src/backend" digite o comando
-     (Passo 4 serve apenas, caso queira testar se o node.js foi instalado corretamente)
-     
-```sh
-node -v
-```      
-(A sua resposta deve ser a versão atual do node)
-
-Windows:
-
-1.   No modo administrador, abra o "prompt de comando" ou o "terminal"
-2.   abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
-<!-- 
 ```sh
 npm install
-``` 
-(Isso instalará todas as dependências definidas no arquivo package.json que são necessárias para rodar o projeto.)
-     <br>
-5.   Agora o projeto já está pronto para ser modificado. 
-6.   Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
+```
+
+Isso instalará todas as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
+
 ```sh
 npm start
-``` 
-<br>
-
-Agora você pode acessar a aplicação através do link http://127.0.0.1:3022/
-O servidor está online
- -->
-HTML:
-     <br>
-     Não é nescessario, pois cumprir os passos anteriores e acessar o <a href="http://127.0.0.1:3022/">link</a> ja te dara acesso ao HTML
-     <br>
-
-
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-
+```
+5. Agora você pode acessar a aplicação através do link http://localhost:1234/
+6. O servidor está online.
 
 ## 🗃 Histórico de lançamentos
 
-A cada atualização os detalhes devem ser lançados aqui.
-
 * 0.2.1 - 25/01/2022
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
+    * Atualização de documentos (código do módulo permanece inalterado).
 * 0.2.0 - 15/01/2022
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
+    * Remove `setDefaultXYZ()`
+    * Adiciona `init()`
 * 0.1.1 - 11/01/2022
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
+    * Crash quando chama `baz()`
 * 0.1.0 - 10/01/2022
     * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
+    * Renomeia `foo()` para `bar()`
 * 0.0.1 - 01/01/2022
     * Trabalho em andamento
 
 ## 📋 Licença/License
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">INTELI, VICTOR BRUNO ALEXANDER ROSETTI DE QUIROZ</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.yggbrasil.com.br/vr">Inteli, Alexandre Fonseca, Ana Clara Loureiro Müller Zaidan, Lucas Henrique Sales de Souza, Kil Matheus Gomes Teixeira, Stefano Tinelli, Vitória Rodrigues de Oliveira, Vinicius Oliveira Fernandes </a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto.
+Aqui estão as referências usadas no projeto:
 
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://creativecommons.org/share-your-work/>
+1. <https://creativecommons.org/share-your-work/>
